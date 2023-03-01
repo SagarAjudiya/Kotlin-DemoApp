@@ -6,13 +6,16 @@ fun main() {
     // List
     val array = listOf(1,3,5,'c')
     println(array)
+    println(array::class.simpleName)
     // Set
     val set = setOf(1,2,1,4)
     println(set)
+    println(set::class.simpleName)
     // Map
     val map = mapOf(9 to "C", 7 to "B", 9 to "A", 10 to "B")
     // map[11] = "eleven" //error
     println(map)
+    println(map::class.simpleName)
 
     // Mutable
     // List

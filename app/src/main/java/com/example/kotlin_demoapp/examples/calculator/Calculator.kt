@@ -1,4 +1,6 @@
-package com.example.kotlin_demoapp.examples
+package com.example.kotlin_demoapp.examples.calculator
+
+import com.example.kotlin_demoapp.examples.calculator.CalculatorRules
 
 class Calculator : CalculatorRules() {
     override fun addition(value1: Int, value2: Int) {

@@ -18,4 +18,10 @@ fun main() {
     // Elvis Operator
     var string: String? = null
     println(string?.length ?: 0)
+
+    // Boxed vs Unboxed
+    var a = 1000  // range = -128 to 127
+    val boxedA: Int? = a
+    val anotherBoxedA: Int? = a
+    println(boxedA === anotherBoxedA)
 }

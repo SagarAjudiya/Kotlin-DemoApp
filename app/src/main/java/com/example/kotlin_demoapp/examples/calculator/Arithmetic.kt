@@ -1,4 +1,4 @@
-package com.example.kotlin_demoapp.examples
+package com.example.kotlin_demoapp.examples.calculator
 
 interface Arithmetic {
     fun addition(value1: Int, value2: Int)
