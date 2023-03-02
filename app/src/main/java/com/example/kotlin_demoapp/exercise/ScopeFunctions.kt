@@ -4,12 +4,12 @@ import android.icu.number.IntegerWidth
 
 fun main() {
     // let
-    var a = mutableListOf(1,2,3,4)
+    val a = mutableListOf(1,2,3,4)
     println(a.let { it + 6 }.let { it + 20 })
     println(a)
 
     // run
-    var b = 10
+    val b = 10
     println(b.run {
         this + 2
     })
@@ -26,5 +26,4 @@ fun main() {
     println(with(b) {
         this + 2
     })
-
 }

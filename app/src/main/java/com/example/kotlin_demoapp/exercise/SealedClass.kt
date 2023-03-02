@@ -4,11 +4,17 @@ sealed interface Status {
     fun status()
 }
 
-sealed class DeliveryStatus(var id: String = " ") : Status
+sealed class DeliveryStatus(var id: String = " ") : Status {
+    fun method() {
+        println("HEllo")
+    }
+
+}
 
 object Preparing : DeliveryStatus() {
     override fun status() {
         println("Preparing")
+        method()
     }
 }
 class Dispatch(ID: String) : DeliveryStatus() {
@@ -31,7 +37,7 @@ fun displayStatus(status: DeliveryStatus) {
 }
 
 fun main() {
-    var dispatch1 = Dispatch("ID1")
+    val dispatch1 = Dispatch("ID1")
     var dispatch2 = Dispatch("ID2") // can have multiple instances
     var preparing1 = Preparing
     // var preparing2 = Preparing() // can not create multiple instance of singleton class

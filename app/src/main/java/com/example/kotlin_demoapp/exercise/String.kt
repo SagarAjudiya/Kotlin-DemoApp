@@ -17,4 +17,6 @@ fun main() {
     |(Benjamin Franklin)
     """.trimMargin("|") // default: |, you can set by giving parameter
     print(text)
+
+
 }
