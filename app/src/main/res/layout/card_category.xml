@@ -7,22 +7,39 @@
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imgUser"
+            android:id="@+id/imgCategory"
             android:layout_width="@dimen/_70dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/img_avatar_boy"
+            android:src="@drawable/icon_world"
+            app:tint="@color/brown"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
             android:backgroundTint="@color/lightGreen" />
 
         <TextView
-            android:id="@+id/txtUserName"
+            android:id="@+id/txtMonthSpendingPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corner"
+            android:layout_marginTop="@dimen/_5dp"
+            android:backgroundTint="@color/greenSecondary"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="@dimen/_5dp"
+            android:text="@string/dummy_percent"
+            android:textColor="@color/snowWhite"
+            android:textSize="@dimen/_15sp"
+            app:drawableTint="@color/snowWhite" />
+
+        <TextView
+            android:id="@+id/txtCategoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dummy_user"
@@ -30,5 +47,6 @@
             android:textSize="@dimen/_15sp"
             android:includeFontPadding="false"
             android:fontFamily="@font/poppins" />
+
     </LinearLayout>
 </layout>

@@ -50,6 +50,7 @@
             android:fontFamily="@font/poppins_medium"
             android:paddingEnd="@dimen/_5dp"
             android:layout_marginStart="@dimen/_10dp"
+            android:includeFontPadding="false"
             android:gravity="center_vertical"
             android:drawableStart="@drawable/icon_arrow_down"
             app:drawableTint="@color/snowWhite"
