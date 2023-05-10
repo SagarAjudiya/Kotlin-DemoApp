@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_10dp"
+        android:background="@color/greenSecondary">
+
+        <ImageView
+            android:id="@+id/imgCardType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_mastercard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_number"
+            android:backgroundTint="@color/lightGreen"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/lightGreen"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtSecretStars"
+            app:layout_constraintStart_toEndOf="@id/txtSecretStars"/>
+
+        <TextView
+            android:id="@+id/txtSecretStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_70dp"
+            android:layout_marginEnd="@dimen/_5dp"
+            android:backgroundTint="@color/lightGreen"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/secret_stars"
+            android:textColor="@color/lightGreen"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintBottom_toBottomOf="@id/imgCardType"
+            app:layout_constraintEnd_toStartOf="@id/txtCardNumber"
+            app:layout_constraintStart_toEndOf="@id/imgCardType"
+            app:layout_constraintTop_toTopOf="@id/imgCardType" />
+
+        <TextView
+            android:id="@+id/txtCardType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mastercard"
+            android:backgroundTint="@color/lightGreen"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/lightGreen"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintTop_toBottomOf="@id/imgCardType"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/_20dp"/>
+
+        <TextView
+            android:id="@+id/txtBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_balance"
+            android:backgroundTint="@color/lightGreen"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/snowWhite"
+            android:textSize="@dimen/_25sp"
+            app:layout_constraintTop_toBottomOf="@id/txtCardType"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

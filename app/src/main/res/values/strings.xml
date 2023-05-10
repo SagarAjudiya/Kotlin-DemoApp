@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Kotlin-DemoApp</string>
+    <string name="hello">Hello</string>
+    <string name="search_by_app">Search by app</string>
+    <string name="usd_eur">USD / EUR:</string>
+    <string name="btc_usd">BTC / USD</string>
+    <string name="wallet">Wallet</string>
+    <string name="secret_stars">*****</string>
+    <string name="dummy_number">5300</string>
+    <string name="mastercard">Mastercard</string>
+    <string name="balance_dollar">$%1d</string>
+    <string name="dummy_balance">$1600.32</string>
+    <string name="dummy_month_spending_title">Total spent in April</string>
+    <string name="month_spending_title">Total spent in %1s</string>
+    <string name="dummy_percent">38%</string>
+    <string name="transfer_to">Transfer to</string>
+    <string name="see_all">See all</string>
+    <string name="select">Select</string>
+    <string name="dummy_user">Jackie</string>
+    <string name="goals">Goals</string>
+    <string name="dummy_goal">Tesla Model S</string>
+    <string name="dummy_goal_total_money"> / $120000</string>
+    <string name="goal_total_money"> / $%1d</string>
 </resources>

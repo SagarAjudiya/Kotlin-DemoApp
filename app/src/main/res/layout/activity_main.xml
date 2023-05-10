@@ -1,18 +1,434 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/greenPrimary"
+        tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/_20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/_20dp" />
+
+        <EditText
+            android:id="@+id/searchField"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:background="@drawable/round_corner"
+            android:drawableStart="@drawable/icon_search"
+            android:drawablePadding="@dimen/_5dp"
+            android:drawableTint="@color/greenSecondary"
+            android:hint="@string/search_by_app"
+            android:padding="@dimen/_10dp"
+            android:textColor="@color/greenSecondary"
+            android:textColorHint="@color/greenSecondary"
+            app:layout_constraintEnd_toStartOf="@id/btnNotification"
+            app:layout_constraintStart_toStartOf="@id/startGuide"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btnNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corner"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/icon_bell"
+            app:layout_constraintBottom_toBottomOf="@id/searchField"
+            app:layout_constraintEnd_toEndOf="@id/endGuide"
+            app:layout_constraintTop_toTopOf="@id/searchField" />
+
+        <TextView
+            android:id="@+id/txtHello"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:text="@string/hello"
+            android:textColor="@color/greenSecondary"
+            android:textSize="@dimen/_30sp"
+            app:layout_constraintStart_toStartOf="@id/startGuide"
+            app:layout_constraintTop_toBottomOf="@id/searchField" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_0dp"
+            android:layout_marginStart="@dimen/_5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_avatar_girl"
+            app:layout_constraintBottom_toBottomOf="@id/txtHello"
+            app:layout_constraintStart_toEndOf="@id/txtHello"
+            app:layout_constraintTop_toTopOf="@id/txtHello"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:includeFontPadding="false"
+            android:text="Sophie"
+            android:textColor="@color/snowWhite"
+            android:textSize="@dimen/_30sp"
+            app:layout_constraintBottom_toBottomOf="@id/imgProfile"
+            app:layout_constraintStart_toEndOf="@id/imgProfile"
+            app:layout_constraintTop_toTopOf="@id/imgProfile" />
+
+        <TextView
+            android:id="@+id/txtTitleUsdEur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="@string/usd_eur"
+            android:textColor="@color/greenSecondary"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintStart_toStartOf="@id/startGuide"
+            app:layout_constraintTop_toBottomOf="@id/imgProfile" />
+
+        <ImageView
+            android:id="@+id/imgUsdEur"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_0dp"
+            android:layout_marginStart="@dimen/_5dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/icon_arrow_down"
+            app:layout_constraintBottom_toBottomOf="@id/txtTitleUsdEur"
+            app:layout_constraintStart_toEndOf="@id/txtTitleUsdEur"
+            app:layout_constraintTop_toTopOf="@id/txtTitleUsdEur"
+            app:tint="@color/lightGreen" />
+
+        <TextView
+            android:id="@+id/txtUsdEur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.9028"
+            android:textColor="@color/snowWhite"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintStart_toEndOf="@id/imgUsdEur"
+            app:layout_constraintTop_toTopOf="@id/imgUsdEur" />
+
+        <TextView
+            android:id="@+id/txtTitleBtcUsd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_30dp"
+            android:text="@string/btc_usd"
+            android:textColor="@color/greenSecondary"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintStart_toEndOf="@id/txtUsdEur"
+            app:layout_constraintTop_toTopOf="@id/txtUsdEur" />
+
+        <ImageView
+            android:id="@+id/imgBtcUsd"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_0dp"
+            android:layout_marginStart="@dimen/_5dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/icon_arrow_up"
+            app:layout_constraintBottom_toBottomOf="@id/txtTitleBtcUsd"
+            app:layout_constraintStart_toEndOf="@id/txtTitleBtcUsd"
+            app:layout_constraintTop_toTopOf="@id/txtTitleBtcUsd"
+            app:tint="@color/lightGreen" />
+
+        <TextView
+            android:id="@+id/txtBtcUsd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="41.0010"
+            android:textColor="@color/snowWhite"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintStart_toEndOf="@id/imgBtcUsd"
+            app:layout_constraintTop_toTopOf="@id/imgBtcUsd" />
+
+        <ScrollView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            android:layout_marginTop="@dimen/_20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleUsdEur">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/scrollStartGuide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="@dimen/_20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/scrollEndGuide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="@dimen/_20dp" />
+
+                <TextView
+                    android:id="@+id/txtWallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wallet"
+                    android:textColor="@color/snowWhite"
+                    android:textSize="@dimen/_30sp"
+                    app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollCreditCard"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtWallet">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_20dp">
+
+                        <include
+                            android:id="@+id/creditCard1"
+                            layout="@layout/card_credit_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <include
+                            android:id="@+id/creditCard2"
+                            layout="@layout/card_credit_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/creditCard3"
+                            layout="@layout/card_credit_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <include
+                    android:id="@+id/cardMonthSpending"
+                    layout="@layout/card_month_spending"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
+                    app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
+                    app:layout_constraintTop_toBottomOf="@id/scrollCreditCard" />
+
+                <TextView
+                    android:id="@+id/txtTransferTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:text="@string/transfer_to"
+                    android:textColor="@color/snowWhite"
+                    android:textSize="@dimen/_30sp"
+                    app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
+                    app:layout_constraintTop_toBottomOf="@id/cardMonthSpending" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTransferToSeeAll"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_all"
+                    android:textAllCaps="false"
+                    android:textColor="@color/lightGreen"
+                    android:textSize="@dimen/_15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/txtTransferTo"
+                    app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
+                    app:layout_constraintTop_toTopOf="@id/txtTransferTo" />
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollUsers"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtTransferTo">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_20dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/imgUser"
+                                android:layout_width="@dimen/_70dp"
+                                android:layout_height="wrap_content"
+                                android:adjustViewBounds="true"
+                                android:background="@color/greenSecondary"
+                                android:src="@drawable/icon_plus"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                app:tint="@color/lightGreen" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins"
+                                android:includeFontPadding="false"
+                                android:text="@string/select"
+                                android:textColor="@color/lightGreen"
+                                android:textSize="@dimen/_15sp" />
+                        </LinearLayout>
+
+                        <include
+                            android:id="@+id/user1"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user2"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user3"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user4"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user5"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user6"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user7"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user8"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                        <include
+                            android:id="@+id/user9"
+                            layout="@layout/card_users"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10dp" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/txtGoals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:text="@string/goals"
+                    android:textColor="@color/snowWhite"
+                    android:textSize="@dimen/_30sp"
+                    app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
+                    app:layout_constraintTop_toBottomOf="@id/scrollUsers" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoalsSeeAll"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/see_all"
+                    android:textAllCaps="false"
+                    android:textColor="@color/lightGreen"
+                    android:textSize="@dimen/_15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/txtGoals"
+                    app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
+                    app:layout_constraintTop_toTopOf="@id/txtGoals" />
+
+                <include
+                    android:id="@+id/goal3"
+                    layout="@layout/card_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/goal1"
+                    app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"/>
+
+                <include
+                    android:id="@+id/goal2"
+                    layout="@layout/card_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@id/goal1"/>
+
+                <include
+                    android:id="@+id/goal1"
+                    layout="@layout/card_goal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/txtGoals"
+                    app:layout_constraintStart_toStartOf="@id/scrollStartGuide"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

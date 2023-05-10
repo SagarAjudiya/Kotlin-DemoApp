@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/greenSecondary">
+
+        <TextView
+            android:id="@+id/txtTitleMonthSpending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/lightGreen"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/dummy_month_spending_title"
+            android:textColor="@color/lightGreen"
+            android:textSize="@dimen/_15sp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtMonthSpending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/lightGreen"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/dummy_balance"
+            android:textColor="@color/snowWhite"
+            android:textSize="@dimen/_25sp"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:layout_marginStart="@dimen/_10dp"
+            android:includeFontPadding="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleMonthSpending"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtMonthSpendingPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_percent"
+            android:textColor="@color/snowWhite"
+            android:textSize="@dimen/_15sp"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingEnd="@dimen/_5dp"
+            android:layout_marginStart="@dimen/_10dp"
+            android:gravity="center_vertical"
+            android:drawableStart="@drawable/icon_arrow_down"
+            app:drawableTint="@color/snowWhite"
+            android:background="@drawable/round_corner"
+            android:backgroundTint="@color/lightGreen"
+            app:layout_constraintTop_toTopOf="@id/txtMonthSpending"
+            app:layout_constraintBottom_toBottomOf="@id/txtMonthSpending"
+            app:layout_constraintStart_toEndOf="@id/txtMonthSpending"/>
+
+        <ImageView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            android:src="@drawable/img_chart"
+            android:scaleType="fitXY"
+            android:layout_marginStart="@dimen/_20dp"
+            app:layout_constraintStart_toEndOf="@id/txtMonthSpendingPercent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
