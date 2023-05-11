@@ -291,7 +291,7 @@
                             <androidx.cardview.widget.CardView
                                 android:layout_width="@dimen/_60dp"
                                 android:layout_height="@dimen/_60dp"
-                                android:backgroundTint="@color/greenSecondary"
+                                android:backgroundTint="@color/blur_white"
                                 app:cardCornerRadius="@dimen/_70dp"
                                 app:cardElevation="@dimen/_0dp">
 

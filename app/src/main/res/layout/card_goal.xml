@@ -34,7 +34,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:trackColor="@color/lightGreen" />
+                app:trackColor="@color/blur_white" />
 
             <TextView
                 android:id="@+id/txtProgress"
@@ -43,7 +43,7 @@
                 android:layout_height="@dimen/_0dp"
                 android:layout_margin="@dimen/_6dp"
                 android:background="@drawable/round_corner"
-                android:backgroundTint="@color/lightGreen"
+                android:backgroundTint="@color/blur_white"
                 android:gravity="center"
                 android:text="@{String.format(@string/floatPercent, goal.percent)}"
                 app:layout_constraintBottom_toBottomOf="@id/goalProgress"
