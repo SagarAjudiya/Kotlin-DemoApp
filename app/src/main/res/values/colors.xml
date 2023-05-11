@@ -17,4 +17,7 @@
     <color name="snowWhite">#e6f8f7</color>
     <color name="greenImageTint">#c2d9d8</color>
     <color name="brown">#d1b096</color>
+    <color name="blur_lightGreen">#60A2C0C1</color>
+    <color name="blur_white">#30FFFFFF</color>
+    <color name="transparent">#00000000</color>
 </resources>

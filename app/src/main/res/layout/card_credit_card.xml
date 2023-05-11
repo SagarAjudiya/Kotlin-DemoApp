@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="creditCard"
+            type="com.example.kotlin_demoapp.model.CreditCardData" />
 
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_3dp">
+        app:cardCornerRadius="@dimen/_3dp"
+        android:backgroundTint="@color/blur_white"
+        app:cardElevation="@dimen/_0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_10dp"
-            android:background="@color/greenSecondary">
+            android:padding="@dimen/_10dp">
 
             <ImageView
                 android:id="@+id/imgCardType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_mastercard"
+                tools:src="@drawable/icon_mastercard"
+                android:src="@{creditCard.image}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/description" />
 
             <TextView
                 android:id="@+id/txtCardNumber"
+                style="@style/MediumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_number"
-                android:backgroundTint="@color/lightGreen"
-                android:fontFamily="@font/poppins_medium"
+                tools:text="@string/dummy_number"
+                android:text="@{String.format(@string/intNumber, creditCard.number)}"
                 android:textColor="@color/lightGreen"
-                android:textSize="@dimen/_15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/txtSecretStars"
                 app:layout_constraintStart_toEndOf="@id/txtSecretStars" />
 
             <TextView
                 android:id="@+id/txtSecretStars"
+                style="@style/MediumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_70dp"
+                android:layout_marginStart="@dimen/_50dp"
                 android:layout_marginEnd="@dimen/_5dp"
-                android:backgroundTint="@color/lightGreen"
-                android:fontFamily="@font/poppins_medium"
                 android:text="@string/secret_stars"
                 android:textColor="@color/lightGreen"
-                android:textSize="@dimen/_15sp"
                 app:layout_constraintBottom_toBottomOf="@id/imgCardType"
                 app:layout_constraintEnd_toStartOf="@id/txtCardNumber"
                 app:layout_constraintStart_toEndOf="@id/imgCardType"
@@ -56,26 +60,23 @@
 
             <TextView
                 android:id="@+id/txtCardType"
+                style="@style/MediumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mastercard"
-                android:backgroundTint="@color/lightGreen"
-                android:fontFamily="@font/poppins_medium"
+                tools:text="@string/mastercard"
+                android:text="@{creditCard.name}"
                 android:textColor="@color/lightGreen"
-                android:textSize="@dimen/_15sp"
                 app:layout_constraintTop_toBottomOf="@id/imgCardType"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/_20dp" />
+                android:layout_marginTop="@dimen/_10dp" />
 
             <TextView
                 android:id="@+id/txtBalance"
+                style="@style/LargeDollarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_balance"
-                android:backgroundTint="@color/lightGreen"
-                android:fontFamily="@font/poppins_medium"
-                android:textColor="@color/snowWhite"
-                android:textSize="@dimen/_25sp"
+                tools:text="@string/dummy_balance"
+                android:text="@{String.format(@string/dollarFloatNumber, creditCard.balance)}"
                 app:layout_constraintTop_toBottomOf="@id/txtCardType"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

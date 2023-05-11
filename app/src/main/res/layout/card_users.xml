@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="user"
+            type="com.example.kotlin_demoapp.model.UserData" />
 
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgUser"
-            android:layout_width="@dimen/_70dp"
+            style="@style/RoundImage"
+            android:layout_width="@dimen/_60dp"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/img_avatar_boy"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            android:backgroundTint="@color/lightGreen" />
+            android:src="@{user.image}"
+            tools:src="@drawable/img_avatar_boy" />
 
         <TextView
             android:id="@+id/txtUserName"
+            style="@style/SmallText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dummy_user"
-            android:textColor="@color/snowWhite"
-            android:textSize="@dimen/_15sp"
-            android:includeFontPadding="false"
-            android:fontFamily="@font/poppins" />
+            android:layout_marginTop="@dimen/_5dp"
+            android:text="@{user.name}" />
     </LinearLayout>
 </layout>

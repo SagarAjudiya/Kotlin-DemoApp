@@ -15,8 +15,9 @@
     <string name="dollarIntNumber">$%d</string>
     <string name="dollarFloatNumber">$%.2f</string>
     <string name="dummy_month_spending_title">Total spent in April</string>
-    <string name="month_spending_title">Total spent in %1s</string>
-    <string name="dummy_percent">38.2%</string>
+    <string name="month_spending_title">Total spent in %s</string>
+    <string name="dummy_float_percent">38.25%</string>
+    <string name="dummy_int_percent">38%</string>
     <string name="floatPercent">%.2f\uFF05</string>
     <string name="intPercent">%d\uFF05</string>
     <string name="transfer_to">Transfer to</string>
@@ -26,6 +27,8 @@
     <string name="goals">Goals</string>
     <string name="dummy_goal">Tesla Model S</string>
     <string name="dummy_goal_total_money">\u0020/ $120000</string>
-    <string name="goal_total_money">\u0020/ $%1d</string>
+    <string name="goal_total_money">\u0020/ $%d</string>
     <string name="expense">Expense</string>
+    <string name="dummy_float_number">0.9028</string>
+    <string name="description">Notification Button</string>
 </resources>

@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="goal"
+            type="com.example.kotlin_demoapp.model.GoalData" />
 
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        app:cardCornerRadius="@dimen/_5dp"
-        app:cardElevation="10dp">
+        android:backgroundTint="@color/transparent"
+        app:cardElevation="@dimen/_0dp"
+        app:cardCornerRadius="@dimen/_5dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/greenSecondary"
+            android:background="@color/blur_white"
             android:padding="@dimen/_10dp">
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -32,63 +38,56 @@
 
             <TextView
                 android:id="@+id/txtProgress"
+                style="@style/MediumText"
                 android:layout_width="@dimen/_0dp"
                 android:layout_height="@dimen/_0dp"
                 android:layout_margin="@dimen/_6dp"
                 android:background="@drawable/round_corner"
                 android:backgroundTint="@color/lightGreen"
-                android:fontFamily="@font/poppins"
                 android:gravity="center"
-                android:text="@string/dummy_percent"
-                android:textColor="@color/snowWhite"
-                android:textSize="@dimen/_15sp"
+                android:text="@{String.format(@string/floatPercent, goal.percent)}"
                 app:layout_constraintBottom_toBottomOf="@id/goalProgress"
                 app:layout_constraintEnd_toEndOf="@id/goalProgress"
                 app:layout_constraintStart_toStartOf="@id/goalProgress"
-                app:layout_constraintTop_toTopOf="@id/goalProgress" />
+                app:layout_constraintTop_toTopOf="@id/goalProgress"
+                tools:text="@string/dummy_float_percent" />
 
             <TextView
                 android:id="@+id/txtGoalName"
+                style="@style/SmallHeadingTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_goal"
-                android:textColor="@color/snowWhite"
-                android:textSize="@dimen/_17sp"
-                android:includeFontPadding="false"
                 android:layout_marginStart="@dimen/_5dp"
-                android:fontFamily="@font/poppins_medium"
+                android:text="@{goal.name}"
+                app:layout_constraintBottom_toTopOf="@id/goalCurrentMoney"
+                app:layout_constraintStart_toEndOf="@id/goalProgress"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@id/goalProgress"
-                app:layout_constraintBottom_toTopOf="@id/goalCurrentMoney" />
+                tools:text="@string/dummy_goal" />
 
             <TextView
                 android:id="@+id/goalCurrentMoney"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_balance"
-                android:backgroundTint="@color/lightGreen"
-                android:fontFamily="@font/poppins"
-                android:includeFontPadding="false"
-                android:textColor="@color/snowWhite"
-                android:textSize="@dimen/_12sp"
-                app:layout_constraintTop_toBottomOf="@id/txtGoalName"
+                android:text="@{String.format(@string/dollarIntNumber, goal.currentBalance)}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/txtGoalName"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/txtGoalName"
+                tools:text="@string/dummy_balance" />
 
             <TextView
                 android:id="@+id/txtGoalTotalMoney"
+                style="@style/SmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dummy_goal_total_money"
-                android:backgroundTint="@color/lightGreen"
-                android:fontFamily="@font/poppins"
+                android:text="@{String.format(@string/goal_total_money, goal.totalGoalMoney)}"
                 android:textColor="@color/lightGreen"
-                android:textSize="@dimen/_12sp"
+                app:layout_constraintStart_toEndOf="@id/goalCurrentMoney"
                 app:layout_constraintTop_toTopOf="@id/goalCurrentMoney"
-                app:layout_constraintStart_toEndOf="@id/goalCurrentMoney" />
-
-
+                app:layout_constraintBottom_toBottomOf="@id/goalCurrentMoney"
+                tools:text="@string/dummy_goal_total_money" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
+
 </layout>

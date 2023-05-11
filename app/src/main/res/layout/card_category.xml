@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="category"
+            type="com.example.kotlin_demoapp.model.CategoryData" />
 
     </data>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgCategory"
-            android:layout_width="@dimen/_70dp"
+            style="@style/RoundImage"
+            android:layout_width="@dimen/_60dp"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/icon_world"
+            android:src="@{category.image}"
             app:tint="@color/brown"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            android:backgroundTint="@color/lightGreen" />
+            tools:src="@drawable/icon_world" />
 
         <TextView
             android:id="@+id/txtMonthSpendingPercent"
+            style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_corner"
             android:layout_marginTop="@dimen/_5dp"
-            android:backgroundTint="@color/greenSecondary"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center_vertical"
-            android:includeFontPadding="false"
+            android:background="@drawable/round_corner"
+            android:backgroundTint="@color/blur_lightGreen"
             android:paddingHorizontal="@dimen/_5dp"
-            android:text="@string/dummy_percent"
-            android:textColor="@color/snowWhite"
-            android:textSize="@dimen/_15sp"
-            app:drawableTint="@color/snowWhite" />
+            android:text="@{String.format(@string/intPercent, category.percent)}"
+            tools:text="@string/dummy_int_percent" />
 
         <TextView
             android:id="@+id/txtCategoryName"
-            android:layout_width="wrap_content"
+            style="@style/SmallText"
+            android:layout_width="@dimen/_100dp"
             android:layout_height="wrap_content"
-            android:text="@string/dummy_user"
-            android:textColor="@color/snowWhite"
-            android:textSize="@dimen/_15sp"
-            android:includeFontPadding="false"
-            android:fontFamily="@font/poppins" />
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{category.name}"
+            tools:text="@string/dummy_user" />
 
     </LinearLayout>
 </layout>

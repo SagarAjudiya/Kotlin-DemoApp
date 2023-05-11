@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20dp"
             android:layout_marginEnd="@dimen/_10dp"
+            android:autofillHints="name"
             android:background="@drawable/round_corner"
             android:drawableStart="@drawable/icon_search"
             android:drawablePadding="@dimen/_5dp"
@@ -51,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/round_corner"
+            android:contentDescription="@string/description"
             android:padding="@dimen/_10dp"
             android:src="@drawable/icon_bell"
             app:layout_constraintBottom_toBottomOf="@id/searchField"
@@ -64,107 +66,91 @@
             android:layout_height="@dimen/_10dp"
             android:layout_margin="@dimen/_5dp"
             android:background="@drawable/round_corner"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="#FF8080"
             app:layout_constraintEnd_toEndOf="@id/btnNotification"
             app:layout_constraintTop_toTopOf="@id/btnNotification" />
 
         <TextView
             android:id="@+id/txtHello"
+            style="@style/LargeHeadingTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20dp"
-            android:fontFamily="@font/poppins_medium"
-            android:includeFontPadding="false"
             android:text="@string/hello"
             android:textColor="@color/greenSecondary"
-            android:textSize="@dimen/_30sp"
             app:layout_constraintStart_toStartOf="@id/startGuide"
             app:layout_constraintTop_toBottomOf="@id/searchField" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgProfile"
+            style="@style/RoundImage"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_0dp"
             android:layout_marginStart="@dimen/_5dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
             android:src="@drawable/img_avatar_girl"
             app:layout_constraintBottom_toBottomOf="@id/txtHello"
             app:layout_constraintStart_toEndOf="@id/txtHello"
-            app:layout_constraintTop_toTopOf="@id/txtHello"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+            app:layout_constraintTop_toTopOf="@id/txtHello" />
 
         <TextView
             android:id="@+id/txtName"
-            android:layout_width="wrap_content"
+            style="@style/LargeHeadingTitle"
+            android:layout_width="@dimen/_0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5dp"
-            android:fontFamily="@font/poppins_medium"
+            android:ellipsize="end"
             android:includeFontPadding="false"
-            android:text="Sophie"
-            android:textColor="@color/snowWhite"
-            android:textSize="@dimen/_30sp"
-            app:layout_constraintBottom_toBottomOf="@id/imgProfile"
+            android:maxLines="1"
+            android:text="@string/dummy_user"
+            app:layout_constraintBottom_toBottomOf="@id/txtHello"
+            app:layout_constraintEnd_toEndOf="@id/endGuide"
             app:layout_constraintStart_toEndOf="@id/imgProfile"
-            app:layout_constraintTop_toTopOf="@id/imgProfile" />
+            app:layout_constraintTop_toTopOf="@id/txtHello" />
 
         <TextView
             android:id="@+id/txtTitleUsdEur"
+            style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10dp"
-            android:fontFamily="@font/poppins"
-            android:includeFontPadding="false"
             android:text="@string/usd_eur"
             android:textColor="@color/greenSecondary"
-            android:textSize="@dimen/_15sp"
             app:layout_constraintStart_toStartOf="@id/startGuide"
-            app:layout_constraintTop_toBottomOf="@id/imgProfile" />
-
+            app:layout_constraintTop_toBottomOf="@id/txtHello" />
 
         <TextView
             android:id="@+id/txtUsdEur"
+            style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5dp"
-            android:drawableStart="@drawable/icon_arrow_down"
-            android:drawableTint="@color/lightGreen"
-            android:fontFamily="@font/poppins"
             android:gravity="center"
-            android:includeFontPadding="false"
-            android:text="0.9028"
-            android:textColor="@color/snowWhite"
-            android:textSize="@dimen/_15sp"
+            android:text="@string/dummy_float_number"
+            app:drawableStartCompat="@drawable/icon_arrow_down"
             app:layout_constraintBottom_toBottomOf="@id/txtTitleUsdEur"
             app:layout_constraintStart_toEndOf="@id/txtTitleUsdEur"
             app:layout_constraintTop_toTopOf="@id/txtTitleUsdEur" />
 
         <TextView
             android:id="@+id/txtTitleBtcUsd"
+            style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_30dp"
-            android:fontFamily="@font/poppins"
-            android:includeFontPadding="false"
             android:text="@string/btc_usd"
             android:textColor="@color/greenSecondary"
-            android:textSize="@dimen/_15sp"
             app:layout_constraintStart_toEndOf="@id/txtUsdEur"
             app:layout_constraintTop_toTopOf="@id/txtUsdEur" />
 
         <TextView
             android:id="@+id/txtBtcUsd"
+            style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5dp"
-            android:drawableStart="@drawable/icon_arrow_up"
-            android:drawableTint="@color/lightGreen"
-            android:fontFamily="@font/poppins"
             android:gravity="center"
-            android:includeFontPadding="false"
-            android:text="41.0010"
-            android:textColor="@color/snowWhite"
-            android:textSize="@dimen/_15sp"
+            android:text="@string/dummy_float_number"
+            app:drawableStartCompat="@drawable/icon_arrow_up"
             app:layout_constraintBottom_toBottomOf="@id/txtTitleBtcUsd"
             app:layout_constraintStart_toEndOf="@id/txtTitleBtcUsd"
             app:layout_constraintTop_toTopOf="@id/txtTitleBtcUsd" />
@@ -180,7 +166,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/scrollStartGuide"
@@ -198,13 +184,10 @@
 
                 <TextView
                     android:id="@+id/txtWallet"
+                    style="@style/MediumHeadingTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:includeFontPadding="false"
                     android:text="@string/wallet"
-                    android:textColor="@color/snowWhite"
-                    android:textSize="@dimen/_30sp"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -212,6 +195,7 @@
                     android:id="@+id/scrollCreditCard"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
                     android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -253,34 +237,29 @@
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
                     app:layout_constraintTop_toBottomOf="@id/scrollCreditCard" />
 
                 <TextView
                     android:id="@+id/txtTransferTo"
+                    style="@style/MediumHeadingTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:includeFontPadding="false"
                     android:text="@string/transfer_to"
-                    android:textColor="@color/snowWhite"
-                    android:textSize="@dimen/_30sp"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
                     app:layout_constraintTop_toBottomOf="@id/cardMonthSpending" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnTransferToSeeAll"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    style="@style/TextButtonMediumText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
                     android:text="@string/see_all"
-                    android:textAllCaps="false"
                     android:textColor="@color/lightGreen"
-                    android:textSize="@dimen/_15sp"
                     app:layout_constraintBottom_toBottomOf="@id/txtTransferTo"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
                     app:layout_constraintTop_toTopOf="@id/txtTransferTo" />
@@ -298,18 +277,20 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
                         android:orientation="horizontal"
                         android:paddingHorizontal="@dimen/_20dp">
 
                         <LinearLayout
+                            android:id="@+id/selectUser"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="vertical">
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="@dimen/_70dp"
-                                android:layout_height="@dimen/_70dp"
+                                android:layout_width="@dimen/_60dp"
+                                android:layout_height="@dimen/_60dp"
                                 android:backgroundTint="@color/greenSecondary"
                                 app:cardCornerRadius="@dimen/_70dp"
                                 app:cardElevation="@dimen/_0dp">
@@ -319,19 +300,19 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:adjustViewBounds="true"
+                                    android:contentDescription="@string/description"
                                     android:src="@drawable/icon_plus"
                                     app:tint="@color/snowWhite" />
 
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                style="@style/SmallText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/poppins"
-                                android:includeFontPadding="false"
+                                android:layout_marginTop="@dimen/_5dp"
                                 android:text="@string/select"
-                                android:textColor="@color/lightGreen"
-                                android:textSize="@dimen/_15sp" />
+                                android:textColor="@color/lightGreen" />
                         </LinearLayout>
 
                         <include
@@ -382,48 +363,26 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10dp" />
-
-                        <include
-                            android:id="@+id/user8"
-                            layout="@layout/card_users"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10dp" />
-
-                        <include
-                            android:id="@+id/user9"
-                            layout="@layout/card_users"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10dp" />
-
                     </LinearLayout>
                 </HorizontalScrollView>
 
                 <TextView
                     android:id="@+id/txtGoals"
+                    style="@style/MediumHeadingTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:includeFontPadding="false"
                     android:text="@string/goals"
-                    android:textColor="@color/snowWhite"
-                    android:textSize="@dimen/_30sp"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
                     app:layout_constraintTop_toBottomOf="@id/scrollUsers" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGoalsSeeAll"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    style="@style/TextButtonMediumText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
                     android:text="@string/see_all"
-                    android:textAllCaps="false"
                     android:textColor="@color/lightGreen"
-                    android:textSize="@dimen/_15sp"
                     app:layout_constraintBottom_toBottomOf="@id/txtGoals"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
                     app:layout_constraintTop_toTopOf="@id/txtGoals" />
@@ -436,6 +395,28 @@
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
                     app:layout_constraintTop_toTopOf="@id/goal1" />
 
+                <View
+                    android:id="@+id/goal2Elevation"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="@dimen/_0dp"
+                    android:background="@drawable/elevation"
+                    app:layout_constraintBottom_toBottomOf="@id/goal2"
+                    app:layout_constraintEnd_toEndOf="@id/goal3"
+                    app:layout_constraintStart_toEndOf="@id/goal2"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    app:layout_constraintTop_toTopOf="@id/goal2" />
+
+                <View
+                    android:id="@+id/goal2Background"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="@dimen/_0dp"
+                    android:background="@color/greenPrimary"
+                    app:layout_constraintTop_toTopOf="@id/goal2"
+                    app:layout_constraintStart_toStartOf="@id/goal2"
+                    app:layout_constraintBottom_toBottomOf="@id/goal2"
+                    app:layout_constraintEnd_toEndOf="@id/goal2"/>
+
+
                 <include
                     android:id="@+id/goal2"
                     layout="@layout/card_goal"
@@ -445,13 +426,35 @@
                     app:layout_constraintStart_toStartOf="@id/goal1"
                     app:layout_constraintTop_toTopOf="@id/goal1" />
 
+                <View
+                    android:id="@+id/goal1Elevation"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="@dimen/_0dp"
+                    android:background="@drawable/elevation"
+                    app:layout_constraintBottom_toBottomOf="@id/goal1"
+                    app:layout_constraintEnd_toEndOf="@id/goal2"
+                    app:layout_constraintStart_toEndOf="@id/goal1"
+                    android:layout_marginEnd="@dimen/_20dp"
+                    app:layout_constraintTop_toTopOf="@id/goal1" />
+                <View
+                    android:id="@+id/goal1Background"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="@dimen/_0dp"
+                    android:background="@color/greenPrimary"
+                    app:layout_constraintTop_toTopOf="@id/goal1"
+                    app:layout_constraintStart_toStartOf="@id/goal1"
+                    app:layout_constraintBottom_toBottomOf="@id/goal1"
+                    app:layout_constraintEnd_toEndOf="@id/goal1"/>
+
                 <include
                     android:id="@+id/goal1"
                     layout="@layout/card_goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
                     app:layout_constraintTop_toBottomOf="@id/txtGoals" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
