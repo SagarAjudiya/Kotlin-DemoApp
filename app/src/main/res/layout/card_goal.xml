@@ -21,6 +21,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:background="@color/black"
             android:background="@color/blur_white"
             android:padding="@dimen/_10dp">
 
@@ -62,6 +63,7 @@
                 app:layout_constraintBottom_toTopOf="@id/goalCurrentMoney"
                 app:layout_constraintStart_toEndOf="@id/goalProgress"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="@string/dummy_goal" />
 
@@ -74,6 +76,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@id/txtGoalName"
                 app:layout_constraintTop_toBottomOf="@id/txtGoalName"
+                app:layout_constraintEnd_toStartOf="@id/txtGoalTotalMoney"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0"
                 tools:text="@string/dummy_balance" />
 
             <TextView
@@ -86,6 +91,7 @@
                 app:layout_constraintStart_toEndOf="@id/goalCurrentMoney"
                 app:layout_constraintTop_toTopOf="@id/goalCurrentMoney"
                 app:layout_constraintBottom_toBottomOf="@id/goalCurrentMoney"
+                app:layout_constraintEnd_toEndOf="parent"
                 tools:text="@string/dummy_goal_total_money" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

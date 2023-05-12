@@ -11,6 +11,7 @@
     <string name="mastercard">Mastercard</string>
     <string name="string">%s</string>
     <string name="floatNumber">%.2f</string>
+    <string name="floatNumber_four">%.4f</string>
     <string name="dummy_balance">$1600.32</string>
     <string name="dollarIntNumber">$%d</string>
     <string name="dollarFloatNumber">$%.2f</string>

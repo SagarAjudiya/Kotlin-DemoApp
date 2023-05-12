@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="monthSpending"
+            type="com.example.kotlin_demoapp.model.MonthSpendingData" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,52 +17,62 @@
         android:background="@color/greenPrimary"
         tools:context=".activity.ExpenseActivity">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBack"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottomGuide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.82" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBack"
+            style="@style/TextButtonMediumText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20dp"
             android:layout_marginTop="@dimen/_20dp"
-            android:fontFamily="@font/poppins"
-            android:gravity="center"
-            android:includeFontPadding="false"
+            android:ellipsize="end"
+            android:gravity="start|center"
+            android:maxLines="1"
             android:padding="@dimen/_0dp"
             android:text="@string/expense"
-            android:textAllCaps="false"
             android:textColor="@color/brown"
-            android:textSize="@dimen/_15sp"
             app:icon="@drawable/icon_back"
             app:iconTint="@color/brown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/txtTitleMonthSpending"
-            android:layout_width="wrap_content"
+            style="@style/LargeHeadingTitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20dp"
-            android:fontFamily="@font/poppins_medium"
-            android:includeFontPadding="false"
-            android:text="@string/dummy_month_spending_title"
+            android:layout_marginHorizontal="@dimen/_20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{String.format(@string/month_spending_title, monthSpending.month)}"
             android:textColor="@color/greenSecondary"
-            android:textSize="@dimen/_30sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnBack" />
+            app:layout_constraintTop_toBottomOf="@id/btnBack"
+            tools:text="@string/dummy_month_spending_title" />
 
         <TextView
             android:id="@+id/txtBalance"
+            style="@style/LargeDollarText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/lightGreen"
-            android:fontFamily="@font/poppins_medium"
-            android:includeFontPadding="false"
-            android:text="@string/dummy_balance"
-            android:textColor="@color/snowWhite"
+            android:text="@{String.format(@string/dollarFloatNumber, monthSpending.spentMoney)}"
             android:textSize="@dimen/_30sp"
+            app:layout_constraintEnd_toStartOf="@id/txtMonthSpendingPercent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@id/txtTitleMonthSpending"
-            app:layout_constraintTop_toBottomOf="@id/txtTitleMonthSpending" />
+            app:layout_constraintTop_toBottomOf="@id/txtTitleMonthSpending"
+            tools:text="@string/dummy_balance" />
 
         <TextView
             android:id="@+id/txtMonthSpendingPercent"
@@ -69,24 +83,25 @@
             android:background="@drawable/round_corner"
             android:backgroundTint="@color/blur_lightGreen"
             android:paddingEnd="@dimen/_5dp"
-            android:text="@string/dummy_int_percent"
+            android:text="@{String.format(@string/intPercent, monthSpending.spentPercent)}"
+            app:drawableStartCompat="@drawable/icon_arrow_down"
             app:layout_constraintBottom_toBottomOf="@id/txtBalance"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/txtBalance"
             app:layout_constraintTop_toTopOf="@id/txtBalance"
-            app:drawableStartCompat="@drawable/icon_arrow_down"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            tools:text="@string/dummy_int_percent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgCenter"
+            style="@style/RoundImage"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_200dp"
-            android:adjustViewBounds="true"
             android:src="@drawable/img_avatar_boy"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/bottomGuide"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtBalance"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+            app:layout_constraintTop_toBottomOf="@id/txtBalance" />
 
         <include
             android:id="@+id/item_top"
@@ -149,7 +164,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintCircle="@id/imgCenter"
             app:layout_constraintCircleAngle="270"
-            app:layout_constraintCircleRadius="@dimen/_150dp"/>
+            app:layout_constraintCircleRadius="@dimen/_150dp" />
 
         <include
             android:id="@+id/item_top_left"

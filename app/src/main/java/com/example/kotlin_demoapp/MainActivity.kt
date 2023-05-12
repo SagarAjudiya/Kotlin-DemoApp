@@ -1,11 +1,15 @@
 package com.example.kotlin_demoapp
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.WindowCompat
 import androidx.databinding.DataBindingUtil
 import com.example.kotlin_demoapp.activity.ExpenseActivity
 import com.example.kotlin_demoapp.databinding.ActivityMainBinding
@@ -20,11 +24,6 @@ import com.example.kotlin_demoapp.model.UserData
 class MainActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var userDataList: MutableList<UserData>
-    private lateinit var creditCardList: MutableList<CreditCardData>
-    private lateinit var monthSpendingData: MonthSpendingData
-    private lateinit var goalDataList: MutableList<GoalData>
-
     private lateinit var userBindings: List<CardUsersBinding>
     private lateinit var creditCardBindings: List<CardCreditCardBinding>
     private lateinit var goalBindings: List<CardGoalBinding>
@@ -33,11 +32,13 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        // Transparent Navigation and StatusBar
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setBindings()
 
         binding.cardMonthSpending.root.setOnClickListener(this)
         binding.btnNotification.setOnClickListener(this)
-        getData()
+        setProfile()
         setCreditCards()
         setUsers()
         setGoals()
@@ -59,42 +60,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         goalBindings = listOf(binding.goal1, binding.goal2, binding.goal3)
     }
 
-    private fun setMonthSpending() {
-        binding.cardMonthSpending.monthSpending = monthSpendingData
-    }
-
-    private fun getData() {
-        userDataList = mutableListOf(
-            UserData("Jackie",  AppCompatResources.getDrawable(this,R.drawable.img_avatar_1)),
-            UserData("Michel", AppCompatResources.getDrawable(this,R.drawable.img_avatar_2)),
-            UserData("Andy", AppCompatResources.getDrawable(this,R.drawable.img_avatar_3)),
-            UserData("Marta", AppCompatResources.getDrawable(this,R.drawable.img_avatar_4)),
-            UserData("Bob", AppCompatResources.getDrawable(this,R.drawable.img_avatar_boy)),
-            UserData("Lily", AppCompatResources.getDrawable(this,R.drawable.img_avatar_girl)),
-            UserData("Donald", AppCompatResources.getDrawable(this,R.drawable.img_avatar_1))
-        )
-
-        creditCardList = mutableListOf(
-            CreditCardData("Mastercard", AppCompatResources.getDrawable(this,R.drawable.icon_mastercard), 5300,1600.32F),
-            CreditCardData("Visa", AppCompatResources.getDrawable(this,R.drawable.icon_visa), 2405,32.92F),
-            CreditCardData("American Express", AppCompatResources.getDrawable(this,R.drawable.icons_american_express), 6584,365.98F)
-        )
-
-        goalDataList = mutableListOf(
-            GoalData("Tesla Model S", 45940,120000),
-            GoalData("Royal Enfield", 950,2500),
-            GoalData("Aston Martin DBX", 150,365000)
-        )
-
-        monthSpendingData = MonthSpendingData("April", 841.90F,13)
-    }
-
-    private fun setCreditCards() {
-        creditCardBindings.forEachIndexed { position, it ->
-            it.creditCard = creditCardList[position]
-        }
-    }
-
     override fun onClick(v: View?) {
         when (v?.id) {
             binding.cardMonthSpending.root.id -> startActivity(Intent(this, ExpenseActivity::class.java))
@@ -108,15 +73,29 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         }
     }
 
+    private fun setProfile() {
+        binding.profile = Helper.getProfileData(this)
+    }
+
+    private fun setMonthSpending() {
+        binding.cardMonthSpending.monthSpending = Helper.getMonthSpendingData()
+    }
+
+    private fun setCreditCards() {
+        creditCardBindings.forEachIndexed { position, it ->
+            it.creditCard = Helper.getCreditCardData(this)[position]
+        }
+    }
+
     private fun setGoals() {
         goalBindings.forEachIndexed { position, it ->
-            it.goal = goalDataList[position]
+            it.goal = Helper.getGoalDataList()[position]
         }
     }
 
     private fun setUsers() {
         userBindings.forEachIndexed { position, it ->
-            it.user = userDataList[position]
+            it.user = Helper.getUserData(this)[position]
         }
     }
 }

@@ -5,6 +5,12 @@
 
     <data>
 
+        <import type="com.example.kotlin_demoapp.model.ValueChange"/>
+
+        <variable
+            name="profile"
+            type="com.example.kotlin_demoapp.model.ProfileData" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,9 +35,10 @@
 
         <EditText
             android:id="@+id/searchField"
+            style="@style/MediumText"
             android:layout_width="@dimen/_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20dp"
+            android:layout_marginTop="@dimen/_17dp"
             android:layout_marginEnd="@dimen/_10dp"
             android:autofillHints="name"
             android:background="@drawable/round_corner"
@@ -75,11 +82,13 @@
             style="@style/LargeHeadingTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20dp"
+            android:layout_marginTop="@dimen/_25dp"
             android:text="@string/hello"
             android:textColor="@color/greenSecondary"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@id/startGuide"
-            app:layout_constraintTop_toBottomOf="@id/searchField" />
+            app:layout_constraintTop_toBottomOf="@id/searchField"
+            app:layout_constraintEnd_toStartOf="@id/imgProfile"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgProfile"
@@ -87,10 +96,12 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_0dp"
             android:layout_marginStart="@dimen/_5dp"
-            android:src="@drawable/img_avatar_girl"
+            android:src="@{profile.image}"
+            tools:src="@drawable/img_avatar_boy"
             app:layout_constraintBottom_toBottomOf="@id/txtHello"
             app:layout_constraintStart_toEndOf="@id/txtHello"
-            app:layout_constraintTop_toTopOf="@id/txtHello" />
+            app:layout_constraintTop_toTopOf="@id/txtHello"
+            app:layout_constraintEnd_toStartOf="@id/txtName"/>
 
         <TextView
             android:id="@+id/txtName"
@@ -98,10 +109,8 @@
             android:layout_width="@dimen/_0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5dp"
-            android:ellipsize="end"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:text="@string/dummy_user"
+            android:text="@{profile.name}"
+            tools:text="@string/dummy_user"
             app:layout_constraintBottom_toBottomOf="@id/txtHello"
             app:layout_constraintEnd_toEndOf="@id/endGuide"
             app:layout_constraintStart_toEndOf="@id/imgProfile"
@@ -112,24 +121,27 @@
             style="@style/MediumText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_15dp"
             android:text="@string/usd_eur"
             android:textColor="@color/greenSecondary"
             app:layout_constraintStart_toStartOf="@id/startGuide"
-            app:layout_constraintTop_toBottomOf="@id/txtHello" />
+            app:layout_constraintTop_toBottomOf="@id/txtHello"
+            app:layout_constraintEnd_toStartOf="@id/txtUsdEur"/>
 
         <TextView
             android:id="@+id/txtUsdEur"
             style="@style/MediumText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_0dp"
             android:layout_marginStart="@dimen/_5dp"
-            android:gravity="center"
-            android:text="@string/dummy_float_number"
-            app:drawableStartCompat="@drawable/icon_arrow_down"
+            android:maxEms="4"
+            android:text="@{String.format(@string/floatNumber_four, profile.usdEur)}"
+            tools:text="@string/dummy_float_number"
+            android:drawableStart="@{profile.changeUsdEur == ValueChange.INCREASE ?  @drawable/icon_arrow_up : @drawable/icon_arrow_down}"
+            tools:drawableStartCompat="@drawable/icon_arrow_down"
             app:layout_constraintBottom_toBottomOf="@id/txtTitleUsdEur"
             app:layout_constraintStart_toEndOf="@id/txtTitleUsdEur"
-            app:layout_constraintTop_toTopOf="@id/txtTitleUsdEur" />
+            app:layout_constraintTop_toTopOf="@id/txtTitleUsdEur"/>
 
         <TextView
             android:id="@+id/txtTitleBtcUsd"
@@ -140,25 +152,28 @@
             android:text="@string/btc_usd"
             android:textColor="@color/greenSecondary"
             app:layout_constraintStart_toEndOf="@id/txtUsdEur"
-            app:layout_constraintTop_toTopOf="@id/txtUsdEur" />
+            app:layout_constraintTop_toTopOf="@id/txtUsdEur"
+            app:layout_constraintEnd_toStartOf="@id/txtBtcUsd"/>
 
         <TextView
             android:id="@+id/txtBtcUsd"
             style="@style/MediumText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_0dp"
             android:layout_marginStart="@dimen/_5dp"
-            android:gravity="center"
-            android:text="@string/dummy_float_number"
-            app:drawableStartCompat="@drawable/icon_arrow_up"
+            android:maxEms="4"
+            android:text="@{String.format(@string/floatNumber_four, profile.btcUsd)}"
+            tools:text="@string/dummy_float_number"
+            android:drawableStart="@{(profile.changeBtcUsd == ValueChange.INCREASE) ?  @drawable/icon_arrow_up : @drawable/icon_arrow_down}"
+            tools:drawableStartCompat="@drawable/icon_arrow_up"
             app:layout_constraintBottom_toBottomOf="@id/txtTitleBtcUsd"
             app:layout_constraintStart_toEndOf="@id/txtTitleBtcUsd"
-            app:layout_constraintTop_toTopOf="@id/txtTitleBtcUsd" />
+            app:layout_constraintTop_toTopOf="@id/txtTitleBtcUsd"/>
 
         <ScrollView
             android:layout_width="@dimen/_0dp"
             android:layout_height="@dimen/_0dp"
-            android:layout_marginTop="@dimen/_20dp"
+            android:layout_marginTop="@dimen/_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -185,17 +200,18 @@
                 <TextView
                     android:id="@+id/txtWallet"
                     style="@style/MediumHeadingTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/wallet"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"/>
 
                 <HorizontalScrollView
                     android:id="@+id/scrollCreditCard"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_marginTop="@dimen/_15dp"
                     android:scrollbars="none"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -218,14 +234,14 @@
                             layout="@layout/card_credit_card"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10dp" />
+                            android:layout_marginStart="@dimen/_15dp" />
 
                         <include
                             android:id="@+id/creditCard3"
                             layout="@layout/card_credit_card"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10dp" />
+                            android:layout_marginStart="@dimen/_15dp" />
 
                     </LinearLayout>
 
@@ -236,9 +252,7 @@
                     layout="@layout/card_month_spending"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10dp"
-                    android:clickable="true"
-                    android:focusable="true"
+                    android:layout_marginTop="@dimen/_15dp"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
                     app:layout_constraintTop_toBottomOf="@id/scrollCreditCard" />
@@ -246,12 +260,14 @@
                 <TextView
                     android:id="@+id/txtTransferTo"
                     style="@style/MediumHeadingTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_25dp"
                     android:text="@string/transfer_to"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
-                    app:layout_constraintTop_toBottomOf="@id/cardMonthSpending" />
+                    app:layout_constraintTop_toBottomOf="@id/cardMonthSpending"
+                    app:layout_constraintEnd_toStartOf="@id/btnTransferToSeeAll"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnTransferToSeeAll"
@@ -262,7 +278,8 @@
                     android:textColor="@color/lightGreen"
                     app:layout_constraintBottom_toBottomOf="@id/txtTransferTo"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
-                    app:layout_constraintTop_toTopOf="@id/txtTransferTo" />
+                    app:layout_constraintTop_toTopOf="@id/txtTransferTo"
+                    app:layout_constraintStart_toEndOf="@id/txtTransferTo"/>
 
                 <HorizontalScrollView
                     android:id="@+id/scrollUsers"
@@ -369,12 +386,14 @@
                 <TextView
                     android:id="@+id/txtGoals"
                     style="@style/MediumHeadingTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_20dp"
+                    android:layout_marginTop="@dimen/_25dp"
                     android:text="@string/goals"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
-                    app:layout_constraintTop_toBottomOf="@id/scrollUsers" />
+                    app:layout_constraintTop_toBottomOf="@id/scrollUsers"
+                    app:layout_constraintEnd_toStartOf="@id/btnGoalsSeeAll"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGoalsSeeAll"
@@ -385,7 +404,8 @@
                     android:textColor="@color/lightGreen"
                     app:layout_constraintBottom_toBottomOf="@id/txtGoals"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
-                    app:layout_constraintTop_toTopOf="@id/txtGoals" />
+                    app:layout_constraintTop_toTopOf="@id/txtGoals"
+                    app:layout_constraintStart_toEndOf="@id/txtGoals"/>
 
                 <include
                     android:id="@+id/goal3"
@@ -399,11 +419,11 @@
                     android:id="@+id/goal2Elevation"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="@dimen/_0dp"
+                    android:layout_marginEnd="@dimen/_20dp"
                     android:background="@drawable/elevation"
                     app:layout_constraintBottom_toBottomOf="@id/goal2"
                     app:layout_constraintEnd_toEndOf="@id/goal3"
                     app:layout_constraintStart_toEndOf="@id/goal2"
-                    android:layout_marginEnd="@dimen/_20dp"
                     app:layout_constraintTop_toTopOf="@id/goal2" />
 
                 <View
@@ -411,11 +431,10 @@
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="@dimen/_0dp"
                     android:background="@color/greenPrimary"
-                    app:layout_constraintTop_toTopOf="@id/goal2"
-                    app:layout_constraintStart_toStartOf="@id/goal2"
                     app:layout_constraintBottom_toBottomOf="@id/goal2"
-                    app:layout_constraintEnd_toEndOf="@id/goal2"/>
-
+                    app:layout_constraintEnd_toEndOf="@id/goal2"
+                    app:layout_constraintStart_toStartOf="@id/goal2"
+                    app:layout_constraintTop_toTopOf="@id/goal2" />
 
                 <include
                     android:id="@+id/goal2"
@@ -430,28 +449,29 @@
                     android:id="@+id/goal1Elevation"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="@dimen/_0dp"
+                    android:layout_marginEnd="@dimen/_20dp"
                     android:background="@drawable/elevation"
                     app:layout_constraintBottom_toBottomOf="@id/goal1"
                     app:layout_constraintEnd_toEndOf="@id/goal2"
                     app:layout_constraintStart_toEndOf="@id/goal1"
-                    android:layout_marginEnd="@dimen/_20dp"
                     app:layout_constraintTop_toTopOf="@id/goal1" />
+
                 <View
                     android:id="@+id/goal1Background"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="@dimen/_0dp"
                     android:background="@color/greenPrimary"
-                    app:layout_constraintTop_toTopOf="@id/goal1"
-                    app:layout_constraintStart_toStartOf="@id/goal1"
                     app:layout_constraintBottom_toBottomOf="@id/goal1"
-                    app:layout_constraintEnd_toEndOf="@id/goal1"/>
+                    app:layout_constraintEnd_toEndOf="@id/goal1"
+                    app:layout_constraintStart_toStartOf="@id/goal1"
+                    app:layout_constraintTop_toTopOf="@id/goal1" />
 
                 <include
                     android:id="@+id/goal1"
                     layout="@layout/card_goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_marginTop="@dimen/_15dp"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
                     app:layout_constraintTop_toBottomOf="@id/txtGoals" />
 

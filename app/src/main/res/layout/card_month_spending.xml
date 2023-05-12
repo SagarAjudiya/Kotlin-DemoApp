@@ -11,6 +11,7 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        tools:backgroundTint="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blur_white"
@@ -29,10 +30,12 @@
                 android:text="@{String.format(@string/month_spending_title, monthSpending.month)}"
                 tools:text="@string/dummy_month_spending_title"
                 android:textColor="@color/lightGreen"
-                android:layout_marginTop="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
                 android:layout_marginStart="@dimen/_10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"/>
 
             <TextView
                 android:id="@+id/txtMonthSpending"
@@ -41,11 +44,14 @@
                 android:layout_height="wrap_content"
                 android:text="@{String.format(@string/dollarFloatNumber, monthSpending.spentMoney)}"
                 tools:text="@string/dummy_balance"
-                android:layout_marginBottom="@dimen/_10dp"
+                android:layout_marginBottom="@dimen/_15dp"
                 android:layout_marginStart="@dimen/_10dp"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtTitleMonthSpending"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txtMonthSpendingPercent"/>
 
             <TextView
                 android:id="@+id/txtMonthSpendingPercent"
@@ -61,6 +67,7 @@
                 app:layout_constraintTop_toTopOf="@id/txtMonthSpending"
                 app:layout_constraintBottom_toBottomOf="@id/txtMonthSpending"
                 app:layout_constraintStart_toEndOf="@id/txtMonthSpending"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:drawableStartCompat="@drawable/icon_arrow_down"
                 tools:ignore="RtlSymmetry" />
 

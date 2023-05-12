@@ -20,7 +20,9 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/_10dp">
+            tools:background="@color/black"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingBottom="@dimen/_5dp">
 
             <ImageView
                 android:id="@+id/imgCardType"
@@ -61,24 +63,26 @@
             <TextView
                 android:id="@+id/txtCardType"
                 style="@style/MediumText"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_0dp"
                 android:layout_height="wrap_content"
                 tools:text="@string/mastercard"
                 android:text="@{creditCard.name}"
                 android:textColor="@color/lightGreen"
                 app:layout_constraintTop_toBottomOf="@id/imgCardType"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/_10dp" />
 
             <TextView
                 android:id="@+id/txtBalance"
                 style="@style/LargeDollarText"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_0dp"
                 android:layout_height="wrap_content"
                 tools:text="@string/dummy_balance"
                 android:text="@{String.format(@string/dollarFloatNumber, creditCard.balance)}"
                 app:layout_constraintTop_toBottomOf="@id/txtCardType"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
