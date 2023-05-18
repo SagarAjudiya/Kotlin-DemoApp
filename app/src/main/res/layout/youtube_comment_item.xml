@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="commentData"
+            type="com.example.kotlin_demoapp.model.CommentModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/commentCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blur_white"
+        app:cardCornerRadius="@dimen/_10dp"
+        app:cardElevation="@dimen/_0dp"
+        tools:backgroundTint="@color/greenSecondary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/commentImage"
+                style="@style/RoundImage"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="wrap_content"
+                android:src="@{commentData.image}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/img_avatar_boy" />
+
+            <TextView
+                android:id="@+id/commentTitle"
+                style="@style/SmallHeadingTitle"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10dp"
+                android:text="@{commentData.title}"
+                app:layout_constraintBottom_toBottomOf="@id/commentImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/commentImage"
+                app:layout_constraintTop_toTopOf="@id/commentImage"
+                tools:text="@string/dummy_comment_title" />
+
+            <TextView
+                android:id="@+id/commentDescription"
+                style="@style/SmallText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:maxLines="@null"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:text="@{commentData.description}"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/commentImage"
+                tools:text="@string/lorem_ipsum" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

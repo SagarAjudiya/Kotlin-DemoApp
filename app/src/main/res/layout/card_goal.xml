@@ -12,18 +12,18 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/transparent"
-        app:cardElevation="@dimen/_0dp"
-        app:cardCornerRadius="@dimen/_5dp">
+        app:cardCornerRadius="@dimen/_5dp"
+        app:cardElevation="@dimen/_0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:background="@color/black"
             android:background="@color/blur_white"
-            android:padding="@dimen/_10dp">
+            android:padding="@dimen/_10dp"
+            tools:background="@color/black">
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:id="@+id/goalProgress"
@@ -61,9 +61,9 @@
                 android:layout_marginStart="@dimen/_5dp"
                 android:text="@{goal.name}"
                 app:layout_constraintBottom_toTopOf="@id/goalCurrentMoney"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/goalProgress"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
                 tools:text="@string/dummy_goal" />
 
@@ -74,11 +74,11 @@
                 android:layout_height="wrap_content"
                 android:text="@{String.format(@string/dollarIntNumber, goal.currentBalance)}"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txtGoalTotalMoney"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="@id/txtGoalName"
                 app:layout_constraintTop_toBottomOf="@id/txtGoalName"
-                app:layout_constraintEnd_toStartOf="@id/txtGoalTotalMoney"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintHorizontal_bias="0"
                 tools:text="@string/dummy_balance" />
 
             <TextView
@@ -88,10 +88,10 @@
                 android:layout_height="wrap_content"
                 android:text="@{String.format(@string/goal_total_money, goal.totalGoalMoney)}"
                 android:textColor="@color/lightGreen"
-                app:layout_constraintStart_toEndOf="@id/goalCurrentMoney"
-                app:layout_constraintTop_toTopOf="@id/goalCurrentMoney"
                 app:layout_constraintBottom_toBottomOf="@id/goalCurrentMoney"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/goalCurrentMoney"
+                app:layout_constraintTop_toTopOf="@id/goalCurrentMoney"
                 tools:text="@string/dummy_goal_total_money" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

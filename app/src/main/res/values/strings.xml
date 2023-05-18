@@ -32,4 +32,6 @@
     <string name="expense">Expense</string>
     <string name="dummy_float_number">0.9028</string>
     <string name="description">Notification Button</string>
+    <string name="dummy_comment_title">Comment Title</string>
+    <string name="out_of">%1d /%2d</string>
 </resources>

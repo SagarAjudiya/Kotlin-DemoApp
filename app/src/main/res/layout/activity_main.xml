@@ -5,7 +5,7 @@
 
     <data>
 
-        <import type="com.example.kotlin_demoapp.model.ValueChange"/>
+        <import type="com.example.kotlin_demoapp.model.ValueChange" />
 
         <variable
             name="profile"
@@ -85,10 +85,10 @@
             android:layout_marginTop="@dimen/_25dp"
             android:text="@string/hello"
             android:textColor="@color/greenSecondary"
+            app:layout_constraintEnd_toStartOf="@id/imgProfile"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@id/startGuide"
-            app:layout_constraintTop_toBottomOf="@id/searchField"
-            app:layout_constraintEnd_toStartOf="@id/imgProfile"/>
+            app:layout_constraintTop_toBottomOf="@id/searchField" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgProfile"
@@ -97,11 +97,11 @@
             android:layout_height="@dimen/_0dp"
             android:layout_marginStart="@dimen/_5dp"
             android:src="@{profile.image}"
-            tools:src="@drawable/img_avatar_boy"
             app:layout_constraintBottom_toBottomOf="@id/txtHello"
+            app:layout_constraintEnd_toStartOf="@id/txtName"
             app:layout_constraintStart_toEndOf="@id/txtHello"
             app:layout_constraintTop_toTopOf="@id/txtHello"
-            app:layout_constraintEnd_toStartOf="@id/txtName"/>
+            tools:src="@drawable/img_avatar_boy" />
 
         <TextView
             android:id="@+id/txtName"
@@ -110,11 +110,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5dp"
             android:text="@{profile.name}"
-            tools:text="@string/dummy_user"
             app:layout_constraintBottom_toBottomOf="@id/txtHello"
             app:layout_constraintEnd_toEndOf="@id/endGuide"
             app:layout_constraintStart_toEndOf="@id/imgProfile"
-            app:layout_constraintTop_toTopOf="@id/txtHello" />
+            app:layout_constraintTop_toTopOf="@id/txtHello"
+            tools:text="@string/dummy_user" />
 
         <TextView
             android:id="@+id/txtTitleUsdEur"
@@ -124,9 +124,9 @@
             android:layout_marginTop="@dimen/_15dp"
             android:text="@string/usd_eur"
             android:textColor="@color/greenSecondary"
+            app:layout_constraintEnd_toStartOf="@id/txtUsdEur"
             app:layout_constraintStart_toStartOf="@id/startGuide"
-            app:layout_constraintTop_toBottomOf="@id/txtHello"
-            app:layout_constraintEnd_toStartOf="@id/txtUsdEur"/>
+            app:layout_constraintTop_toBottomOf="@id/txtHello" />
 
         <TextView
             android:id="@+id/txtUsdEur"
@@ -134,14 +134,14 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_0dp"
             android:layout_marginStart="@dimen/_5dp"
+            android:drawableStart="@{profile.changeUsdEur == ValueChange.INCREASE ?  @drawable/icon_arrow_up : @drawable/icon_arrow_down}"
             android:maxEms="4"
             android:text="@{String.format(@string/floatNumber_four, profile.usdEur)}"
-            tools:text="@string/dummy_float_number"
-            android:drawableStart="@{profile.changeUsdEur == ValueChange.INCREASE ?  @drawable/icon_arrow_up : @drawable/icon_arrow_down}"
-            tools:drawableStartCompat="@drawable/icon_arrow_down"
             app:layout_constraintBottom_toBottomOf="@id/txtTitleUsdEur"
             app:layout_constraintStart_toEndOf="@id/txtTitleUsdEur"
-            app:layout_constraintTop_toTopOf="@id/txtTitleUsdEur"/>
+            app:layout_constraintTop_toTopOf="@id/txtTitleUsdEur"
+            tools:drawableStartCompat="@drawable/icon_arrow_down"
+            tools:text="@string/dummy_float_number" />
 
         <TextView
             android:id="@+id/txtTitleBtcUsd"
@@ -151,9 +151,9 @@
             android:layout_marginStart="@dimen/_30dp"
             android:text="@string/btc_usd"
             android:textColor="@color/greenSecondary"
+            app:layout_constraintEnd_toStartOf="@id/txtBtcUsd"
             app:layout_constraintStart_toEndOf="@id/txtUsdEur"
-            app:layout_constraintTop_toTopOf="@id/txtUsdEur"
-            app:layout_constraintEnd_toStartOf="@id/txtBtcUsd"/>
+            app:layout_constraintTop_toTopOf="@id/txtUsdEur" />
 
         <TextView
             android:id="@+id/txtBtcUsd"
@@ -161,14 +161,14 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_0dp"
             android:layout_marginStart="@dimen/_5dp"
+            android:drawableStart="@{(profile.changeBtcUsd == ValueChange.INCREASE) ?  @drawable/icon_arrow_up : @drawable/icon_arrow_down}"
             android:maxEms="4"
             android:text="@{String.format(@string/floatNumber_four, profile.btcUsd)}"
-            tools:text="@string/dummy_float_number"
-            android:drawableStart="@{(profile.changeBtcUsd == ValueChange.INCREASE) ?  @drawable/icon_arrow_up : @drawable/icon_arrow_down}"
-            tools:drawableStartCompat="@drawable/icon_arrow_up"
             app:layout_constraintBottom_toBottomOf="@id/txtTitleBtcUsd"
             app:layout_constraintStart_toEndOf="@id/txtTitleBtcUsd"
-            app:layout_constraintTop_toTopOf="@id/txtTitleBtcUsd"/>
+            app:layout_constraintTop_toTopOf="@id/txtTitleBtcUsd"
+            tools:drawableStartCompat="@drawable/icon_arrow_up"
+            tools:text="@string/dummy_float_number" />
 
         <ScrollView
             android:layout_width="@dimen/_0dp"
@@ -203,16 +203,16 @@
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/wallet"
+                    app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <HorizontalScrollView
                     android:id="@+id/scrollCreditCard"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_15dp"
                     android:scrollbars="none"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txtWallet">
@@ -247,6 +247,16 @@
 
                 </HorizontalScrollView>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/creditCardRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15dp"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtWallet" />
+
                 <include
                     android:id="@+id/cardMonthSpending"
                     layout="@layout/card_month_spending"
@@ -255,7 +265,7 @@
                     android:layout_marginTop="@dimen/_15dp"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
-                    app:layout_constraintTop_toBottomOf="@id/scrollCreditCard" />
+                    app:layout_constraintTop_toBottomOf="@id/creditCardRecycler" />
 
                 <TextView
                     android:id="@+id/txtTransferTo"
@@ -264,10 +274,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_25dp"
                     android:text="@string/transfer_to"
+                    app:layout_constraintEnd_toStartOf="@id/btnTransferToSeeAll"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
-                    app:layout_constraintTop_toBottomOf="@id/cardMonthSpending"
-                    app:layout_constraintEnd_toStartOf="@id/btnTransferToSeeAll"/>
+                    app:layout_constraintTop_toBottomOf="@id/cardMonthSpending" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnTransferToSeeAll"
@@ -278,15 +288,15 @@
                     android:textColor="@color/lightGreen"
                     app:layout_constraintBottom_toBottomOf="@id/txtTransferTo"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
-                    app:layout_constraintTop_toTopOf="@id/txtTransferTo"
-                    app:layout_constraintStart_toEndOf="@id/txtTransferTo"/>
+                    app:layout_constraintStart_toEndOf="@id/txtTransferTo"
+                    app:layout_constraintTop_toTopOf="@id/txtTransferTo" />
 
                 <HorizontalScrollView
                     android:id="@+id/scrollUsers"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10dp"
                     android:scrollbars="none"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txtTransferTo">
@@ -383,6 +393,16 @@
                     </LinearLayout>
                 </HorizontalScrollView>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/userRecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtTransferTo" />
+
                 <TextView
                     android:id="@+id/txtGoals"
                     style="@style/MediumHeadingTitle"
@@ -390,10 +410,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_25dp"
                     android:text="@string/goals"
+                    app:layout_constraintEnd_toStartOf="@id/btnGoalsSeeAll"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     app:layout_constraintStart_toStartOf="@id/scrollStartGuide"
-                    app:layout_constraintTop_toBottomOf="@id/scrollUsers"
-                    app:layout_constraintEnd_toStartOf="@id/btnGoalsSeeAll"/>
+                    app:layout_constraintTop_toBottomOf="@id/userRecycler" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGoalsSeeAll"
@@ -404,8 +424,8 @@
                     android:textColor="@color/lightGreen"
                     app:layout_constraintBottom_toBottomOf="@id/txtGoals"
                     app:layout_constraintEnd_toEndOf="@id/scrollEndGuide"
-                    app:layout_constraintTop_toTopOf="@id/txtGoals"
-                    app:layout_constraintStart_toEndOf="@id/txtGoals"/>
+                    app:layout_constraintStart_toEndOf="@id/txtGoals"
+                    app:layout_constraintTop_toTopOf="@id/txtGoals" />
 
                 <include
                     android:id="@+id/goal3"

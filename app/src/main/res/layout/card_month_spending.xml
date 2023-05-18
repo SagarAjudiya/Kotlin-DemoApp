@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="monthSpending"
             type="com.example.kotlin_demoapp.model.MonthSpendingData" />
@@ -11,12 +12,12 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        tools:backgroundTint="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blur_white"
         app:cardCornerRadius="@dimen/_5dp"
-        app:cardElevation="@dimen/_0dp">
+        app:cardElevation="@dimen/_0dp"
+        tools:backgroundTint="@color/black">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,61 +28,61 @@
                 style="@style/MediumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.format(@string/month_spending_title, monthSpending.month)}"
-                tools:text="@string/dummy_month_spending_title"
-                android:textColor="@color/lightGreen"
-                android:layout_marginTop="@dimen/_15dp"
                 android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:text="@{String.format(@string/month_spending_title, monthSpending.month)}"
+                android:textColor="@color/lightGreen"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"/>
+                tools:text="@string/dummy_month_spending_title" />
 
             <TextView
                 android:id="@+id/txtMonthSpending"
                 style="@style/LargeDollarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.format(@string/dollarFloatNumber, monthSpending.spentMoney)}"
-                tools:text="@string/dummy_balance"
-                android:layout_marginBottom="@dimen/_15dp"
                 android:layout_marginStart="@dimen/_10dp"
-                app:layout_constraintHorizontal_chainStyle="packed"
+                android:layout_marginBottom="@dimen/_15dp"
+                android:text="@{String.format(@string/dollarFloatNumber, monthSpending.spentMoney)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txtMonthSpendingPercent"
                 app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtTitleMonthSpending"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/txtMonthSpendingPercent"/>
+                tools:text="@string/dummy_balance" />
 
             <TextView
                 android:id="@+id/txtMonthSpendingPercent"
                 style="@style/MediumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.format(@string/intPercent, monthSpending.spentPercent)}"
-                tools:text="@string/dummy_int_percent"
-                android:paddingEnd="@dimen/_5dp"
                 android:layout_marginStart="@dimen/_10dp"
                 android:background="@drawable/round_corner"
                 android:backgroundTint="@color/blur_lightGreen"
-                app:layout_constraintTop_toTopOf="@id/txtMonthSpending"
-                app:layout_constraintBottom_toBottomOf="@id/txtMonthSpending"
-                app:layout_constraintStart_toEndOf="@id/txtMonthSpending"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingEnd="@dimen/_5dp"
+                android:text="@{String.format(@string/intPercent, monthSpending.spentPercent)}"
                 app:drawableStartCompat="@drawable/icon_arrow_down"
-                tools:ignore="RtlSymmetry" />
+                app:layout_constraintBottom_toBottomOf="@id/txtMonthSpending"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtMonthSpending"
+                app:layout_constraintTop_toTopOf="@id/txtMonthSpending"
+                tools:ignore="RtlSymmetry"
+                tools:text="@string/dummy_int_percent" />
 
             <ImageView
                 android:layout_width="@dimen/_0dp"
                 android:layout_height="@dimen/_0dp"
-                android:src="@drawable/img_chart"
-                android:scaleType="fitXY"
                 android:layout_marginStart="@dimen/_20dp"
-                app:layout_constraintStart_toEndOf="@id/txtMonthSpendingPercent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:contentDescription="@string/description"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_chart"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:contentDescription="@string/description" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtMonthSpendingPercent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

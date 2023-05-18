@@ -14,9 +14,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:background="@color/black"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:background="@color/black">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgCategory"

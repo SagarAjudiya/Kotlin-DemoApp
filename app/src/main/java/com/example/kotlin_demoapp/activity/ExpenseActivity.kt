@@ -1,18 +1,16 @@
 package com.example.kotlin_demoapp.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
-import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.kotlin_demoapp.Helper
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.databinding.ActivityExpenseBinding
 import com.example.kotlin_demoapp.databinding.CardCategoryBinding
 import com.example.kotlin_demoapp.databinding.CardCategoryDownBinding
-import com.example.kotlin_demoapp.model.CategoryData
-import com.example.kotlin_demoapp.model.CategoryDirection
+import com.example.kotlin_demoapp.enums.CategoryDirection
 
 class ExpenseActivity : AppCompatActivity(), OnClickListener {
 
@@ -61,7 +59,7 @@ class ExpenseActivity : AppCompatActivity(), OnClickListener {
     private fun setExpenses() {
         val mutableList = Helper.getCategoryData(this)
         mutableList.forEach {
-            if(it.type == CategoryDirection.UP) {
+            if (it.type == CategoryDirection.UP) {
                 categoryBinding.first().category = it
                 categoryBinding.removeFirstOrNull()
             } else {

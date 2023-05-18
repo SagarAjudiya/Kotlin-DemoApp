@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="creditCard"
             type="com.example.kotlin_demoapp.model.CreditCardData" />
@@ -13,38 +14,38 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/_3dp"
         android:backgroundTint="@color/blur_white"
+        app:cardCornerRadius="@dimen/_3dp"
         app:cardElevation="@dimen/_0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:background="@color/black"
             android:paddingHorizontal="@dimen/_10dp"
-            android:paddingBottom="@dimen/_5dp">
+            android:paddingBottom="@dimen/_5dp"
+            tools:background="@color/black">
 
             <ImageView
                 android:id="@+id/imgCardType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:src="@drawable/icon_mastercard"
+                android:contentDescription="@string/description"
                 android:src="@{creditCard.image}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/description" />
+                tools:src="@drawable/icon_mastercard" />
 
             <TextView
                 android:id="@+id/txtCardNumber"
                 style="@style/MediumText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/dummy_number"
                 android:text="@{String.format(@string/intNumber, creditCard.number)}"
                 android:textColor="@color/lightGreen"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtSecretStars"
                 app:layout_constraintTop_toTopOf="@id/txtSecretStars"
-                app:layout_constraintStart_toEndOf="@id/txtSecretStars" />
+                tools:text="@string/dummy_number" />
 
             <TextView
                 android:id="@+id/txtSecretStars"
@@ -65,24 +66,24 @@
                 style="@style/MediumText"
                 android:layout_width="@dimen/_0dp"
                 android:layout_height="wrap_content"
-                tools:text="@string/mastercard"
+                android:layout_marginTop="@dimen/_10dp"
                 android:text="@{creditCard.name}"
                 android:textColor="@color/lightGreen"
-                app:layout_constraintTop_toBottomOf="@id/imgCardType"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/_10dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgCardType"
+                tools:text="@string/mastercard" />
 
             <TextView
                 android:id="@+id/txtBalance"
                 style="@style/LargeDollarText"
                 android:layout_width="@dimen/_0dp"
                 android:layout_height="wrap_content"
-                tools:text="@string/dummy_balance"
                 android:text="@{String.format(@string/dollarFloatNumber, creditCard.balance)}"
-                app:layout_constraintTop_toBottomOf="@id/txtCardType"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/txtCardType"
+                tools:text="@string/dummy_balance" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
