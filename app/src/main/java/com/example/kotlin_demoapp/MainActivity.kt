@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.appcompat.app.AppCompatActivity
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         setMonthSpending()
         binding.cardMonthSpending.root.setOnClickListener(this)
         binding.btnNotification.setOnClickListener(this)
+
     }
 
     private fun setBindings() {

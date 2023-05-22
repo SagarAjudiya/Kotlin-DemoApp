@@ -2,6 +2,7 @@ package com.example.kotlin_demoapp.activity
 
 import android.graphics.Rect
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager

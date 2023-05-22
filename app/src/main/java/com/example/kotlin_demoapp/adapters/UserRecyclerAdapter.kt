@@ -1,5 +1,6 @@
 package com.example.kotlin_demoapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -70,6 +71,7 @@ class UserRecyclerAdapter(private val addUser: () -> Unit) :
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun submitList(newList: MutableList<UserData>) {
         userList.clear()
         userList.addAll(newList)

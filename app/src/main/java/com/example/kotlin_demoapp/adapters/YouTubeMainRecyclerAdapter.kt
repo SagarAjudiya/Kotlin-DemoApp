@@ -1,6 +1,7 @@
 package com.example.kotlin_demoapp.adapters
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.kotlin_demoapp.databinding.YoutubeCommentItemBinding
 import com.example.kotlin_demoapp.databinding.YoutubeNormalItemBinding
 import com.example.kotlin_demoapp.databinding.YoutubeSnapImagesItemBinding
@@ -92,6 +94,8 @@ class YouTubeMainRecyclerAdapter :
     inner class SnapImagesViewHolder(private val binding: YoutubeSnapImagesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        private val linearSnapHelper = LinearSnapHelper()
+
         fun bind(position: Int) {
             val snapImageAdapter = SnapImageRecyclerAdapter()
             val snapImageModel = getItem(position).item as SnapImagesModel
@@ -110,8 +114,7 @@ class YouTubeMainRecyclerAdapter :
                     outRect.left = 20
                 }
             })
-
-            LinearSnapHelper().attachToRecyclerView(binding.snapImagesRecycler)
+            linearSnapHelper.attachToRecyclerView(binding.snapImagesRecycler)
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.kotlin_demoapp.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,7 @@ class CreditCardRecyclerAdapter :
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun submitList(newList: MutableList<CreditCardData>) {
         creditCardList.clear()
         creditCardList.addAll(newList)

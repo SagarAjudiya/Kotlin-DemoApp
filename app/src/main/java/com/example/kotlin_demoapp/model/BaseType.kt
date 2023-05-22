@@ -1,3 +1,3 @@
 package com.example.kotlin_demoapp.model
 
-interface BaseType
+sealed interface BaseType
