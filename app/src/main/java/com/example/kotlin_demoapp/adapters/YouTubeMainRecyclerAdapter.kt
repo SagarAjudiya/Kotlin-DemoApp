@@ -94,15 +94,11 @@ class YouTubeMainRecyclerAdapter :
     inner class SnapImagesViewHolder(private val binding: YoutubeSnapImagesItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private val linearSnapHelper = LinearSnapHelper()
 
-        fun bind(position: Int) {
-            val snapImageAdapter = SnapImageRecyclerAdapter()
-            val snapImageModel = getItem(position).item as SnapImagesModel
-            snapImageAdapter.submitList(snapImageModel.imageList)
-            binding.snapImagesRecycler.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            binding.snapImagesRecycler.adapter = snapImageAdapter
+        private val linearSnapHelper = LinearSnapHelper()
+        private val snapImageAdapter = SnapImageRecyclerAdapter()
+
+        init {
             binding.snapImagesRecycler.addItemDecoration(object : RecyclerView.ItemDecoration() {
                 override fun getItemOffsets(
                     outRect: Rect,
@@ -114,6 +110,15 @@ class YouTubeMainRecyclerAdapter :
                     outRect.left = 20
                 }
             })
+        }
+
+        fun bind(position: Int) {
+            val snapImageModel = getItem(position).item as SnapImagesModel
+            snapImageAdapter.submitList(snapImageModel.imageList)
+            binding.snapImagesRecycler.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            binding.snapImagesRecycler.adapter = snapImageAdapter
+
             linearSnapHelper.attachToRecyclerView(binding.snapImagesRecycler)
         }
     }
