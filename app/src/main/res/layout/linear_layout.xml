@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:divider="@drawable/divider"
+        android:dividerPadding="@dimen/dp_thirty"
+        android:showDividers="middle"
+        android:layout_gravity="center"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/top_left"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_zero"
+            android:text="Left"
+            android:textColor="@color/white"
+            android:background="@color/black"
+            android:backgroundTint="@color/black"
+            android:gravity="left"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/top_center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_zero"
+            android:text="Center"
+            android:gravity="center"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/top_right"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_zero"
+            android:text="Right"
+            android:textColor="@color/white"
+            android:gravity="end"
+            style="@style/Theme.Material3.DayNight"
+            android:background="@drawable/cornered_back"
+            android:layout_weight="2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_zero"
+            android:orientation="horizontal"
+            android:layout_weight="6"
+            android:layout_gravity="center"
+            android:weightSum="8">
+
+            <TextView
+                android:id="@+id/bottom_left"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="match_parent"
+                android:text="Top"
+                android:gravity="top"
+                android:layout_gravity="start"
+                android:background="@color/purple_200"
+                android:layout_weight="3" />
+
+
+            <TextView
+                android:id="@+id/bottom_center"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:background="@drawable/cornered_back"
+                android:text="Center"
+                android:gravity="center"
+                android:layout_weight="2" />
+
+            <TextView
+                android:id="@+id/bottom_right"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="match_parent"
+                android:text="Bottom"
+                android:textColor="@color/black"
+                android:background="@color/purple_200"
+                android:gravity="bottom"
+                android:layout_weight="3" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

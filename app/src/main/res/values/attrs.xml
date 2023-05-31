@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="OtpView">
+        <attr name="custom_text_color" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="borderColor" format="color"/>
+        <attr name="custom_padding" format="dimension"/>
+        <attr name="custom_margin" format="dimension"/>
+        <attr name="otpCount" format="integer"/>
+    </declare-styleable>
+
+</resources>

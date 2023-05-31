@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".screens.ParkingCitation">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/deepAqua"
+            android:paddingHorizontal="@dimen/dp_twenty"
+            android:paddingVertical="@dimen/dp_ten">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/icon_back_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/txtPageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Parking Citation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_twenty"
+            android:paddingVertical="@dimen/dp_ten">
+
+            <EditText
+                android:id="@+id/searchField"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:background="@drawable/cornered_border"
+                android:hint="Search by facility, rental ID, etc."
+                android:padding="@dimen/dp_ten"
+                android:drawableStart="@drawable/icon_search"
+                android:drawableTint="@color/grey"
+                android:drawablePadding="@dimen/dp_five"
+                android:layout_marginEnd="@dimen/_15dp"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnFilter" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_zero"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins"
+                android:text="Filter"
+                android:insetTop="@dimen/dp_zero"
+                android:insetBottom="@dimen/dp_zero"
+                android:textSize="@dimen/_17sp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:cornerRadius="@dimen/dp_five"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@color/black"
+                app:strokeWidth="@dimen/dp_one" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_one"
+            app:dividerColor="@color/light_grey" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/parkingCitationRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </LinearLayout>
+</layout>

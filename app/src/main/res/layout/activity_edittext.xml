@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="-74dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/dividerEdittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_three"
+                    android:layout_marginHorizontal="@dimen/dp_twenty"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/editTextHeading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/editTextHeading" />
+
+                <TextView
+                    android:id="@+id/editTextHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_thirty"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/dp_ten"
+                    android:text="EditText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutPlaintext"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="30dp"
+                    app:endIconMode="clear_text"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dividerEdittext">
+
+                    <EditText
+                        android:id="@+id/editTextText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:backgroundTint="@color/deepAqua"
+                        android:hint="Plain Text"
+                        android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutTextPassword"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    app:endIconMode="password_toggle"
+                    app:layout_constraintBaseline_toBaselineOf="@id/inputLayoutPlaintext"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputLayoutPlaintext"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="@+id/inputLayoutPlaintext">
+
+                    <EditText
+                        android:id="@+id/editTextTextPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Password"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutEmail"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/inputLayoutNumberPassword"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputLayoutNumberPassword"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="@+id/inputLayoutNumberPassword">
+
+                    <EditText
+                        android:id="@+id/editTextTextEmailAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="email"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutTextPhone"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    android:hint="phone"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
+                    app:errorEnabled="true"
+                    app:errorIconDrawable="@drawable/icon_error"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutNumberPassword"
+                    app:placeholderText="enter phone number">
+
+                    <EditText
+                        android:id="@+id/editTextPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="phone" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutPostal"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    app:errorEnabled="true"
+                    app:helperText="required*"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputLayoutTextPhone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="@+id/inputLayoutTextPhone">
+
+                    <EditText
+                        android:id="@+id/editTextPostalAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Postal Address"
+                        android:inputType="textPostalAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutTextMultiLine"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutTextPhone">
+
+                    <EditText
+                        android:id="@+id/editTextTextMultiLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:ems="10"
+                        android:gravity="start|top"
+                        android:hint="Multiline"
+                        android:inputType="textMultiLine" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <EditText
+                    android:id="@+id/editTextTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:ems="10"
+                    android:hint="Time"
+                    android:inputType="time"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/inputLayoutTextMultiLine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutDate"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="10dp"
+                    android:hint="Date"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutTextMultiLine">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutNumber"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintBottom_toBottomOf="@+id/inputLayoutDate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="@+id/inputLayoutDate">
+
+                    <EditText
+                        android:id="@+id/editTextNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Number"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutNumberPassword"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutPlaintext">
+
+                    <EditText
+                        android:id="@+id/editTextNumberPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Password Numeric"
+                        android:inputType="numberPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <EditText
+                    android:id="@+id/editTextNumberSigned"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="Number - Signed"
+                    android:inputType="numberSigned"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLayoutDate" />
+
+                <EditText
+                    android:id="@+id/editTextNumberDecimal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:ems="10"
+                    android:hint="Number - Decimal"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintBottom_toBottomOf="@+id/editTextNumberSigned"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="@+id/editTextNumberSigned" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    app:helperText="Helper text here"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/editTextNumberSigned">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/light_blue_1"
+                        android:hint="Filled TextField"
+                        android:textColor="@color/dark_blue"
+                        android:textCursorDrawable="@null" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_ten"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    app:helperText="Helper Text Here"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/filledEditText">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Outlined TextField" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

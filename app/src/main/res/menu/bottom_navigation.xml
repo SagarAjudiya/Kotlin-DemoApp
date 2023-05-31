@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/homeNavigation"
+        android:icon="@drawable/icon_home"/>
+    <item android:title="Notification"
+        android:id="@+id/notificationNavigation"
+        android:icon="@drawable/icon_message"/>
+    <item android:title="Setting"
+        android:id="@+id/settingNavigation"
+        android:icon="@drawable/icon_setting"/>
+</menu>

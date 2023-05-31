@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_thirty"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_fifty" />
+
+        <LinearLayout
+            android:id="@+id/fieldLinear"
+            android:layout_below="@+id/txtSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/dp_fifty">
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Username" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gender" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:buttonTint="@color/light_blue_1" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:height="48dp"
+                    android:text="Female"
+                    android:buttonTint="@color/light_blue_1" />
+
+            </RadioGroup>
+
+            <CheckedTextView
+                android:id="@+id/checkText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subjects"
+                android:checked="true"
+                android:gravity="center"
+                android:clickable="true"
+                android:checkMark="@drawable/cornered_green_button" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maths"
+                    android:buttonTint="@color/light_blue_1" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Physics"
+                    android:buttonTint="@color/light_blue_1" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chemistry"
+                    android:buttonTint="@color/light_blue_1" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fieldLinear"
+            android:text="Sign Up"
+            android:layout_marginTop="@dimen/dp_fifty"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/btnSignUp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_ten">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGoogle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Signup with Google"
+                android:drawableLeft="@drawable/icon_google"
+                android:drawablePadding="@dimen/dp_five"
+                android:textAllCaps="false"
+                android:background="@drawable/cornered_blue_button"
+                android:textColor="@color/dark_blue"
+                android:paddingHorizontal="@dimen/dp_ten" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFacebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signup with Facebook"
+                android:drawableLeft="@drawable/icon_facebook"
+                android:drawablePadding="@dimen/dp_five"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/dp_five"
+                android:background="@drawable/cornered_blue_button"
+                android:textColor="@color/dark_blue"
+                android:paddingHorizontal="@dimen/dp_ten" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/chatFragment"
+        android:title="@string/chat"
+        android:icon="@drawable/icon_chat"/>
+    <item
+        android:id="@+id/meetingFragment"
+        android:title="@string/meeting"
+        android:icon="@drawable/icon_video"/>
+    <item
+        android:id="@+id/callFragment"
+        android:title="@string/call"
+        android:icon="@drawable/icon_call"/>
+    <item
+        android:id="@+id/faxFragment"
+        android:title="@string/fax"
+        android:icon="@drawable/icon_print"/>
+    <item
+        android:id="@+id/profileFragment"
+        android:title="@string/profile"
+        android:icon="@drawable/icon_person"/>
+
+
+</menu>

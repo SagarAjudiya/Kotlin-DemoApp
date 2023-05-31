@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="person"
+            type="com.example.kotlin_demoapp.model.PersonDetails" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/deepAquaPrimary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".activity.intent.ImplicitIntent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDataTransfer"
+                style="@style/blurCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10dp">
+
+                    <EditText
+                        android:id="@+id/etTitle"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_title"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20dp"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:text="@string/name"
+                        app:layout_constraintEnd_toStartOf="@id/txtResultName"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/etTitle" />
+
+                    <TextView
+                        android:id="@+id/txtResultName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_70dp"
+                        android:text="@{person.name}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/txtName"
+                        app:layout_constraintTop_toTopOf="@id/txtName" />
+
+                    <EditText
+                        android:id="@+id/etName"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_50dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/txtName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/txtName"
+                        app:layout_constraintTop_toTopOf="@id/txtName" />
+
+                    <TextView
+                        android:id="@+id/txtSurname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:text="@string/surname"
+                        app:layout_constraintStart_toStartOf="@id/txtName"
+                        app:layout_constraintTop_toBottomOf="@id/etName" />
+
+                    <TextView
+                        android:id="@+id/txtResultSurname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{person.surname}"
+                        app:layout_constraintStart_toStartOf="@id/txtResultName"
+                        app:layout_constraintTop_toTopOf="@id/txtSurname" />
+
+                    <EditText
+                        android:id="@+id/etSurname"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/txtSurname"
+                        app:layout_constraintEnd_toEndOf="@id/etName"
+                        app:layout_constraintStart_toStartOf="@id/etName"
+                        app:layout_constraintTop_toTopOf="@id/txtSurname" />
+
+                    <TextView
+                        android:id="@+id/txtEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:text="@string/email"
+                        app:layout_constraintStart_toStartOf="@id/txtSurname"
+                        app:layout_constraintTop_toBottomOf="@id/etSurname" />
+
+                    <TextView
+                        android:id="@+id/txtResultEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{person.email}"
+                        app:layout_constraintStart_toStartOf="@id/txtResultSurname"
+                        app:layout_constraintTop_toTopOf="@id/txtEmail" />
+
+                    <EditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/txtEmail"
+                        app:layout_constraintEnd_toEndOf="@id/etSurname"
+                        app:layout_constraintStart_toStartOf="@id/etSurname"
+                        app:layout_constraintTop_toTopOf="@id/txtEmail" />
+
+                    <TextView
+                        android:id="@+id/txtPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:text="@string/phone"
+                        app:layout_constraintStart_toStartOf="@id/txtEmail"
+                        app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+                    <TextView
+                        android:id="@+id/txtResultPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{person.phone}"
+                        app:layout_constraintStart_toStartOf="@id/txtResultEmail"
+                        app:layout_constraintTop_toTopOf="@id/txtPhone" />
+
+                    <EditText
+                        android:id="@+id/etPhone"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@id/txtPhone"
+                        app:layout_constraintEnd_toEndOf="@id/etEmail"
+                        app:layout_constraintStart_toStartOf="@id/etEmail"
+                        app:layout_constraintTop_toTopOf="@id/txtPhone" />
+
+                    <Button
+                        android:id="@+id/btnGo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20dp"
+                        android:text="@string/go"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btnClear"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/txtPhone" />
+
+                    <Button
+                        android:id="@+id/btnClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20dp"
+                        android:text="@string/clear"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/btnGo"
+                        app:layout_constraintTop_toBottomOf="@id/txtPhone" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPending"
+                style="@style/blurCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                app:layout_constraintTop_toBottomOf="@id/cardDataTransfer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10dp">
+
+                    <TextView
+                        android:id="@+id/txtTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pending_intent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                    <EditText
+                        android:id="@+id/etDelay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20dp"
+                        android:hint="@string/enter_delay"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toTopOf="@id/btnLaunch"
+                        app:layout_constraintTop_toBottomOf="@id/txtTitle"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <Button
+                        android:id="@+id/btnLaunch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:text="@string/launch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/etDelay"
+                        app:layout_constraintStart_toStartOf="@id/etDelay"
+                        app:layout_constraintTop_toBottomOf="@id/etDelay" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardIntentFilter"
+                style="@style/blurCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                app:layout_constraintTop_toBottomOf="@id/cardPending">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_10dp">
+
+                    <TextView
+                        android:id="@+id/txtFilterTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/intent_filter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                    <EditText
+                        android:id="@+id/etText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20dp"
+                        android:hint="@string/enter_text"
+                        android:inputType="text"
+                        app:layout_constraintBottom_toTopOf="@id/btnFilterLaunch"
+                        app:layout_constraintTop_toBottomOf="@id/txtFilterTitle"
+                        app:layout_constraintVertical_chainStyle="packed" />
+
+                    <Button
+                        android:id="@+id/btnFilterLaunch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:text="@string/launch"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/etText"
+                        app:layout_constraintStart_toStartOf="@id/etText"
+                        app:layout_constraintTop_toBottomOf="@id/etText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

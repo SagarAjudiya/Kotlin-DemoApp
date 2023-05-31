@@ -6,7 +6,7 @@ sealed interface Status {
 
 sealed class DeliveryStatus(var id: String = " ") : Status {
     fun method() {
-        println("HEllo")
+        println("Hello")
     }
 
 }

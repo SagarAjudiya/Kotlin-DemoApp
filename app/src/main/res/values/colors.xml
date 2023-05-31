@@ -7,4 +7,37 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dark_red">#b30000</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#ff7d0d</color>
+    <color name="light_orange">#ffd1aa</color>
+    <color name="pink">#ff8080</color>
+    <color name="light_pink">#ffbfbf</color>
+    <color name="dark_green">#007d00</color>
+    <color name="green">#6bb300</color>
+    <color name="light_green_1">#33ff33</color>
+    <color name="light_green_2">#92D592</color>
+    <color name="dark_blue">#002db3</color>
+    <color name="blue">#0000ff</color>
+    <color name="deepAqua">#067578</color>
+    <color name="light_blue_1">#809fff</color>
+    <color name="light_blue_2">#bfcfff</color>
+    <color name="transparent">#80FFFFFF</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="grey">#AAAAAA</color>
+    <color name="dark_grey">#7A7A7A</color>
+    <color name="blur_white">#BAFFFFFF</color>
+    <color name="skyBlue">#38A6DE</color>
+    <color name="light_grey">#DADADA</color>
+
+    <!--    iOS App Colors-->
+    <color name="deepAquaPrimary">#067578</color>
+    <color name="deepAquaSecondary">#D7EFEE</color>
+    <color name="selectColor">#EBF9FF</color>
+    <color name="deSelectColor">#F6F6F6</color>
+
+    <!--  OneCloud Screen Colors  -->
+    <color name="oneCloudPrimary">#38A6DE</color>
+    <color name="oneCloudSecondary">#8083A3</color>
+    <color name="oneCloudBlue">#1865B1</color>
 </resources>

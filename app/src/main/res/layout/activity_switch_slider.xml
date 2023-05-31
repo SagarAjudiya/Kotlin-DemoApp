@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".components.SwitchSlider">
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textOff="Night"
+            android:textOn="Day"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchEnable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:checked="true"
+            app:trackTint="@drawable/switch_track_color"
+            app:thumbTint="@drawable/switch_thumb_color"
+            app:showText="true"
+            app:layout_constraintEnd_toEndOf="@+id/toggleButton"
+            app:layout_constraintStart_toStartOf="@+id/toggleButton"
+            app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
+
+        <ImageView
+            android:id="@+id/editableImage"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_zero"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:scaleType="centerCrop"
+            android:src="@drawable/city_image"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toEndOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@id/switchEnable" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_thirty"
+            android:layout_marginTop="@dimen/dp_ten"
+            android:max="100"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/editableImage" />
+
+        <SeekBar
+            android:id="@+id/seekBarDiscrete"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_thirty"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:max="10"
+            android:progress="1"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_thirty"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:max="100"
+            android:progressTint="@color/red"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintHorizontal_weight="0.7"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/seekBarDiscrete" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="371dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="40dp" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/sportGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_twenty"
+            app:layout_constraintEnd_toEndOf="@id/guideline5"
+            app:layout_constraintStart_toStartOf="@id/guideline4"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCricket"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cricket"
+                android:textSize="@dimen/_15sp"
+                app:cornerRadius="@dimen/dp_twenty"
+                app:strokeColor="@color/blue" />
+
+            <Button
+                android:id="@+id/btnFootball"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/football"
+                android:textSize="@dimen/_15sp"
+                app:cornerRadius="@dimen/dp_twenty"
+                app:strokeColor="@color/blue" />
+
+            <Button
+                android:id="@+id/btnHockey"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hockey"
+                android:textSize="@dimen/_15sp"
+                app:cornerRadius="@dimen/dp_twenty"
+                app:strokeColor="@color/blue" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <ImageView
+            android:id="@+id/rangedImage"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_hundred"
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:src="@drawable/city_image"
+            app:layout_constraintEnd_toEndOf="@id/guideline5"
+            app:layout_constraintStart_toStartOf="@id/guideline4"
+            app:layout_constraintTop_toBottomOf="@id/sportGroup" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/rangedSeekBar"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:stepSize="10.0"
+            android:valueFrom="0"
+            android:valueTo="100"
+            app:haloColor="@color/red"
+            app:labelBehavior="floating"
+            app:layout_constraintEnd_toEndOf="@id/guideline5"
+            app:layout_constraintStart_toStartOf="@id/guideline4"
+            app:layout_constraintTop_toBottomOf="@id/rangedImage"
+            app:thumbColor="@color/white"
+            app:thumbElevation="@dimen/dp_five"
+            app:thumbStrokeColor="@color/black"
+            app:thumbStrokeWidth="@dimen/dp_five"
+            app:tickColorActive="@color/white"
+            app:tickColorInactive="@color/black"
+            app:trackColorActive="@color/blue"
+            app:trackColorInactive="@color/light_blue_1"
+            app:values="@array/ranged_image_array" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

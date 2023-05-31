@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".components.FAB">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extendedFAB"
+            style="@style/ThemeOverlay.Material3.FloatingActionButton.Tertiary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_fifty"
+            android:text="@string/actions"
+            app:icon="@drawable/icon_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/largeButton"
+            style="@style/Widget.Material3.FloatingActionButton.Large.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_ten"
+            android:layout_marginTop="@dimen/dp_thirty"
+            android:backgroundTint="@color/light_pink"
+            app:layout_constraintEnd_toEndOf="@id/extendedFAB"
+            app:layout_constraintStart_toEndOf="@id/mediumButton"
+            app:layout_constraintTop_toBottomOf="@id/extendedFAB"
+            app:rippleColor="@color/white"
+            app:srcCompat="@drawable/icon_bell"
+            app:tint="@color/red" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mediumButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_ten"
+            android:backgroundTint="@color/light_orange"
+            app:borderWidth="@dimen/dp_zero"
+            app:layout_constraintBottom_toBottomOf="@id/largeButton"
+            app:layout_constraintEnd_toStartOf="@id/largeButton"
+            app:layout_constraintStart_toEndOf="@id/smallButton"
+            app:layout_constraintTop_toTopOf="@id/largeButton"
+            app:rippleColor="@color/white"
+            app:srcCompat="@drawable/icon_bell"
+            app:tint="@color/orange" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/smallButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_ten"
+            android:backgroundTint="@color/light_green_2"
+            app:borderWidth="@dimen/dp_zero"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="@id/mediumButton"
+            app:layout_constraintEnd_toStartOf="@id/mediumButton"
+            app:layout_constraintStart_toStartOf="@id/extendedFAB"
+            app:layout_constraintTop_toTopOf="@id/mediumButton"
+            app:rippleColor="@color/white"
+            app:srcCompat="@drawable/icon_bell"
+            app:tint="@color/dark_green" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/customFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_twenty"
+            app:backgroundTint="@color/white"
+            app:borderWidth="@dimen/dp_ten"
+            app:elevation="@dimen/dp_ten"
+            app:layout_constraintEnd_toEndOf="@id/largeButton"
+            app:layout_constraintStart_toStartOf="@id/smallButton"
+            app:layout_constraintTop_toBottomOf="@id/largeButton"
+            app:srcCompat="@drawable/icon_bell" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/customExtendedFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/actions"
+            app:icon="@drawable/icon_edit"
+            android:layout_marginEnd="@dimen/dp_twenty"
+            android:layout_marginBottom="@dimen/dp_twenty"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/extendedClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:textColor="@color/orange"
+            android:textStyle="italic|bold"
+            app:backgroundTint="@color/light_orange"
+            app:icon="@drawable/icon_cancel"
+            app:iconTint="@color/orange"
+            app:layout_constraintBottom_toTopOf="@id/customExtendedFAB"
+            app:layout_constraintEnd_toEndOf="@id/customExtendedFAB"
+            android:layout_marginBottom="@dimen/dp_ten" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icon_cancel"
+            app:layout_constraintEnd_toEndOf="@id/extendedClear"
+            app:layout_constraintBottom_toTopOf="@id/extendedClear"
+            android:layout_marginBottom="@dimen/dp_ten" />
+
+        <TextView
+            android:id="@+id/txtClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/close"
+            app:layout_constraintTop_toTopOf="@id/fabClose"
+            app:layout_constraintBottom_toBottomOf="@id/fabClose"
+            app:layout_constraintEnd_toStartOf="@id/fabClose"
+            android:layout_marginEnd="@dimen/dp_ten"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

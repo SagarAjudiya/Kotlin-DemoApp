@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="-74dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/dividerTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_three"
+                    android:layout_marginHorizontal="@dimen/dp_twenty"
+                    android:background="@color/black"
+                    app:layout_constraintBottom_toBottomOf="@id/textViewHeading"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textViewHeading" />
+
+                <TextView
+                    android:id="@+id/textViewHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/white"
+                    android:paddingHorizontal="@dimen/dp_ten"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/normal_text"
+                    android:textSize="@dimen/_20sp"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    app:layout_constraintTop_toBottomOf="@+id/dividerTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtBackground"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue"
+                    android:text="@string/backgroud_text"
+                    android:textSize="@dimen/_20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNormal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/coloredText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colored_text"
+                    android:textSize="@dimen/_20sp"
+                    android:textColor="@color/red"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/txtBackground"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/fontText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:fontFamily="@font/akaya_telivigala"
+                    android:text="@string/different_font_text"
+                    android:textSize="@dimen/_20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/coloredText" />
+
+                <TextView
+                    android:id="@+id/underlineText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/underline_text"
+                    android:textSize="@dimen/_20sp"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/fontText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lineThroughText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linethrough_text"
+                    android:textSize="@dimen/_20sp"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/underlineText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/leftOverflowText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/left_overflow_text"
+                    android:textSize="@dimen/_20sp"
+                    android:maxLines="1"
+                    android:ellipsize="start"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:paddingHorizontal="@dimen/dp_thirty"
+                    app:layout_constraintTop_toBottomOf="@id/lineThroughText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/rightOverflowText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/right_overflow_text"
+                    android:textSize="@dimen/_20sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingHorizontal="@dimen/dp_thirty"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/leftOverflowText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/centerOverflowText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/center_overflow_text"
+                    android:textSize="@dimen/_20sp"
+                    android:maxLines="1"
+                    android:ellipsize="middle"
+                    android:paddingHorizontal="@dimen/dp_thirty"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/rightOverflowText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/differentColorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="@string/different_colored_text"
+                    android:textSize="@dimen/_20sp"
+                    app:layout_constraintTop_toBottomOf="@id/centerOverflowText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/urlText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="@string/url_text"
+                    android:autoLink="all"
+                    android:textSize="@dimen/_20sp"
+                    app:layout_constraintTop_toBottomOf="@id/differentColorText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/selectableText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/selectable_text"
+                    android:textSize="@dimen/_20sp"
+                    android:textIsSelectable="true"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/urlText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/clickText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/clickable_text"
+                    android:longClickable="true"
+                    android:textSize="@dimen/_20sp"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/selectableText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/longPressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/long_pressed_text"
+                    android:textSize="@dimen/_20sp"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/clickText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/shadowText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shadow_text"
+                    android:textSize="@dimen/_20sp"
+                    android:textColor="@color/red"
+                    android:shadowColor="@color/black"
+                    android:shadowRadius="5"
+                    android:shadowDx="10"
+                    android:shadowDy="10"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/longPressText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/scrollableText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scrollable_text"
+                    android:textSize="@dimen/_20sp"
+                    android:maxLines="4"
+                    android:gravity="center"
+                    android:background="@color/light_blue_1"
+                    android:textIsSelectable="true"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintTop_toBottomOf="@id/shadowText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/call_nav_graph"
+    app:startDestination="@id/pinnedFragment">
+
+    <fragment
+        android:id="@+id/pinnedFragment"
+        android:name="com.example.kotlin_demoapp.screens.on_cloud.fragment.OnCloudPinnedFragment"
+        android:label="fragment_on_cloud_pinned"
+        tools:layout="@layout/fragment_on_cloud_pinned" >
+        <action
+            android:id="@+id/navigateToFilesFragment"
+            app:destination="@id/filesFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/filesFragment"
+        android:name="com.example.kotlin_demoapp.screens.on_cloud.fragment.OnCloudFilesFragment"
+        android:label="fragment_on_cloud_files"
+        tools:layout="@layout/fragment_on_cloud_files" >
+        <action
+            android:id="@+id/navigateToPinnedFragment"
+            app:destination="@id/pinnedFragment"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right"
+            app:popEnterAnim="@anim/from_right"
+            app:popExitAnim="@anim/to_left" />
+        <argument
+            android:name="transferData"
+            app:argType="com.example.kotlin_demoapp.screens.on_cloud.model.TransferDataModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>

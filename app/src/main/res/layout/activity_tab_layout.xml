@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".components.TabLayout">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/customizeTabLayout"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabIconTint="@color/black"
+            app:tabMode="fixed"
+            app:tabIndicator="@drawable/cornered_back"
+            app:tabIndicatorColor="@color/red"
+            app:tabIndicatorGravity="stretch"
+            app:tabIndicatorAnimationDuration="1000"
+            app:tabIndicatorAnimationMode="fade"
+            app:tabRippleColor="@color/red"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/orange"
+            app:tabBackground="@color/light_orange">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:icon="@drawable/icon_google" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Navigation" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mainTabLayout"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/customizeTabLayout">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Home" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Navigation" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Setting" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/fragmentPager"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_zero"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mainTabLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

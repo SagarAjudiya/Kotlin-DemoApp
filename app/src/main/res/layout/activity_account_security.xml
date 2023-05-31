@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dp_twenty"
+        tools:context=".screens.AccountSecurity">
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:backgroundTint="@color/white"
+            android:background="@color/white"
+            android:padding="@dimen/dp_zero"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:id="@+id/txtHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_account_security"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imgBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgBack" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/headingDivider"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_one"
+            android:layout_marginTop="@dimen/dp_ten"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgBack" />
+
+        <ScrollView
+            android:id="@+id/mainScroll"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_zero"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headingDivider">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="Email Address(es)"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    app:boxCornerRadiusBottomEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusBottomStart="@dimen/dp_ten"
+                    app:boxCornerRadiusTopEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusTopStart="@dimen/dp_ten"
+                    app:boxStrokeColor="@color/skyBlue"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtEmail">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtEmailField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/demoEmail" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditEmail"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:padding="@dimen/dp_zero"
+                    android:text="@string/edit_email"
+                    android:textAllCaps="false"
+                    android:textColor="@color/skyBlue"
+                    android:textSize="@dimen/_15sp"
+                    app:icon="@drawable/icon_edit"
+                    app:iconPadding="@dimen/dp_zero"
+                    app:iconSize="@dimen/dp_twenty"
+                    app:iconTint="@color/skyBlue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emailInputLayout"
+                    app:rippleColor="@color/white" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/emailGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="confirmEmailInputLayout, txtConfirmEmail" />
+
+                <TextView
+                    android:id="@+id/txtConfirmEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="Confirm Email Address(es)"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnEditEmail"
+                    app:layout_goneMarginTop="@dimen/dp_ten" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirmEmailInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusBottomStart="@dimen/dp_ten"
+                    app:boxCornerRadiusTopEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusTopStart="@dimen/dp_ten"
+                    app:boxStrokeColor="@color/skyBlue"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtConfirmEmail">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtConfirmEmailField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/demoEmail" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/emailDivider"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="@dimen/dp_one"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/confirmEmailInputLayout" />
+
+                <TextView
+                    android:id="@+id/mfaHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="@string/mfaHeading"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailDivider" />
+
+                <TextView
+                    android:id="@+id/mfaDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/dp_five"
+                    android:text="@string/lorem_ipsum"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mfaHeading" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/passcodeGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="txtSecret, txtPasscode, passcodeInputLayout, txtPasscodeSubtitle" />
+
+                <TextView
+                    android:id="@+id/txtSecret"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="@string/text_secret"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mfaDetail" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSetupAuth"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/skyBlue"
+                    android:text="@string/set_up_authentication"
+                    android:textAllCaps="false"
+                    app:icon="@drawable/icon_shield"
+                    app:iconGravity="textStart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtSecret"
+                    app:layout_goneMarginTop="@dimen/dp_ten" />
+
+                <TextView
+                    android:id="@+id/txtPasscode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="Passcode"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnSetupAuth" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passcodeInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusBottomStart="@dimen/dp_ten"
+                    app:boxCornerRadiusTopEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusTopStart="@dimen/dp_ten"
+                    app:boxStrokeColor="@color/skyBlue"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtPasscode">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtPasscodeField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_passcode"
+                        android:text="@string/_123456" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtPasscodeSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/passcode_subtitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/passcodeInputLayout" />
+
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/secretDivider"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="@dimen/dp_one"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtPasscodeSubtitle" />
+
+                <TextView
+                    android:id="@+id/txtNewPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="New Password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/secretDivider" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/newPasswordInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusBottomStart="@dimen/dp_ten"
+                    app:boxCornerRadiusTopEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusTopStart="@dimen/dp_ten"
+                    app:boxStrokeColor="@color/skyBlue"
+                    app:endIconMode="password_toggle"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtNewPassword">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtNewPasswordField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_passcode"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtConfirmPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="Confirm New Password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/newPasswordInputLayout" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirmPasswordInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusBottomStart="@dimen/dp_ten"
+                    app:boxCornerRadiusTopEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusTopStart="@dimen/dp_ten"
+                    app:boxStrokeColor="@color/skyBlue"
+                    app:endIconMode="password_toggle"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtConfirmPassword">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtConfirmPasswordField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_passcode"
+                        android:inputType="textPassword"
+                        android:text="@string/_123456" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtPasswordInstruction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password_instruction"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/confirmPasswordInputLayout" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/passwordDivider"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="@dimen/dp_one"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtPasswordInstruction" />
+
+                <TextView
+                    android:id="@+id/txtCurrentPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:text="Current Password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/passwordDivider" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/currentPasswordInputLayout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusBottomStart="@dimen/dp_ten"
+                    app:boxCornerRadiusTopEnd="@dimen/dp_ten"
+                    app:boxCornerRadiusTopStart="@dimen/dp_ten"
+                    app:boxStrokeColor="@color/skyBlue"
+                    app:endIconMode="password_toggle"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtCurrentPassword">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCurrentPasswordField"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_password"
+                        android:inputType="textPassword" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSave"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/skyBlue"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/currentPasswordInputLayout" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

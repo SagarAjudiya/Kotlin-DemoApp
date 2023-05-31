@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.go_tour.GoTourDiscover">
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_ten"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/discover"
+            android:textSize="@dimen/_30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imgBack"
+            app:layout_constraintEnd_toStartOf="@id/imgMenu"
+            app:layout_constraintStart_toEndOf="@id/imgBack"
+            app:layout_constraintTop_toTopOf="@id/imgBack" />
+
+        <ImageButton
+            android:id="@+id/imgMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_zero"
+            android:layout_marginEnd="@dimen/dp_ten"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:srcCompat="@drawable/icon_menu" />
+
+        <HorizontalScrollView
+            android:id="@+id/scrollChipGroup"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dp_ten"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:layout_marginHorizontal="@dimen/dp_twenty"
+            android:background="@drawable/cornered_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filterChipGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <ScrollView
+            android:id="@+id/scrollChoice"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_zero"
+            android:layout_marginHorizontal="@dimen/dp_twenty"
+            android:layout_marginVertical="@dimen/dp_ten"
+            app:layout_constraintBottom_toTopOf="@id/bottomNav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollChipGroup">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtRegion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="By Region"
+                    android:textSize="@dimen/_20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAsia"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:layout_marginEnd="@dimen/dp_ten"
+                    android:onClick="selectImage"
+                    android:backgroundTint="@color/light_grey"
+                    android:padding="@dimen/dp_thirty"
+                    android:text="@string/asia"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toStartOf="@id/btnAfrica"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtRegion" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAfrica"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_ten"
+                    android:backgroundTint="@color/light_grey"
+                    android:padding="@dimen/dp_thirty"
+                    android:onClick="selectImage"
+                    android:text="@string/africa"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="@id/btnAsia"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnAsia"
+                    app:layout_constraintTop_toTopOf="@id/btnAsia" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEurope"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:layout_marginEnd="@dimen/dp_ten"
+                    android:backgroundTint="@color/light_grey"
+                    android:onClick="selectImage"
+                    android:padding="@dimen/dp_thirty"
+                    android:text="@string/europe"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toStartOf="@id/btnAmerica"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnAsia" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAmerica"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_ten"
+                    android:backgroundTint="@color/light_grey"
+                    android:padding="@dimen/dp_thirty"
+                    android:text="@string/america"
+                    android:onClick="selectImage"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="@id/btnEurope"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnEurope"
+                    app:layout_constraintTop_toTopOf="@id/btnEurope" />
+
+                <TextView
+                    android:id="@+id/txtUSer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    android:text="By User"
+                    android:textSize="@dimen/_20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnEurope" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPopular"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:layout_marginEnd="@dimen/dp_ten"
+                    android:backgroundTint="@color/light_grey"
+                    android:padding="@dimen/dp_thirty"
+                    android:onClick="selectImage"
+                    android:text="@string/popular"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toStartOf="@id/btnBestChoice"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtUSer" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBestChoice"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_ten"
+                    android:backgroundTint="@color/light_grey"
+                    android:padding="@dimen/dp_thirty"
+                    android:onClick="selectImage"
+                    android:text="@string/best_choice"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="@id/btnPopular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnPopular"
+                    app:layout_constraintTop_toTopOf="@id/btnPopular" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLastTrip"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_ten"
+                    android:layout_marginEnd="@dimen/dp_ten"
+                    android:backgroundTint="@color/light_grey"
+                    android:padding="@dimen/dp_thirty"
+                    android:onClick="selectImage"
+                    android:text="@string/last_trip"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toStartOf="@id/btnFiveStar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPopular" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFiveStar"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_ten"
+                    android:backgroundTint="@color/light_grey"
+                    android:padding="@dimen/dp_thirty"
+                    android:text="@string/_5_star"
+                    android:textAllCaps="false"
+                    android:onClick="selectImage"
+                    app:layout_constraintBottom_toBottomOf="@id/btnLastTrip"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btnLastTrip"
+                    app:layout_constraintTop_toTopOf="@id/btnLastTrip" />
+
+                <TextView
+                    android:id="@+id/txtTravelTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    android:text="@string/travel_time"
+                    android:textSize="@dimen/_20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnLastTrip" />
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollTime"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtTravelTime">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnJan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:onClick="selectImage"
+                            android:text="@string/january"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFeb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:onClick="selectImage"
+                            android:text="@string/february"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMarch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:text="@string/march"
+                            android:onClick="selectImage"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnApril"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:onClick="selectImage"
+                            android:text="@string/april"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnMay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:onClick="selectImage"
+                            android:text="@string/may"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnJune"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:onClick="selectImage"
+                            android:text="@string/june"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnJuly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:text="@string/july"
+                            android:onClick="selectImage"
+                            android:textAllCaps="false" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:id="@+id/txtTravelDay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    android:text="@string/travel_day"
+                    android:textSize="@dimen/_20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/scrollTime" />
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollPerson"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtTravelDay">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnThirtyOrLess"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:onClick="selectImage"
+                            android:padding="@dimen/dp_ten"
+                            android:text="@string/_30_or_less"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFifteenToSeven"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:text="@string/_15_7_day"
+                            android:onClick="selectImage"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSevenToFour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:text="@string/_7_4_day"
+                            android:onClick="selectImage"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFiveToTwo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:onClick="selectImage"
+                            android:text="@string/_5_2_day"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnTwoToOne"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_ten"
+                            android:backgroundTint="@color/light_grey"
+                            android:padding="@dimen/dp_ten"
+                            android:onClick="selectImage"
+                            android:text="@string/_2_1_day"
+                            android:textAllCaps="false" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_fifty"
+            android:layout_marginHorizontal="@dimen/dp_twenty"
+            android:layout_marginBottom="@dimen/dp_twenty"
+            android:background="@drawable/cornered_back"
+            app:elevation="@dimen/dp_zero"
+            app:itemIconTint="@drawable/nav_item_state"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            app:tint="@color/orange" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

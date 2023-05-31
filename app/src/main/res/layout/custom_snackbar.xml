@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_pink">
+
+    <ImageView
+        android:id="@+id/imgCustom"
+        android:layout_width="@dimen/dp_fifty"
+        android:layout_height="@dimen/dp_zero"
+        android:src="@drawable/icon_android"
+        app:tint="@color/red"
+        android:layout_marginStart="@dimen/dp_twenty"
+        app:layout_constraintTop_toTopOf="@id/headingCustom"
+        app:layout_constraintBottom_toBottomOf="@id/subCustom"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/headingCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom SnackBar"
+        android:textSize="@dimen/_20sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/dp_twenty"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/subCustom"
+        app:layout_constraintStart_toEndOf="@id/imgCustom"/>
+
+    <TextView
+        android:id="@+id/subCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This is custom SnackBar"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/headingCustom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/headingCustom"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/divider"
+        android:layout_width="@dimen/dp_three"
+        android:layout_height="@dimen/dp_zero"
+        android:orientation="vertical"
+        app:dividerColor="@color/red"
+        app:layout_constraintTop_toTopOf="@id/headingCustom"
+        app:layout_constraintBottom_toBottomOf="@id/subCustom"
+        app:layout_constraintStart_toEndOf="@id/subCustom"
+        app:layout_constraintEnd_toStartOf="@id/btnDismiss"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDismiss"
+        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_height="wrap_content"
+        android:text="@string/dismiss"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="@id/divider"
+        app:layout_constraintBottom_toBottomOf="@id/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/divider"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

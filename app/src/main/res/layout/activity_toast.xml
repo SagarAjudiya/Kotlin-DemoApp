@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".components.Toast">
+
+        <Button
+            android:id="@+id/btnNormalToast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Normal Toast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnCenterToast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Center Toast"
+            app:layout_constraintEnd_toEndOf="@+id/btnNormalToast"
+            app:layout_constraintStart_toStartOf="@+id/btnNormalToast"
+            app:layout_constraintTop_toBottomOf="@+id/btnNormalToast" />
+
+        <Button
+            android:id="@+id/btnCustomToast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Custom Toast"
+            app:layout_constraintEnd_toEndOf="@+id/btnCenterToast"
+            app:layout_constraintStart_toStartOf="@+id/btnCenterToast"
+            app:layout_constraintTop_toBottomOf="@+id/btnCenterToast" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

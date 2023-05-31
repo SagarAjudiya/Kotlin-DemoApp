@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        tools:context=".screens.go_tour.GoTourLogin">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/dp_twenty" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/dp_twenty" />
+
+        <ImageView
+            android:id="@+id/loginLogo"
+            android:layout_width="@dimen/dp_hundred"
+            android:layout_height="@dimen/dp_hundred"
+            android:layout_marginTop="@dimen/dp_fifty"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@id/rightGuide"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/city_image" />
+
+        <TextView
+            android:id="@+id/txtSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_thirty"
+            android:text="@string/sign_up"
+            android:textSize="@dimen/_30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/rightGuide"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@id/loginLogo" />
+
+        <RadioGroup
+            android:id="@+id/genderGroup"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_hundred"
+            android:gravity="fill_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="@id/rightGuide"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@id/txtSignUp">
+
+            <RadioButton
+                android:id="@+id/maleRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_ten"
+                android:layout_weight="1"
+                android:background="@drawable/cornered_radio_background"
+                android:button="@null"
+                android:drawableEnd="@drawable/check_radio_button"
+                android:text="@string/male" />
+
+            <RadioButton
+                android:id="@+id/femaleRadio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_ten"
+                android:layout_weight="1"
+                android:background="@drawable/cornered_radio_background"
+                android:button="@null"
+                android:drawableEnd="@drawable/check_radio_button"
+                android:text="@string/female" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:text="@string/password"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="@id/rightGuide"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmail">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEmailField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:padding="@dimen/_15dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:text="@string/confirm_password"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@id/emailInputLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="password_toggle"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="@id/rightGuide"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPasswordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:padding="@dimen/_15dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/btnTermCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_thirty"
+            android:button="@null"
+            android:minHeight="@dimen/dp_zero"
+            android:minWidth="@dimen/dp_zero"
+            android:paddingEnd="@dimen/dp_ten"
+            android:drawableLeft="@drawable/check_radio_button"
+            android:background="@color/transparent"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@id/passwordInputLayout" />
+
+        <TextView
+            android:id="@+id/txtTermCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/term_condition"
+            app:layout_constraintTop_toTopOf="@id/btnTermCondition"
+            app:layout_constraintStart_toEndOf="@id/btnTermCondition"
+            app:layout_constraintBottom_toBottomOf="@id/btnTermCondition" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignUp"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:text="@string/sign_up"
+            android:textSize="@dimen/_15sp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:backgroundTint="@color/orange"
+            app:layout_constraintEnd_toEndOf="@id/rightGuide"
+            app:layout_constraintStart_toStartOf="@id/leftGuide"
+            app:layout_constraintTop_toBottomOf="@+id/btnTermCondition" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

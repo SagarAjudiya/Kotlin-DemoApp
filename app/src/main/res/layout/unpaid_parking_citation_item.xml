@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="parkingData"
+            type="com.example.kotlin_demoapp.model.ParkingModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_twenty">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:checked="@{parkingData.checked}"
+            app:buttonIcon="@drawable/checkbox_with_states"
+            app:buttonIconTint="@color/deepAqua"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTitleCitationID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/citation_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtCitationID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15dp"
+            android:fontFamily="@font/poppins"
+            android:text="@{parkingData.citationID}"
+            app:layout_constraintStart_toEndOf="@id/txtTitleCitationID"
+            app:layout_constraintTop_toTopOf="@id/txtTitleCitationID" />
+
+        <TextView
+            android:id="@+id/txtTitleFacility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_five"
+            android:fontFamily="@font/poppins"
+            android:text="@string/facility"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleCitationID" />
+
+        <TextView
+            android:id="@+id/txtFacility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15dp"
+            android:fontFamily="@font/poppins"
+            android:text="@{parkingData.facility}"
+            app:layout_constraintStart_toEndOf="@id/txtTitleFacility"
+            app:layout_constraintTop_toTopOf="@id/txtTitleFacility" />
+
+        <TextView
+            android:id="@+id/txtTitleDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_five"
+            android:fontFamily="@font/poppins"
+            android:text="@string/due_date"
+            app:layout_constraintEnd_toStartOf="@id/txtTitleStatus"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleFacility" />
+
+        <TextView
+            android:id="@+id/txtDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@{parkingData.dueDate}"
+            app:layout_constraintStart_toStartOf="@id/txtTitleDueDate"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleDueDate" />
+
+        <TextView
+            android:id="@+id/txtTitleStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/status"
+            app:layout_constraintEnd_toStartOf="@id/txtTitleFineAmount"
+            app:layout_constraintStart_toEndOf="@id/txtTitleDueDate"
+            app:layout_constraintTop_toTopOf="@id/txtTitleDueDate" />
+
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/unpaid"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="@id/txtTitleStatus"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleStatus" />
+
+        <TextView
+            android:id="@+id/txtTitleFineAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/fine_amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtTitleStatus"
+            app:layout_constraintTop_toTopOf="@id/txtTitleStatus" />
+
+        <TextView
+            android:id="@+id/txtFineAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@{String.format(@string/dollar, parkingData.fineAmount)}"
+            app:layout_constraintEnd_toEndOf="@id/txtTitleFineAmount"
+            app:layout_constraintTop_toBottomOf="@id/txtTitleFineAmount" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPay"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_five"
+            android:layout_marginEnd="@dimen/dp_five"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/pay"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_15sp"
+            app:backgroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtStatus" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetails"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_five"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/details"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_15sp"
+            app:layout_constraintBottom_toBottomOf="@id/btnPay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnPay"
+            app:layout_constraintTop_toTopOf="@id/btnPay" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

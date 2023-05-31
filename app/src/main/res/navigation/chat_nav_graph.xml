@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chat_nav_graph"
+    app:startDestination="@id/directMessageFragment">
+
+    <fragment
+        android:id="@+id/directMessageFragment"
+        android:name="com.example.kotlin_demoapp.screens.on_cloud.fragment.OnCloudDirectMessageFragment"
+        android:label="OnCloudDirectMessageFragment" >
+        <action
+            android:id="@+id/action_directMessageFragment_to_channelFragment"
+            app:destination="@id/channelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/channelFragment"
+        android:name="com.example.kotlin_demoapp.screens.on_cloud.fragment.OnCloudChannelFragment"
+        android:label="OnCloudChannelFragment" >
+        <action
+            android:id="@+id/action_channelFragment_to_directMessageFragment"
+            app:destination="@id/directMessageFragment" />
+    </fragment>
+</navigation>

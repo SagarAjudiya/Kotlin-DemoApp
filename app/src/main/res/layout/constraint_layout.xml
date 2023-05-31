@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/txtAddVehicle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="50dp"
+            android:text="Add Vehicle"
+            app:layout_constraintEnd_toStartOf="@+id/btnCancel"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="19dp"
+            android:background="@drawable/icon_cancel"
+            app:layout_constraintBottom_toBottomOf="@+id/txtAddVehicle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtAddVehicle"
+            app:layout_constraintTop_toTopOf="@+id/txtAddVehicle" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="19dp"
+            android:background="#656565"
+            app:layout_constraintBottom_toTopOf="@+id/vehicleOptions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddVehicle" />
+
+        <RadioGroup
+            android:id="@+id/vehicleOptions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/btnCancel"
+            app:layout_constraintStart_toStartOf="@+id/txtAddVehicle"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddVehicle">
+
+            <RadioButton
+                android:id="@+id/regularVehicle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Regular Vehicle"
+                tools:layout_editor_absoluteX="141dp"
+                tools:layout_editor_absoluteY="291dp" />
+
+            <RadioButton
+                android:id="@+id/oversizedVehicle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Oversized Vehicle"
+                tools:layout_editor_absoluteX="141dp"
+                tools:layout_editor_absoluteY="291dp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtVehicleType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Oversized Vehicle Type"
+            app:layout_constraintEnd_toEndOf="@+id/vehicleOptions"
+            app:layout_constraintStart_toStartOf="@+id/vehicleOptions"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleOptions" />
+
+        <Spinner
+            android:id="@+id/spinnerVehicleType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:entries="@android:array/phoneTypes"
+            app:layout_constraintEnd_toEndOf="@+id/txtVehicleType"
+            app:layout_constraintStart_toStartOf="@+id/txtVehicleType"
+            app:layout_constraintTop_toBottomOf="@+id/txtVehicleType" />
+
+        <TextView
+            android:id="@+id/txtNickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Nickname (optional)"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerVehicleType"
+            app:layout_constraintStart_toStartOf="@+id/spinnerVehicleType"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerVehicleType" />
+
+        <EditText
+            android:id="@+id/txtEditNickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ems="10"
+            android:hint="Add Nickname"
+            android:inputType="text"
+            app:layout_constraintEnd_toEndOf="@+id/txtNickname"
+            app:layout_constraintStart_toStartOf="@+id/txtNickname"
+            app:layout_constraintTop_toBottomOf="@+id/txtNickname" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            app:layout_constraintEnd_toEndOf="@+id/txtEditNickname"
+            app:layout_constraintStart_toStartOf="@+id/txtEditNickname"
+            app:layout_constraintTop_toBottomOf="@+id/txtEditNickname">
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="14dp"
+                android:layout_height="0dp"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/txtMake"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/divider"
+                android:layout_alignParentStart="true"
+                android:text="Make" />
+
+            <Spinner
+                android:id="@+id/spinnerMake"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtMake"
+                android:layout_alignEnd="@+id/divider"
+                android:layout_alignParentStart="true"
+                android:entries="@android:array/phoneTypes" />
+
+            <TextView
+                android:id="@+id/txtModel"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/divider"
+                android:layout_alignParentEnd="true"
+                android:text="Model" />
+
+            <Spinner
+                android:id="@+id/spinnerModel"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtModel"
+                android:layout_alignLeft="@+id/divider"
+                android:layout_alignParentEnd="true"
+                android:entries="@android:array/phoneTypes" />
+
+            <TextView
+                android:id="@+id/txtYear"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinnerMake"
+                android:layout_alignRight="@+id/divider"
+                android:layout_alignParentStart="true"
+                android:text="Vehicle Year" />
+
+            <Spinner
+                android:id="@+id/spinnerYear"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtYear"
+                android:layout_alignRight="@+id/divider"
+                android:layout_alignParentStart="true"
+                android:entries="@android:array/phoneTypes" />
+
+            <TextView
+                android:id="@+id/txtColor"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinnerModel"
+                android:layout_alignLeft="@+id/divider"
+                android:layout_alignParentEnd="true"
+                android:text="Color" />
+
+            <Spinner
+                android:id="@+id/spinnerColor"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtColor"
+                android:layout_alignLeft="@+id/divider"
+                android:layout_alignParentEnd="true"
+                android:entries="@android:array/phoneTypes" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtPlateState"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/dp_five"
+            android:text="Licence Plate State"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+        <TextView
+            android:id="@+id/txtPlateNo"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_five"
+            android:layout_marginTop="12dp"
+            android:text="Licence Plate No."
+            app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
+            app:layout_constraintStart_toEndOf="@+id/txtPlateState"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+
+        <Spinner
+            android:id="@+id/spinnerPlateState"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_zero"
+            android:layout_marginEnd="@dimen/dp_five"
+            android:entries="@android:array/phoneTypes"
+            app:layout_constraintBottom_toBottomOf="@+id/txtEditPlateNo"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/txtPlateState"
+            app:layout_constraintTop_toBottomOf="@+id/txtPlateState" />
+
+        <EditText
+            android:id="@+id/txtEditPlateNo"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_five"
+            android:ems="10"
+            android:hint="Add Number"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="@+id/txtPlateNo"
+            app:layout_constraintStart_toEndOf="@+id/spinnerPlateState"
+            app:layout_constraintTop_toBottomOf="@+id/txtPlateNo" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50159746" />
+
+        <TextView
+            android:id="@+id/txtPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:text="Make this Vehicle Primary"
+            app:layout_constraintEnd_toStartOf="@+id/switchPrimary"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@+id/spinnerPlateState"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerPlateState" />
+
+        <Switch
+            android:id="@+id/switchPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/txtEditPlateNo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txtPrimary"
+            app:layout_constraintTop_toTopOf="@+id/txtPrimary" />
+
+        <Button
+            android:id="@+id/btnAddVehicle"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="Add Vehicle"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@+id/switchPrimary"
+            app:layout_constraintStart_toStartOf="@+id/txtPrimary"
+            app:layout_constraintTop_toBottomOf="@+id/txtPrimary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

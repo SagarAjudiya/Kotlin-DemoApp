@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".components.SnackBar">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/normalSnackBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/normal_snackbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/dp_fifty"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/actionSnackBar"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/normalSnackBar"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:text="@string/action_snackbar"
+            app:layout_constraintStart_toStartOf="@id/normalSnackBar"
+            app:layout_constraintEnd_toEndOf="@id/normalSnackBar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/customSnackBar"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_snackbar"
+            app:layout_constraintTop_toBottomOf="@id/actionSnackBar"
+            android:layout_marginTop="@dimen/dp_twenty"
+            app:layout_constraintStart_toStartOf="@id/actionSnackBar"
+            app:layout_constraintEnd_toEndOf="@id/actionSnackBar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

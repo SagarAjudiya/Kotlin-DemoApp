@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.go_tour.GoTourUpcoming">
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_ten"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="?attr/homeAsUpIndicator" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upcoming_tour"
+            android:textSize="@dimen/_30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imgBack"
+            app:layout_constraintEnd_toStartOf="@id/imgMenu"
+            app:layout_constraintStart_toEndOf="@id/imgBack"
+            app:layout_constraintTop_toTopOf="@id/imgBack" />
+
+        <ImageButton
+            android:id="@+id/imgMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_zero"
+            android:layout_marginEnd="@dimen/dp_ten"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title"
+            app:srcCompat="@drawable/icon_menu" />
+
+        <ImageButton
+            android:id="@+id/btnSun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_twenty"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:onClick="selectImage"
+            android:background="@drawable/cornered_back"
+            android:backgroundTint="@color/light_grey"
+            android:padding="@dimen/_15dp"
+            app:layout_constraintEnd_toStartOf="@id/btnPlane"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:srcCompat="@drawable/icon_sun" />
+
+        <ImageButton
+            android:id="@+id/btnPlane"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_zero"
+            android:background="@drawable/cornered_back"
+            android:onClick="selectImage"
+            android:backgroundTint="@color/light_grey"
+            android:padding="@dimen/_15dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnSun"
+            app:layout_constraintEnd_toStartOf="@id/btnBoat"
+            app:layout_constraintStart_toEndOf="@id/btnSun"
+            app:layout_constraintTop_toTopOf="@id/btnSun"
+            app:srcCompat="@drawable/icon_plane" />
+
+        <ImageButton
+            android:id="@+id/btnBoat"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_zero"
+            android:background="@drawable/cornered_back"
+            android:onClick="selectImage"
+            android:backgroundTint="@color/light_grey"
+            android:padding="@dimen/_15dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnPlane"
+            app:layout_constraintEnd_toStartOf="@id/btnBus"
+            app:layout_constraintStart_toEndOf="@id/btnPlane"
+            app:layout_constraintTop_toTopOf="@id/btnPlane"
+            app:srcCompat="@drawable/icon_boat" />
+
+        <ImageButton
+            android:id="@+id/btnBus"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_zero"
+            android:background="@drawable/cornered_back"
+            android:backgroundTint="@color/light_grey"
+            android:onClick="selectImage"
+            android:padding="@dimen/_15dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnBoat"
+            app:layout_constraintEnd_toStartOf="@id/btnBike"
+            app:layout_constraintStart_toEndOf="@id/btnBoat"
+            app:layout_constraintTop_toTopOf="@id/btnBoat"
+            app:srcCompat="@drawable/icon_bus" />
+
+        <ImageButton
+            android:id="@+id/btnBike"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_zero"
+            android:layout_marginEnd="@dimen/dp_twenty"
+            android:background="@drawable/cornered_back"
+            android:onClick="selectImage"
+            android:backgroundTint="@color/light_grey"
+            android:padding="@dimen/_15dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnBus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBus"
+            app:layout_constraintTop_toTopOf="@id/btnBus"
+            app:srcCompat="@drawable/icon_bike" />
+
+
+        <TextView
+            android:id="@+id/txtNextTour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_twenty"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:text="@string/next_tour"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSun" />
+
+        <LinearLayout
+            android:id="@+id/nextTourLayout"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_twenty"
+            android:layout_marginTop="@dimen/dp_ten"
+            android:background="@drawable/cornered_back"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_twenty"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtNextTour">
+
+            <TextView
+                android:id="@+id/txtStartDate"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/start_date" />
+
+            <ImageView
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:rotation="90"
+                android:src="@drawable/icon_plane"
+                app:tint="@color/orange" />
+
+            <TextView
+                android:id="@+id/txtEndDate"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/start_date" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_twenty"
+            android:layout_marginTop="@dimen/dp_twenty"
+            android:text="@string/history"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nextTourLayout" />
+
+        <ScrollView
+            android:id="@+id/scrollHistory"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_zero"
+            android:layout_margin="@dimen/dp_twenty"
+            app:layout_constraintBottom_toTopOf="@id/bottomNav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtHistory">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/cardPortugal"
+                    layout="@layout/tour_card"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <include
+                    android:id="@+id/cardLisbon"
+                    layout="@layout/tour_card"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardPortugal" />
+
+                <include
+                    android:id="@+id/cardUSA"
+                    layout="@layout/tour_card"
+                    android:layout_width="@dimen/dp_zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_twenty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cardLisbon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="@dimen/dp_fifty"
+            android:layout_marginHorizontal="@dimen/dp_twenty"
+            android:layout_marginBottom="@dimen/dp_twenty"
+            android:background="@drawable/cornered_back"
+            app:elevation="@dimen/dp_zero"
+            app:itemIconTint="@drawable/nav_item_state"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            app:tint="@color/orange" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

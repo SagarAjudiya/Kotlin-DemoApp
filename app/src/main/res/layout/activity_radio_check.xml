@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".components.RadioCheck">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/verticalGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/radioBarrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="txtRadioHeader, genderGroup, clearRadioButton, hobbyHeader, readingCheck, moviesCheck, listenCheck, playingCheck" />
+
+        <TextView
+            android:id="@+id/txtRadioHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_fifty"
+            android:text="@string/select_gender"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/genderGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_ten"
+            app:layout_constraintStart_toStartOf="@+id/verticalGuide"
+            app:layout_constraintTop_toBottomOf="@+id/txtRadioHeader">
+
+            <RadioButton
+                android:id="@+id/maleRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/male"
+                android:layoutDirection="rtl" />
+
+            <RadioButton
+                android:id="@+id/femaleRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/female"
+                android:paddingLeft="@dimen/dp_ten"
+                android:button="@drawable/custom_radio_button" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtRadioStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status"
+            app:layout_constraintStart_toStartOf="@id/radioBarrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtRadioHeader" />
+
+        <TextView
+            android:id="@+id/selectedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_selected"
+            app:layout_constraintTop_toBottomOf="@+id/txtRadioStatus"
+            app:layout_constraintStart_toStartOf="@id/txtRadioStatus" />
+
+        <Button
+            android:id="@+id/clearRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_selection"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide"
+            app:layout_constraintTop_toBottomOf="@id/genderGroup" />
+
+        <TextView
+            android:id="@+id/hobbyHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_hobby"
+            android:layout_marginTop="@dimen/dp_fifty"
+            app:layout_constraintTop_toBottomOf="@id/clearRadioButton"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide" />
+
+        <CheckBox
+            android:id="@+id/readingCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reading"
+            android:layout_marginTop="@dimen/dp_ten"
+            app:layout_constraintTop_toBottomOf="@+id/hobbyHeader"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide" />
+
+        <CheckBox
+            android:id="@+id/moviesCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:text="@string/watching_movies"
+            app:layout_constraintTop_toBottomOf="@+id/readingCheck"
+            app:layout_constraintLeft_toLeftOf="@id/verticalGuide" />
+
+        <CheckBox
+            android:id="@+id/listenCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/listening_songs"
+            android:paddingLeft="@dimen/dp_ten"
+            android:button="@drawable/custom_radio_button"
+            app:layout_constraintTop_toBottomOf="@+id/moviesCheck"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide" />
+
+        <CheckBox
+            android:id="@+id/playingCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/playing_cricket"
+            app:layout_constraintTop_toBottomOf="@+id/listenCheck"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide" />
+
+        <Button
+            android:id="@+id/clearCheckBox"
+            android:layout_width="@dimen/dp_zero"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_selection"
+            app:layout_constraintTop_toBottomOf="@id/playingCheck"
+            app:layout_constraintStart_toStartOf="@id/verticalGuide"
+            app:layout_constraintEnd_toEndOf="@id/radioBarrier" />
+
+        <TextView
+            android:id="@+id/txtCheckStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status"
+            app:layout_constraintTop_toTopOf="@id/hobbyHeader"
+            app:layout_constraintStart_toStartOf="@id/radioBarrier"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txtSelectCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_selected"
+            app:layout_constraintStart_toStartOf="@+id/txtCheckStatus"
+            app:layout_constraintTop_toBottomOf="@+id/txtCheckStatus" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
