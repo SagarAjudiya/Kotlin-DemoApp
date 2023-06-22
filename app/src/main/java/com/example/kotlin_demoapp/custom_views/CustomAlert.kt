@@ -1,4 +1,4 @@
-package com.example.kotlin_demoapp.custom_classes
+package com.example.kotlin_demoapp.custom_views
 
 import android.app.Dialog
 import android.content.Context

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import com.example.kotlin_demoapp.screens.AccountSecurity
@@ -12,7 +13,9 @@ import com.example.kotlin_demoapp.activity.LinearLayout
 import com.example.kotlin_demoapp.activity.PlaceholderActivity
 import com.example.kotlin_demoapp.activity.RelativeLayout
 import com.example.kotlin_demoapp.activity.components.ComponentActivity
+import com.example.kotlin_demoapp.activity.intent.ImplicitIntent
 import com.example.kotlin_demoapp.databinding.ActivityMainBinding
+import com.example.kotlin_demoapp.examples.matrix.Main
 import com.example.kotlin_demoapp.screens.ParkingCitation
 import com.example.kotlin_demoapp.screens.go_tour.GoTourLogin
 import com.example.kotlin_demoapp.screens.on_cloud.activity.OnCloudActivity
@@ -27,6 +30,10 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        if (intent.extras?.getBoolean("from_notification") == true) {
+                startActivity(Intent(this, ImplicitIntent::class.java))
+        }
 
         binding.btnLinearLayout.setOnClickListener(this)
         binding.btnRelativeLayout.setOnClickListener(this)
@@ -51,5 +58,15 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             binding.btnParkingCitation.id -> startActivity(Intent(this, ParkingCitation::class.java))
             binding.btnOnCloud.id -> startActivity(Intent(this, OnCloudActivity::class.java))
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("TAG", "onStop: ")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("TAG", "onDestroy: ")
     }
 }

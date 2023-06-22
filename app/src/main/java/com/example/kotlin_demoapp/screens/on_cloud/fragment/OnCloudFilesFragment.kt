@@ -1,6 +1,7 @@
 package com.example.kotlin_demoapp.screens.on_cloud.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
