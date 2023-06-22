@@ -21,15 +21,14 @@ class FragmentBottomNavigation : AppCompatActivity() {
         replaceFragment(HomeFragment())
 
         binding.bottomNavigationBar.setOnItemSelectedListener {
-            when(it.itemId){
+            when (it.itemId) {
                 R.id.homeNavigation -> replaceFragment(HomeFragment())
                 R.id.settingNavigation -> replaceFragment(SettingFragment())
                 R.id.notificationNavigation -> replaceFragment(NotificationFragment())
                 else -> replaceFragment(HomeFragment())
-             }
+            }
             true
         }
-
 //        binding.bottomNavigationBar.getOrCreateBadge(R.id.homeNavigation)
     }
 

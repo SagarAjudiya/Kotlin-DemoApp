@@ -14,7 +14,7 @@ import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.Toast
 import com.example.kotlin_demoapp.R
-import com.example.kotlin_demoapp.custom_classes.CustomAlert
+import com.example.kotlin_demoapp.custom_views.CustomAlert
 import com.example.kotlin_demoapp.databinding.ActivityGoTourSignUpBinding
 import com.google.android.material.snackbar.Snackbar
 

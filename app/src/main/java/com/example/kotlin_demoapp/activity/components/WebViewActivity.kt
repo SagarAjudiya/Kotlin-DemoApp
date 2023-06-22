@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.BaseColumns
 import android.view.View
 import android.view.View.OnClickListener
+import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -70,6 +71,16 @@ class WebViewActivity : AppCompatActivity(), OnClickListener {
                 view?.loadUrl(request?.url.toString())
                 return true
             }
+
+            override fun onReceivedError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError?
+            ) {
+                super.onReceivedError(view, request, error)
+                finish()
+            }
+
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 binding.progressBar.visibility = View.VISIBLE

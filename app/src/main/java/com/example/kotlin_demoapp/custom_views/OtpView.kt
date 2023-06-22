@@ -29,7 +29,7 @@ class OtpView : LinearLayout {
     private var borderColor = 0
     private var customPadding = 0
     private var customMargin = 0
-    private val OTPList = ArrayList<EditText>()
+    private val otpList = ArrayList<EditText>()
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
@@ -67,24 +67,24 @@ class OtpView : LinearLayout {
         for (i in 1..otpCount) {
             addEditText()
         }
-        OTPList.forEachIndexed { index, editText ->
-            if (index < OTPList.count() - 1 && index > 0) {
+        otpList.forEachIndexed { index, editText ->
+            if (index < otpList.count() - 1 && index > 0) {
                 editText.addTextChangedListener(
                     CustomTextWatcher(
                         editText,
-                        OTPList[index + 1]
+                        otpList[index + 1]
                     )
                 )
-                editText.setOnKeyListener(CustomKeyEvent(editText, OTPList[index - 1]))
+                editText.setOnKeyListener(CustomKeyEvent(editText, otpList[index - 1]))
             } else if (index == 0) {
                 editText.addTextChangedListener(
                     CustomTextWatcher(
                         editText,
-                        OTPList[index + 1]
+                        otpList[1]
                     )
                 )
             } else {
-                editText.setOnKeyListener(CustomKeyEvent(editText, OTPList[index - 1]))
+                editText.setOnKeyListener(CustomKeyEvent(editText, otpList[index - 1]))
                 editText.addTextChangedListener(CustomTextWatcher(editText, null) {
                     (context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
                         windowToken,
@@ -115,7 +115,7 @@ class OtpView : LinearLayout {
             setColor(backgroundColor)
             setStroke(borderWidth, borderColor)
         }
-        OTPList.add(editText)
+        otpList.add(editText)
         addView(editText)
     }
 }
