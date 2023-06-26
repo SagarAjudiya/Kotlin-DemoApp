@@ -12,11 +12,11 @@ import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.adapter.LinearRecyclerAdapter
 import com.example.kotlin_demoapp.adapter.StaggeredRecyclerAdapter
 import com.example.kotlin_demoapp.databinding.FragmentStaggeredRecyclerBinding
+import com.example.kotlin_demoapp.helper.Helper
 
 class StaggeredRecyclerFragment : Fragment() {
 
     private lateinit var binding: FragmentStaggeredRecyclerBinding
-    private lateinit var cityArray: ArrayList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,10 +24,7 @@ class StaggeredRecyclerFragment : Fragment() {
     ): View? {
 
         binding = FragmentStaggeredRecyclerBinding.inflate(layoutInflater)
-
-        cityArray = arrayListOf("London", "New York\n\n\n\n\n\nNey York", "Surat\n\n\n\n\n\nSurat", "Delhi\n\nDelhi", "Tokyo", "Dubai", "Mumbai", "Ahmedabad\n\n\n\n\nAhmedabad")
-        binding.staggeredRecycler.layoutManager = StaggeredGridLayoutManager(2,RecyclerView.VERTICAL)
-        binding.staggeredRecycler.adapter = StaggeredRecyclerAdapter(cityArray)
+        binding.staggeredRecycler.adapter = StaggeredRecyclerAdapter(Helper.getCityStaggeredList())
 
         return binding.root
     }

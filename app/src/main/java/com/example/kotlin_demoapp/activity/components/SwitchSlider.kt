@@ -20,8 +20,7 @@ class SwitchSlider : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySwitchSliderBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.switchEnable.setOnCheckedChangeListener { _, isChecked ->
             when (isChecked) {
@@ -40,7 +39,6 @@ class SwitchSlider : AppCompatActivity() {
         binding.seekBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
-                // write custom code for progress is changed
                 binding.editableImage.apply {
                     layoutParams.width = progress * 10
                     layoutParams.height = progress * 10
@@ -51,25 +49,20 @@ class SwitchSlider : AppCompatActivity() {
                 previousProgress = progress
             }
 
-            override fun onStartTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is started
-            }
+            override fun onStartTrackingTouch(seek: SeekBar) {}
 
             override fun onStopTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is stopped
                 Toast.makeText(
                     this@SwitchSlider,
                     "Progress is: " + seek.progress + "%",
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        }
-        )
+        })
 
         binding.seekBarDiscrete.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
-                // write custom code for progress is changed
                 binding.editableImage.apply {
                     layoutParams.width = progress * 100
                     layoutParams.height = progress * 100
@@ -79,20 +72,15 @@ class SwitchSlider : AppCompatActivity() {
                 binding.progressBar.progress = progress * 10
             }
 
-            override fun onStartTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is started
-            }
+            override fun onStartTrackingTouch(seek: SeekBar) {}
 
             override fun onStopTrackingTouch(seek: SeekBar) {
-                // write custom code for progress is stopped
                 Toast.makeText(
                     this@SwitchSlider,
                     "Progress is: " + seek.progress + "%",
                     Toast.LENGTH_SHORT
                 ).show()
             }
-        }
-        )
-
+        })
     }
 }

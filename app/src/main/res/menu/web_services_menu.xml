@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/userFragment"
+        android:title="@string/user"
+        android:icon="@drawable/icon_person"/>
+
+    <item
+        android:id="@+id/movieFragment"
+        android:title="@string/movies"
+        android:icon="@drawable/icon_movie"/>
+
+    <item
+        android:id="@+id/employeeFragment"
+        android:title="@string/employee"
+        android:icon="@drawable/icon_employee"/>
+
+</menu>

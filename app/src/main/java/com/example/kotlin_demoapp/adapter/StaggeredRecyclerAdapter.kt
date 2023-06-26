@@ -10,10 +10,12 @@ import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_demoapp.R
 
-class StaggeredRecyclerAdapter(private val recycleData: ArrayList<String>): RecyclerView.Adapter<StaggeredRecyclerAdapter.RecyclerViewHolder>() {
+class StaggeredRecyclerAdapter(private val recycleData: ArrayList<String>) :
+    RecyclerView.Adapter<StaggeredRecyclerAdapter.RecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item,parent,false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.recycler_item, parent, false)
         val imgCard = itemView.findViewById<CardView>(R.id.cardImage)
         val txtTitle = itemView.findViewById<TextView>(R.id.txtRecycleTitle)
 

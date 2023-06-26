@@ -10,8 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="20dp"
-        tools:context=".screens.go_tour.GoTourLogin">
+        android:layout_marginHorizontal="20dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/leftGuide"
@@ -29,14 +28,14 @@
 
         <ImageView
             android:id="@+id/loginLogo"
-            android:layout_width="@dimen/dp_hundred"
-            android:layout_height="@dimen/dp_hundred"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_fifty"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="@id/rightGuide"
             app:layout_constraintStart_toStartOf="@id/leftGuide"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/city_image" />
+            android:src="@drawable/img_go_tour_logo" />
 
         <TextView
             android:id="@+id/txtSignUp"
@@ -45,7 +44,6 @@
             android:layout_marginTop="@dimen/dp_thirty"
             android:text="@string/sign_up"
             android:textSize="@dimen/_30sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/rightGuide"
             app:layout_constraintStart_toStartOf="@id/leftGuide"
             app:layout_constraintTop_toBottomOf="@id/loginLogo" />
@@ -178,7 +176,6 @@
             android:text="@string/sign_up"
             android:textSize="@dimen/_15sp"
             android:textAllCaps="false"
-            android:textStyle="bold"
             android:backgroundTint="@color/orange"
             app:layout_constraintEnd_toEndOf="@id/rightGuide"
             app:layout_constraintStart_toStartOf="@id/leftGuide"

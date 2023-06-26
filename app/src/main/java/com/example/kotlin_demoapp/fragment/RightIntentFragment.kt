@@ -10,14 +10,14 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
-import com.example.kotlin_demoapp.callbacks.ChangeNameListner
+import com.example.kotlin_demoapp.callbacks.ChangeNameListener
 import com.example.kotlin_demoapp.databinding.FragmentRightIntentBinding
 
 class RightIntentFragment : Fragment() {
 
     private lateinit var binding: FragmentRightIntentBinding
     private val TAG = "LIFECYCLE"
-    private lateinit var changeNameListner: ChangeNameListner
+    private lateinit var changeNameListener: ChangeNameListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,7 @@ class RightIntentFragment : Fragment() {
 
         binding = FragmentRightIntentBinding.inflate(layoutInflater)
         Log.d(TAG, "onCreateView")
-        changeNameListner = activity as ChangeNameListner
+        changeNameListener = activity as ChangeNameListener
 
         setFragmentResultListener(
             "LeftFragment"
@@ -54,7 +54,7 @@ class RightIntentFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         val result = Bundle()
-        changeNameListner.nameEvent(binding.editName.text.toString().ifEmpty {""}, binding.editSurname.text.toString().ifEmpty {""})
+        changeNameListener.nameEvent(binding.editName.text.toString().ifEmpty {""}, binding.editSurname.text.toString().ifEmpty {""})
         result.putString("name", binding.editName.text.toString())
         result.putString("surname", binding.editSurname.text.toString())
         setFragmentResult("RightFragment", result)

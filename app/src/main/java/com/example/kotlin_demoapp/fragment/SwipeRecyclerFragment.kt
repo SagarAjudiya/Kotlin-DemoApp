@@ -1,5 +1,6 @@
 package com.example.kotlin_demoapp.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_demoapp.adapter.SwipeRecyclerAdapter
 import com.example.kotlin_demoapp.databinding.FragmentSwipeRecyclerViewBinding
+import com.example.kotlin_demoapp.helper.Helper
 import com.google.android.material.snackbar.Snackbar
 
 class SwipeRecyclerFragment : Fragment() {
@@ -25,8 +27,7 @@ class SwipeRecyclerFragment : Fragment() {
     ): View? {
         binding = FragmentSwipeRecyclerViewBinding.inflate(layoutInflater)
 
-        cityArray = arrayListOf("London", "New York", "Surat", "Delhi", "Tokyo", "Dubai", "Mumbai", "Ahmedabad")
-        binding.swipeRecyclerView.layoutManager = LinearLayoutManager(container?.context)
+        cityArray = Helper.getCityNameList()
         swipeAdapter = SwipeRecyclerAdapter(cityArray)
         binding.swipeRecyclerView.adapter = swipeAdapter
 
@@ -39,16 +40,18 @@ class SwipeRecyclerFragment : Fragment() {
                 return false
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 deletedData = cityArray[position]
                 cityArray.removeAt(position)
                 swipeAdapter.notifyDataSetChanged()
 
-                Snackbar.make(binding.swipeRecyclerView,deletedData + " deleted", Snackbar.LENGTH_LONG).setAction("UNDO",View.OnClickListener {
-                    cityArray.add(position,deletedData)
+                Snackbar.make(binding.swipeRecyclerView, "$deletedData deleted", Snackbar.LENGTH_LONG).setAction("UNDO"
+                ) {
+                    cityArray.add(position, deletedData)
                     swipeAdapter.notifyDataSetChanged()
-                }).show()
+                }.show()
             }
         }).attachToRecyclerView(binding.swipeRecyclerView)
         return binding.root

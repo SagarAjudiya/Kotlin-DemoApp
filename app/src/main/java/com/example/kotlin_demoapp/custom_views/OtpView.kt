@@ -21,7 +21,6 @@ class OtpView : LinearLayout {
 
     private lateinit var editText: EditText
     private lateinit var backDrawable: GradientDrawable
-    private val textCount: Int by lazy { 1 }
     private var otpCount = 1
     private var customTextColor = 0
     private var backgroundColor = 0
@@ -34,7 +33,7 @@ class OtpView : LinearLayout {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         getAttrFromXML(attrs, context)
-        initOTP(context, attrs)
+        initOTP(context)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -43,7 +42,7 @@ class OtpView : LinearLayout {
         defStyleAttr
     ) {
         getAttrFromXML(attrs, context)
-        initOTP(context, attrs)
+        initOTP(context)
     }
 
     private fun getAttrFromXML(attrs: AttributeSet?, context: Context) {
@@ -63,7 +62,7 @@ class OtpView : LinearLayout {
         attrData.recycle()
     }
 
-    private fun initOTP(context: Context, attrs: AttributeSet?) {
+    private fun initOTP(context: Context) {
         for (i in 1..otpCount) {
             addEditText()
         }

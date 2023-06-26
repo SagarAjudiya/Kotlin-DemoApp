@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_demoapp.databinding.RecyclerItemBinding
 import com.example.kotlin_demoapp.model.ImageHolder
 
-class ImagePickerRecyclerAdapter: ListAdapter<ImageHolder,ImagePickerRecyclerAdapter.ImagePickerViewHolder>(ImagePickerItemDiffCallBack()) {
+class ImagePickerRecyclerAdapter :
+    ListAdapter<ImageHolder, ImagePickerRecyclerAdapter.ImagePickerViewHolder>(
+        ImagePickerItemDiffCallBack()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagePickerViewHolder {
         return ImagePickerViewHolder(
@@ -27,7 +30,8 @@ class ImagePickerRecyclerAdapter: ListAdapter<ImageHolder,ImagePickerRecyclerAda
         holder.bind(getItem(position))
     }
 
-    class ImagePickerViewHolder(private val binding: RecyclerItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ImagePickerViewHolder(private val binding: RecyclerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(imageHolder: ImageHolder) {
             binding.txtRecycleTitle.visibility = View.GONE
@@ -39,7 +43,7 @@ class ImagePickerRecyclerAdapter: ListAdapter<ImageHolder,ImagePickerRecyclerAda
         }
     }
 
-    class ImagePickerItemDiffCallBack: DiffUtil.ItemCallback<ImageHolder>() {
+    class ImagePickerItemDiffCallBack : DiffUtil.ItemCallback<ImageHolder>() {
         override fun areItemsTheSame(oldItem: ImageHolder, newItem: ImageHolder): Boolean {
             return oldItem.imageURI == newItem.imageURI
         }

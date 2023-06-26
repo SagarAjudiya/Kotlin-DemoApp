@@ -1,8 +1,8 @@
 package com.example.kotlin_demoapp.screens.go_tour
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,8 +11,13 @@ import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.view.MotionEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.custom_views.CustomAlert
 import com.example.kotlin_demoapp.databinding.ActivityGoTourSignUpBinding
@@ -26,8 +31,7 @@ class GoTourSignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityGoTourSignUpBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         val spannableString = SpannableString(binding.txtTermCondition.text.toString())
         val termString = "term to use"
@@ -35,7 +39,7 @@ class GoTourSignUp : AppCompatActivity() {
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 Toast.makeText(applicationContext, "Term and Conditions", Toast.LENGTH_LONG).show()
-                view.invalidate()
+                binding.root.invalidate()
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -49,7 +53,7 @@ class GoTourSignUp : AppCompatActivity() {
             clickableSpan, startIndex, startIndex + termString.length,
             Spanned.SPAN_INCLUSIVE_INCLUSIVE
         )
-        binding.txtTermCondition.highlightColor = resources.getColor(R.color.transparent)
+        binding.txtTermCondition.highlightColor = ContextCompat.getColor(this, R.color.transparent)
         binding.txtTermCondition.movementMethod = LinkMovementMethod.getInstance()
         binding.txtTermCondition.text = spannableString
 
@@ -57,15 +61,19 @@ class GoTourSignUp : AppCompatActivity() {
             CustomAlert(this, "Confirm Sign Up", "Confirm all details you have entered.") {
                 Snackbar.make(binding.root, "Sign Up Successfully.", Snackbar.LENGTH_SHORT).show()
                 Handler(Looper.getMainLooper()).postDelayed({
-                    startActivity(
-                        Intent(
-                            this,
-                            GoTourUpcoming::class.java
-                        )
-                    )
+                    startActivity(Intent(this, GoTourUpcoming::class.java))
                 }, 1000)
-
             }.show()
         }
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (currentFocus != null) {
+            val inputMethodManager =
+                this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, 0)
+            (currentFocus as? EditText)?.clearFocus()
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }

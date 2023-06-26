@@ -11,14 +11,13 @@ import java.time.Duration
 
 class Toast : AppCompatActivity() {
 
-    lateinit var binding: ActivityToastBinding
+    private lateinit var binding: ActivityToastBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityToastBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.btnNormalToast.setOnClickListener {
             Toast.makeText(this,"Normal Toast",Toast.LENGTH_SHORT).show()
@@ -33,7 +32,7 @@ class Toast : AppCompatActivity() {
 
         binding.btnCustomToast.setOnClickListener {
             Toast(this).apply {
-                setView(View.inflate(this@Toast,R.layout.custom_toast,findViewById(R.id.customLayout)))
+                view = View.inflate(this@Toast,R.layout.custom_toast,findViewById(R.id.customLayout))
                 duration = Toast.LENGTH_SHORT
                 setGravity(Gravity.CENTER,0,0)
                 show()

@@ -16,9 +16,7 @@ class FAB : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityFabBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
+        setContentView(binding.root)
 
         binding.extendedClear.visibility = View.GONE
         binding.txtClose.visibility = View.GONE

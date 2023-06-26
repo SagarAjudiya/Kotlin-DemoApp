@@ -19,8 +19,6 @@ class EditText : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //TODO: Can not change outline of edittext
-
         binding.editTextTextEmailAddress.addTextChangedListener {
             val text = it.toString().trim()
             if (text.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(text).matches()) {
@@ -30,9 +28,9 @@ class EditText : AppCompatActivity() {
             }
         }
 
-        binding.editTextPostalAddress.setOnFocusChangeListener { view, b ->
+        binding.editTextPostalAddress.setOnFocusChangeListener { _, hasFocus ->
             run {
-                if (!b && binding.editTextPostalAddress.text.toString().trim().isEmpty()) {
+                if (!hasFocus && binding.editTextPostalAddress.text.toString().trim().isEmpty()) {
                     binding.inputLayoutPostal.error = "required*"
                 } else {
                     binding.inputLayoutPostal.error = null
@@ -40,7 +38,7 @@ class EditText : AppCompatActivity() {
             }
         }
 
-        binding.editTextPhone.doOnTextChanged { text, start, before, count ->
+        binding.editTextPhone.doOnTextChanged { _, _, _, count ->
             if (count == 0 || count > 10) {
                 binding.inputLayoutTextPhone.error = "Set correct phone number"
             } else {

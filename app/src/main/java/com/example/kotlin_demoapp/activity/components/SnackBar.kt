@@ -21,17 +21,16 @@ class SnackBar : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivitySnackBarBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.normalSnackBar.setOnClickListener {
-            Snackbar.make(it,"Normal SnackBar",Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, "Normal SnackBar", Snackbar.LENGTH_LONG).show()
         }
 
         binding.actionSnackBar.setOnClickListener {
-            Snackbar.make(it,"Action SnackBar",Snackbar.LENGTH_INDEFINITE).apply {
+            Snackbar.make(it, "Action SnackBar", Snackbar.LENGTH_INDEFINITE).apply {
                 setAction("Dismiss", View.OnClickListener {
-                    Toast.makeText(this@SnackBar,"SnackBar Dismissed",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@SnackBar, "SnackBar Dismissed", Toast.LENGTH_SHORT).show()
                 })
                 setActionTextColor(getColor(R.color.black))
                 setBackgroundTint(getColor(R.color.light_orange))
@@ -42,14 +41,14 @@ class SnackBar : AppCompatActivity() {
         }
 
         binding.customSnackBar.setOnClickListener {
-            val view = layoutInflater.inflate(R.layout.custom_snackbar,null)
-            val snackBar = Snackbar.make(it,"",Snackbar.LENGTH_INDEFINITE)
+            val view = layoutInflater.inflate(R.layout.custom_snackbar, null)
+            val snackBar = Snackbar.make(it, "", Snackbar.LENGTH_INDEFINITE)
             val snackBarLayout = snackBar.view as SnackbarLayout
 
-            snackBarLayout.setPadding(0,0,0,0)
+            snackBarLayout.setPadding(0, 0, 0, 0)
 
             view.findViewById<Button>(R.id.btnDismiss).setOnClickListener {
-                Toast.makeText(this,"Dismissed",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Dismissed", Toast.LENGTH_SHORT).show()
                 snackBar.dismiss()
             }
             snackBarLayout.addView(view)

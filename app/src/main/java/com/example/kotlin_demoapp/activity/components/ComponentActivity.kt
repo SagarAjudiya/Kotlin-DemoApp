@@ -22,7 +22,7 @@ class ComponentActivity : AppCompatActivity() {
         binding = ActivityComponentsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.componentRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.btnBack.setOnClickListener { finish() }
         binding.componentRecyclerView.adapter = ComponentRecyclerAdapter(this, componentList)
         binding.componentRecyclerView.addItemDecoration(object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(

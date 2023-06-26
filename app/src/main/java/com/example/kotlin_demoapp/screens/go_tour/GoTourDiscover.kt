@@ -20,78 +20,101 @@ class GoTourDiscover : AppCompatActivity() {
     private lateinit var region: ArrayList<Button>
     private lateinit var user: ArrayList<Button>
     private lateinit var days: ArrayList<Button>
+    private var selectedRegion = mutableSetOf<Chip>()
+    private var selectedUser = mutableSetOf<Chip>()
+    private var selectedMonth = mutableSetOf<Chip>()
+    private var selectedDays = mutableSetOf<Chip>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityGoTourDiscoverBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        region = arrayListOf(binding.btnAsia, binding.btnAfrica, binding.btnEurope, binding.btnAmerica)
-        user = arrayListOf(binding.btnPopular, binding.btnBestChoice, binding.btnLastTrip, binding.btnFiveStar)
-        months = arrayListOf(binding.btnJan, binding.btnFeb, binding.btnMarch, binding.btnApril, binding.btnMay, binding.btnJune, binding.btnJuly)
-        days = arrayListOf(binding.btnThirtyOrLess, binding.btnFifteenToSeven, binding.btnSevenToFour, binding.btnFiveToTwo, binding.btnTwoToOne)
+        region =
+            arrayListOf(binding.btnAsia, binding.btnAfrica, binding.btnEurope, binding.btnAmerica)
+        user = arrayListOf(
+            binding.btnPopular,
+            binding.btnBestChoice,
+            binding.btnLastTrip,
+            binding.btnFiveStar
+        )
+        months = arrayListOf(
+            binding.btnJan,
+            binding.btnFeb,
+            binding.btnMarch,
+            binding.btnApril,
+            binding.btnMay,
+            binding.btnJune,
+            binding.btnJuly
+        )
+        days = arrayListOf(
+            binding.btnThirtyOrLess,
+            binding.btnFifteenToSeven,
+            binding.btnSevenToFour,
+            binding.btnFiveToTwo,
+            binding.btnTwoToOne
+        )
 
         binding.scrollChoice.isVerticalScrollBarEnabled = false
         binding.scrollChipGroup.isHorizontalScrollBarEnabled = false
         binding.scrollPerson.isHorizontalScrollBarEnabled = false
         binding.scrollTime.isHorizontalScrollBarEnabled = false
 
-        region.forEach{
-            deSelectChoice(it)
-        }
-        user.forEach{
-            deSelectChoice(it)
-        }
-        months.forEach{
-            deSelectChoice(it)
-        }
-        days.forEach {
-            deSelectChoice(it)
-        }
-
-        binding.imgBack.setOnClickListener {
-            finish()
-        }
+        region.forEach { deSelectChoice(it) }
+        user.forEach { deSelectChoice(it) }
+        months.forEach { deSelectChoice(it) }
+        days.forEach { deSelectChoice(it) }
+        binding.imgBack.setOnClickListener { finish() }
     }
 
     fun selectImage(view: View) {
-        var  btn = view as? Button
+        var btn = view as? Button
         btn = btn ?: return
-        when(btn){
+        when (btn) {
             in region -> {
-                region.forEach{
-                    deSelectChoice(it)
+                region.forEach { deSelectChoice(it) }
+                selectedRegion.forEach {
+                    binding.filterChipGroup.removeView(it)
                 }
+                selectedRegion.clear()
                 selectChoice(btn)
-                addChip(btn.text.toString())
+                selectedRegion.add(addChip(btn.text.toString()))
             }
+
             in user -> {
-                user.forEach{
-                    deSelectChoice(it)
+                user.forEach { deSelectChoice(it) }
+                selectedUser.forEach {
+                    binding.filterChipGroup.removeView(it)
                 }
+                selectedUser.clear()
                 selectChoice(btn)
-                addChip(btn.text.toString())
+                selectedUser.add(addChip(btn.text.toString()))
             }
+
             in months -> {
-                months.forEach{
-                    deSelectChoice(it)
+                months.forEach { deSelectChoice(it) }
+                selectedMonth.forEach {
+                    binding.filterChipGroup.removeView(it)
                 }
+                selectedMonth.clear()
                 selectChoice(btn)
-                addChip(btn.text.toString())
+                selectedMonth.add(addChip(btn.text.toString()))
             }
+
             in days -> {
-                days.forEach{
-                    deSelectChoice(it)
+                days.forEach { deSelectChoice(it) }
+                selectedDays.forEach {
+                    binding.filterChipGroup.removeView(it)
                 }
+                selectedDays.clear()
                 selectChoice(btn)
-                addChip(btn.text.toString())
+                selectedDays.add(addChip(btn.text.toString()))
             }
         }
     }
 
-    private fun selectChoice(view: Button){
+    private fun selectChoice(view: Button) {
         var buttonDrawable: Drawable = view.background
         buttonDrawable = DrawableCompat.wrap(buttonDrawable)
         DrawableCompat.setTint(buttonDrawable, getColor(R.color.orange))
@@ -99,7 +122,7 @@ class GoTourDiscover : AppCompatActivity() {
         view.setTextColor(getColor(R.color.white))
     }
 
-    private fun deSelectChoice(view: Button){
+    private fun deSelectChoice(view: Button) {
         var buttonDrawable: Drawable = view.background
         buttonDrawable = DrawableCompat.wrap(buttonDrawable)
         DrawableCompat.setTint(buttonDrawable, getColor(R.color.light_grey))
@@ -107,20 +130,23 @@ class GoTourDiscover : AppCompatActivity() {
         view.setTextColor(getColor(R.color.black))
     }
 
-    private fun addChip(text: String) {
+    private fun addChip(title: String): Chip {
         val chip = Chip(this)
         val paddingDp = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, 10f,
             resources.displayMetrics
         ).toInt()
-        chip.chipBackgroundColor = ColorStateList.valueOf(getColor(R.color.orange))
-        chip.setPadding(paddingDp, paddingDp, paddingDp, paddingDp)
-        chip.text = text
-        chip.setCloseIconResource(R.drawable.icon_cancel)
-        chip.isCloseIconVisible = true
-        chip.setOnCloseIconClickListener {
-            binding.filterChipGroup.removeView(chip)
+        chip.apply {
+            chipBackgroundColor = ColorStateList.valueOf(getColor(R.color.orange))
+            setPadding(paddingDp, paddingDp, paddingDp, paddingDp)
+            text = title
+            setCloseIconResource(R.drawable.icon_cancel)
+            isCloseIconVisible = true
+            setOnCloseIconClickListener {
+                binding.filterChipGroup.removeView(chip)
+            }
         }
         binding.filterChipGroup.addView(chip)
+        return chip
     }
 }

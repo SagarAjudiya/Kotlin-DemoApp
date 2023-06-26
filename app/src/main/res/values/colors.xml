@@ -26,6 +26,7 @@
     <color name="yellow">#FFEB3B</color>
     <color name="grey">#AAAAAA</color>
     <color name="dark_grey">#7A7A7A</color>
+    <color name="blur_grey">#507A7A7A</color>
     <color name="blur_white">#BAFFFFFF</color>
     <color name="skyBlue">#38A6DE</color>
     <color name="light_grey">#DADADA</color>
@@ -40,4 +41,10 @@
     <color name="oneCloudPrimary">#38A6DE</color>
     <color name="oneCloudSecondary">#8083A3</color>
     <color name="oneCloudBlue">#1865B1</color>
+
+    <!--  TagB Colors -->
+    <color name="editTextBorder">#4DDEDEDE</color>
+    <color name="deepAquaDark">#065D60</color>
+    <color name="facebookBlue">#3B5999</color>
+    <color name="googleOrange">#D85439</color>
 </resources>

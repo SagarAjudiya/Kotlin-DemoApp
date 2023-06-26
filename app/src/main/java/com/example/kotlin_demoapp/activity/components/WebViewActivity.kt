@@ -81,7 +81,6 @@ class WebViewActivity : AppCompatActivity(), OnClickListener {
                 finish()
             }
 
-
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.btnRefresh.isEnabled = false

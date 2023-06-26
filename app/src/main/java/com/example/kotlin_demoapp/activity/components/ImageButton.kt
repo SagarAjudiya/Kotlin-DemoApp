@@ -14,8 +14,7 @@ class ImageButton : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityImagebuttonBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.imageButton.setOnClickListener {
             Toast.makeText(this, "Image Picked !!", Toast.LENGTH_SHORT).show()

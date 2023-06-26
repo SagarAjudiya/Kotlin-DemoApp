@@ -1,5 +1,10 @@
 package com.example.kotlin_demoapp.enums
 
+import androidx.lifecycle.ViewModelProvider
+import com.example.kotlin_demoapp.activity.PlaceholderActivity
+import com.example.kotlin_demoapp.architecture.ViewModelActivity
+import com.example.kotlin_demoapp.screens.on_cloud.activity.NavigationActivity
+
 enum class Components(val activity: Class<*>) {
     Button(com.example.kotlin_demoapp.activity.components.Button::class.java),
     TextView(com.example.kotlin_demoapp.activity.components.TextView::class.java),
@@ -18,8 +23,11 @@ enum class Components(val activity: Class<*>) {
     RecyclerView(com.example.kotlin_demoapp.activity.components.RecyclerView::class.java),
     ViewPager(com.example.kotlin_demoapp.activity.components.ViewPagerActivity::class.java),
     FragmentBottomNavigation(com.example.kotlin_demoapp.activity.components.FragmentBottomNavigation::class.java),
-    ImagePicker(com.example.kotlin_demoapp.activity.components.ImagePicker::class.java),
+    ImagePicker(com.example.kotlin_demoapp.activity.components.ImagePickerActivity::class.java),
     DataPassingInFragment(com.example.kotlin_demoapp.activity.components.DataPassingInFragment::class.java),
     Intents(com.example.kotlin_demoapp.activity.components.IntentActivity::class.java),
-    WebView(com.example.kotlin_demoapp.activity.components.WebViewActivity::class.java)
+    WebView(com.example.kotlin_demoapp.activity.components.WebViewActivity::class.java),
+    NavigationGraph(NavigationActivity::class.java),
+    Timer(ViewModelActivity::class.java),
+    Placeholder(PlaceholderActivity::class.java)
 }

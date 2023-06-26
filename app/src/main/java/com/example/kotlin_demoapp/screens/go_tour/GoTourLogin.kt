@@ -1,9 +1,13 @@
 package com.example.kotlin_demoapp.screens.go_tour
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin_demoapp.databinding.ActivityGoTourLoginBinding
 
 class GoTourLogin : AppCompatActivity() {
@@ -13,8 +17,7 @@ class GoTourLogin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityGoTourLoginBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.btnSignUp.setOnClickListener {
             startActivity(Intent(this@GoTourLogin, GoTourSignUp::class.java))
@@ -31,5 +34,15 @@ class GoTourLogin : AppCompatActivity() {
         binding.btnGoogleLogin.setOnClickListener {
             startActivity(Intent(this@GoTourLogin, GoTourDiscover::class.java))
         }
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (currentFocus != null) {
+            val inputMethodManager =
+                this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, 0)
+            (currentFocus as? EditText)?.clearFocus()
+        }
+        return super.dispatchTouchEvent(ev)
     }
 }

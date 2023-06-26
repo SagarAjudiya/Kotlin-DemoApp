@@ -7,7 +7,7 @@ import com.example.kotlin_demoapp.adapter.RecyclerTabLayoutAdapter
 import com.example.kotlin_demoapp.databinding.ActivityRecyclerViewBinding
 import com.google.android.material.tabs.TabLayout
 
-class RecyclerView: AppCompatActivity() {
+class RecyclerView : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecyclerViewBinding
     private lateinit var pagerAdapter: RecyclerTabLayoutAdapter
@@ -16,32 +16,29 @@ class RecyclerView: AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityRecyclerViewBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         pagerAdapter = RecyclerTabLayoutAdapter(this)
         binding.recyclerPager.adapter = pagerAdapter
 
-        binding.recyclerTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        binding.recyclerTabLayout.addOnTabSelectedListener(object :
+            TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                val safeTab = tab ?: return
-                binding.recyclerPager.currentItem = safeTab.position
+                binding.recyclerPager.currentItem = tab?.position ?: return
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
-        binding.recyclerPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.recyclerPager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 val tab = binding.recyclerTabLayout.getTabAt(position) ?: return
                 tab.select()
             }
         })
-
     }
 }

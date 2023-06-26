@@ -12,9 +12,7 @@ class RelativeLayout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = RelativeLayoutBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
+        setContentView(binding.root)
 
         binding.checkText.setOnClickListener {
             println("tapped")

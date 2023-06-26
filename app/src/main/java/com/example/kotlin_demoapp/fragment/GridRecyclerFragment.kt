@@ -11,11 +11,11 @@ import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.adapter.GridRecyclerAdapter
 import com.example.kotlin_demoapp.adapter.LinearRecyclerAdapter
 import com.example.kotlin_demoapp.databinding.FragmentGridRecyclerBinding
+import com.example.kotlin_demoapp.helper.Helper
 
 class GridRecyclerFragment : Fragment() {
 
     private lateinit var binding: FragmentGridRecyclerBinding
-    private lateinit var cityArray: ArrayList<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,10 +23,7 @@ class GridRecyclerFragment : Fragment() {
     ): View? {
 
         binding = FragmentGridRecyclerBinding.inflate(layoutInflater)
-
-        cityArray = arrayListOf("London", "New York", "Surat", "Delhi", "Tokyo\n\n\n\n\n\n\nTokyo", "Dubai", "Mumbai", "Ahmedabad", "London", "New York", "Surat", "Delhi", "Tokyo", "Dubai", "Mumbai", "Ahmedabad")
-        binding.gridRecycler.layoutManager = GridLayoutManager(container?.context,2)
-        binding.gridRecycler.adapter = GridRecyclerAdapter(cityArray)
+        binding.gridRecycler.adapter = GridRecyclerAdapter(Helper.getCityArray())
 
         return binding.root
     }

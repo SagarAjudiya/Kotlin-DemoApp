@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.adapter.SearchRecyclerAdapter
 import com.example.kotlin_demoapp.databinding.FragmentSearchRecyclerViewBinding
+import com.example.kotlin_demoapp.helper.Helper
 import com.google.android.material.snackbar.Snackbar
 
 class SearchRecyclerViewFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchRecyclerViewBinding
-    private lateinit var cityArray: ArrayList<String>
+    private lateinit var cityArray: Array<String>
     private lateinit var searchAdapter: SearchRecyclerAdapter
 
     override fun onCreateView(
@@ -23,10 +23,9 @@ class SearchRecyclerViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        cityArray = arrayListOf("London", "New York", "Surat", "Delhi", "Tokyo", "Dubai", "Mumbai", "Ahmedabad")
+        cityArray = Helper.getSiteList()
         searchAdapter = SearchRecyclerAdapter(cityArray)
         binding = FragmentSearchRecyclerViewBinding.inflate(layoutInflater)
-        binding.searchRecyclerView.layoutManager = LinearLayoutManager(container?.context)
         binding.searchRecyclerView.adapter = searchAdapter
 
         binding.searchField.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
@@ -46,7 +45,7 @@ class SearchRecyclerViewFragment : Fragment() {
         val query = newText ?: return
         val filteredList = cityArray.filter {
             it.lowercase().contains(query)
-        } as ArrayList<String>
+        }.toTypedArray()
         if (filteredList.isEmpty()){
             Snackbar.make(this.requireView(),"No Data Found",Snackbar.LENGTH_SHORT).show()
         } else {

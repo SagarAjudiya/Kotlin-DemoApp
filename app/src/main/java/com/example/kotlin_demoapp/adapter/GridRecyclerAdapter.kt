@@ -9,45 +9,52 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_demoapp.R
+import com.example.kotlin_demoapp.databinding.RecyclerItemBinding
 
-class GridRecyclerAdapter(private val recycleData: ArrayList<String>): RecyclerView.Adapter<GridRecyclerAdapter.RecyclerViewHolder>() {
+class GridRecyclerAdapter(private val recycleData: ArrayList<String>) :
+    RecyclerView.Adapter<GridRecyclerAdapter.RecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item,parent,false)
-        val imgCard = itemView.findViewById<CardView>(R.id.cardImage)
-        val txtTitle = itemView.findViewById<TextView>(R.id.txtRecycleTitle)
 
-        imgCard.updateLayoutParams<ConstraintLayout.LayoutParams> {
-            bottomToBottom = ConstraintLayout.LayoutParams.UNSET
-            endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
-        }
-
-        txtTitle.updateLayoutParams<ConstraintLayout.LayoutParams> {
-            startToEnd = ConstraintLayout.LayoutParams.UNSET
-            topToTop = ConstraintLayout.LayoutParams.UNSET
-            bottomToBottom = ConstraintLayout.LayoutParams.UNSET
-
-            topToBottom = imgCard.id
-            topMargin = 10
-            marginStart = 0
-            startToStart = imgCard.id
-            endToEnd = imgCard.id
-            bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
-        }
-
-        return RecyclerViewHolder(itemView)
+        return RecyclerViewHolder(
+            RecyclerItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        holder.title.text = recycleData[position]
-
+        holder.bind(recycleData[position])
     }
 
     override fun getItemCount(): Int {
         return recycleData.count()
     }
 
-    class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.txtRecycleTitle)
+    class RecyclerViewHolder(val binding: RecyclerItemBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(title: String) {
+            binding.txtRecycleTitle.text = title
+
+            binding.cardImage.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                bottomToBottom = ConstraintLayout.LayoutParams.UNSET
+                endToEnd = ConstraintLayout.LayoutParams.PARENT_ID
+            }
+
+            binding.txtRecycleTitle.updateLayoutParams<ConstraintLayout.LayoutParams> {
+                startToEnd = ConstraintLayout.LayoutParams.UNSET
+                topToTop = ConstraintLayout.LayoutParams.UNSET
+                bottomToBottom = ConstraintLayout.LayoutParams.UNSET
+
+                topToBottom = binding.cardImage.id
+                topMargin = 10
+                marginStart = 0
+                startToStart = binding.cardImage.id
+                endToEnd = binding.cardImage.id
+                bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
+            }
+        }
     }
 }

@@ -9,7 +9,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.kotlin_demoapp.R
 
-class SingleTextCursorAdapter public constructor(context: Context?, cursor: Cursor?, flags: Int, private val getSelectedText : (String) -> Unit) :
+class SingleTextCursorAdapter public constructor(
+    context: Context?,
+    cursor: Cursor?,
+    flags: Int,
+    private val getSelectedText: (String) -> Unit
+) :
     androidx.cursoradapter.widget.CursorAdapter(context, cursor, flags) {
 
     override fun newView(context: Context?, cursor: Cursor?, parent: ViewGroup?): View {

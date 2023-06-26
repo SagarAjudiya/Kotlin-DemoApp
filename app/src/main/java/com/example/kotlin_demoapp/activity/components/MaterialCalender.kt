@@ -14,15 +14,6 @@ class MaterialCalender : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMaterialCalenderBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
-        binding.datePicker.setOnClickListener {
-            var datePicker = MaterialDatePicker.Builder.datePicker().setTitleText("Select Date").build().show(supportFragmentManager,"tag")
-        }
-
-        binding.timePicker.setOnClickListener {
-//            var timePicker = MaterialDatePicker.Builder.().setTitleText("Select Date").build()
-        }
+        setContentView(binding.root)
     }
 }

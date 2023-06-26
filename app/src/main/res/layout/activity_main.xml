@@ -10,58 +10,49 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".activity.MainActivity">
 
         <Button
-            android:id="@+id/btnLinearLayout"
+            android:id="@+id/btnTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/linear_layout"
-            app:layout_constraintBottom_toTopOf="@+id/btnRelativeLayout"
-            app:layout_constraintEnd_toEndOf="@+id/btnRelativeLayout"
-            app:layout_constraintStart_toStartOf="@+id/btnRelativeLayout"
+            android:text="@string/timer"
+            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintStart_toStartOf="@id/btnPlaceholder"
+            app:layout_constraintEnd_toEndOf="@id/btnPlaceholder"
+            app:layout_constraintBottom_toTopOf="@id/btnPlaceholder"/>
+
 
         <Button
-            android:id="@+id/btnRelativeLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/relative_layout"
-            app:layout_constraintBottom_toTopOf="@+id/btnConstraintLayout"
-            app:layout_constraintEnd_toEndOf="@+id/btnConstraintLayout"
-            app:layout_constraintStart_toStartOf="@+id/btnConstraintLayout"
-            app:layout_constraintTop_toBottomOf="@+id/btnLinearLayout" />
-
-        <Button
-            android:id="@+id/btnConstraintLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/constrain_layout"
-            app:layout_constraintBottom_toTopOf="@+id/placeholder"
-            app:layout_constraintEnd_toEndOf="@+id/placeholder"
-            app:layout_constraintStart_toStartOf="@+id/placeholder"
-            app:layout_constraintTop_toBottomOf="@+id/btnRelativeLayout" />
-
-        <Button
-            android:id="@+id/placeholder"
+            android:id="@+id/btnPlaceholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/placeholder"
             app:layout_constraintBottom_toTopOf="@+id/btnComponent"
             app:layout_constraintEnd_toEndOf="@+id/btnComponent"
             app:layout_constraintStart_toStartOf="@+id/btnComponent"
-            app:layout_constraintTop_toBottomOf="@+id/btnConstraintLayout" />
+            app:layout_constraintTop_toBottomOf="@id/btnTimer" />
 
         <Button
             android:id="@+id/btnComponent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/components"
-            app:layout_constraintBottom_toTopOf="@+id/btnGoTour"
+            app:layout_constraintBottom_toTopOf="@+id/btnWebServices"
             app:layout_constraintEnd_toEndOf="@+id/btnSecurity"
             app:layout_constraintStart_toStartOf="@+id/btnSecurity"
-            app:layout_constraintTop_toBottomOf="@+id/placeholder" />
+            app:layout_constraintTop_toBottomOf="@+id/btnPlaceholder" />
+
+        <Button
+            android:id="@+id/btnWebServices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/web_services"
+            app:layout_constraintBottom_toTopOf="@+id/btnGoTour"
+            app:layout_constraintEnd_toEndOf="@+id/btnComponent"
+            app:layout_constraintStart_toStartOf="@+id/btnComponent"
+            app:layout_constraintTop_toBottomOf="@+id/btnComponent" />
 
         <Button
             android:id="@+id/btnGoTour"
@@ -69,9 +60,9 @@
             android:layout_height="wrap_content"
             android:text="@string/go_tour"
             app:layout_constraintBottom_toTopOf="@+id/btnSecurity"
-            app:layout_constraintEnd_toEndOf="@+id/btnComponent"
-            app:layout_constraintStart_toStartOf="@+id/btnComponent"
-            app:layout_constraintTop_toBottomOf="@+id/btnComponent" />
+            app:layout_constraintEnd_toEndOf="@+id/btnWebServices"
+            app:layout_constraintStart_toStartOf="@+id/btnWebServices"
+            app:layout_constraintTop_toBottomOf="@+id/btnWebServices" />
 
         <Button
             android:id="@+id/btnSecurity"
@@ -82,16 +73,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnGoTour"
-            app:layout_constraintBottom_toTopOf="@id/btnOnCloud"/>
-
-        <Button
-            android:id="@+id/btnOnCloud"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/on_cloud"
-            app:layout_constraintTop_toBottomOf="@id/btnSecurity"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/btnParkingCitation"/>
 
         <Button
@@ -99,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/parking_citation"
-            app:layout_constraintTop_toBottomOf="@id/btnOnCloud"
+            app:layout_constraintTop_toBottomOf="@id/btnSecurity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

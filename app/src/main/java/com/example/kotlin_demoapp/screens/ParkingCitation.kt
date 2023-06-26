@@ -1,9 +1,13 @@
 package com.example.kotlin_demoapp.screens
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnClickListener
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,7 +16,6 @@ import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.adapter.ParkingCitationAdapter
 import com.example.kotlin_demoapp.databinding.ActivityParkingCitationBinding
 import com.example.kotlin_demoapp.helper.Helper
-import com.example.kotlin_demoapp.model.ParkingModel
 import com.google.android.material.snackbar.Snackbar
 
 class ParkingCitation : AppCompatActivity(), OnClickListener {
@@ -24,11 +27,7 @@ class ParkingCitation : AppCompatActivity(), OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_parking_citation
-        )
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_parking_citation)
         binding.btnBack.setOnClickListener(this)
         adapter.submitList(parkingList)
         binding.parkingCitationRecycler.adapter = adapter
@@ -43,6 +42,16 @@ class ParkingCitation : AppCompatActivity(), OnClickListener {
         binding.btnFilter.setOnClickListener(this)
         searchData()
 
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        if (currentFocus != null) {
+            val inputMethodManager =
+                this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(this.currentFocus?.windowToken, 0)
+            (currentFocus as? EditText)?.clearFocus()
+        }
+        return super.dispatchTouchEvent(ev)
     }
 
     override fun onClick(v: View?) {

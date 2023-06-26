@@ -160,13 +160,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dp_ten"
                     android:background="@drawable/cornered_border"
-                    android:drawableEnd="@drawable/icon_calender"
-                    android:drawableTint="#888888"
+                    app:drawableTint="#888888"
                     android:padding="@dimen/dp_ten"
-                    android:text="Select Date"
+                    android:text="@string/select_date"
                     app:layout_constraintEnd_toEndOf="@id/centerGuide"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/txtDate" />
+                    app:layout_constraintTop_toBottomOf="@id/txtDate"
+                    app:drawableEndCompat="@drawable/icon_calender" />
 
                 <TextView
                     android:id="@+id/txtTime"

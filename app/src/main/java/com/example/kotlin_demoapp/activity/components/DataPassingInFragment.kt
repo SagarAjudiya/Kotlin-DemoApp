@@ -4,17 +4,14 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.commit
 import com.example.kotlin_demoapp.R
-import com.example.kotlin_demoapp.callbacks.ChangeNameListner
+import com.example.kotlin_demoapp.callbacks.ChangeNameListener
 import com.example.kotlin_demoapp.databinding.ActivityDataPassingFragmentsBinding
 import com.example.kotlin_demoapp.fragment.LeftIntentFragment
 import com.example.kotlin_demoapp.fragment.RightIntentFragment
 
-class DataPassingInFragment : AppCompatActivity(), ChangeNameListner {
+class DataPassingInFragment : AppCompatActivity(), ChangeNameListener {
 
     private lateinit var binding: ActivityDataPassingFragmentsBinding
     private var currentFragment: Fragment = LeftIntentFragment()

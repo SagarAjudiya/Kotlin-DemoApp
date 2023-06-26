@@ -18,10 +18,9 @@ class PlaceholderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityPlaceholderBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        placeholder = binding.placeholder
+        placeholder = binding.btnPlaceholder
         layout = binding.layout
     }
 

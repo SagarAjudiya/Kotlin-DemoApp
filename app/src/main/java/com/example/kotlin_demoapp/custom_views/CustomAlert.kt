@@ -11,7 +11,7 @@ import android.widget.TextView
 import com.example.kotlin_demoapp.R
 
 class CustomAlert(
-    private val context: Context,
+    context: Context,
     private val title: String,
     private val msg: String,
     private val completion: () -> Unit

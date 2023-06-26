@@ -18,14 +18,23 @@ class RadioCheck : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityRadioCheckBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        hobby = mutableListOf(binding.readingCheck, binding.moviesCheck, binding.listenCheck, binding.playingCheck)
-        hobbyStatus = hashMapOf(binding.readingCheck to false, binding.moviesCheck to false, binding.listenCheck to false, binding.playingCheck to false)
+        hobby = mutableListOf(
+            binding.readingCheck,
+            binding.moviesCheck,
+            binding.listenCheck,
+            binding.playingCheck
+        )
+        hobbyStatus = hashMapOf(
+            binding.readingCheck to false,
+            binding.moviesCheck to false,
+            binding.listenCheck to false,
+            binding.playingCheck to false
+        )
 
         binding.genderGroup.setOnCheckedChangeListener { _, checkedId ->
-            Log.d("radio",checkedId.toString())
+            Log.d("radio", checkedId.toString())
             binding.selectedButton.text = findViewById<RadioButton>(checkedId).text.toString()
         }
 

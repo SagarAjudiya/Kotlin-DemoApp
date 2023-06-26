@@ -8,7 +8,9 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin_demoapp.R
+import com.example.kotlin_demoapp.adapter.CustomAdapter
 import com.example.kotlin_demoapp.databinding.ActivitySpinnerBinding
+import com.example.kotlin_demoapp.helper.Helper
 
 
 class Spinner : AppCompatActivity() {
@@ -55,8 +57,7 @@ class Spinner : AppCompatActivity() {
             }
         }
 
-        val countryNames =
-            arrayOf("India", "China", "Australia", "Portugle", "America", "New Zealand")
+        val countryNames = Helper.getCountryName()
         val flags = intArrayOf(
             R.drawable.icon_android,
             R.drawable.icon_calender,
@@ -82,6 +83,5 @@ class Spinner : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
-
     }
 }

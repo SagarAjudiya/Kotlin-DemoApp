@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlin_demoapp.adapter.LinearRecyclerAdapter
 import com.example.kotlin_demoapp.databinding.FragmentLinearRecyclerBinding
+import com.example.kotlin_demoapp.helper.Helper
 
 class LinearRecyclerFragment : Fragment() {
 
@@ -22,10 +23,8 @@ class LinearRecyclerFragment : Fragment() {
 
         binding = FragmentLinearRecyclerBinding.inflate(layoutInflater)
 
-        cityArray = arrayListOf("London", "New York", "Surat", "Delhi", "Tokyo", "Dubai", "Mumbai", "Ahmedabad")
-        binding.linearRecycler.layoutManager = LinearLayoutManager(container?.context,LinearLayoutManager.VERTICAL,false)
-        adapter = LinearRecyclerAdapter()
-        adapter.setData(cityArray)
+        cityArray = Helper.getCityNameList()
+        adapter = LinearRecyclerAdapter().also { it.setData(cityArray) }
         binding.linearRecycler.adapter = adapter
 
         binding.btnAdd.setOnClickListener {

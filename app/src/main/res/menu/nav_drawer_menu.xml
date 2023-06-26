@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/practiceGroup"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/webServices"
+            android:title="@string/web_services" />
+        <item
+            android:id="@+id/components"
+            android:title="@string/components" />
+        <item
+            android:id="@+id/screen_parkingCitation"
+            android:title="@string/parking_citation" />
+        <item
+            android:id="@+id/screen_security"
+            android:title="@string/security_screen" />
+        <item
+            android:id="@+id/screen_goTour"
+            android:title="@string/go_tour" />
+    </group>
+    <group
+        android:id="@+id/logoutGroup"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/icon_logout"
+            android:title="@string/logout" />
+    </group>
+</menu>

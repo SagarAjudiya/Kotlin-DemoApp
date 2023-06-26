@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/web_services_nav_graph"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.kotlin_demoapp.tagb.module.dashboard.view.UserFragment"
+        android:label="UserFragment" />
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.example.kotlin_demoapp.tagb.module.dashboard.view.MovieFragment"
+        android:label="MovieFragment" />
+    <fragment
+        android:id="@+id/employeeFragment"
+        android:name="com.example.kotlin_demoapp.tagb.module.dashboard.view.EmployeeFragment"
+        android:label="EmployeeFragment" />
+
+</navigation>

@@ -10,7 +10,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/dp_twenty"
         tools:context=".screens.AccountSecurity">
 
         <ImageButton
@@ -18,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_twenty"
+            android:layout_marginStart="@dimen/_20dp"
             android:backgroundTint="@color/white"
             android:background="@color/white"
             android:padding="@dimen/dp_zero"
@@ -51,6 +51,8 @@
             android:id="@+id/mainScroll"
             android:layout_width="@dimen/dp_zero"
             android:layout_height="@dimen/dp_zero"
+            android:scrollbars="none"
+            android:paddingHorizontal="@dimen/dp_twenty"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

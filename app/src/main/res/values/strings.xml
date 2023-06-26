@@ -62,7 +62,7 @@
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="log_in_with_google">Log In With Google</string>
-    <string name="or">Or</string>
+    <string name="or">\u0020\u0020\u0020or\u0020\u0020\u0020</string>
     <string name="sign_up_here">Sign Up Here</string>
     <string name="sign_up">Sign Up</string>
     <string name="confirm_password">Confirm Password</string>
@@ -90,10 +90,10 @@
     <string name="july">July</string>
     <string name="travel_day">Travel Day</string>
     <string name="_30_or_less">30 day`s \nor less</string>
-    <string name="_15_7_day">15-7\nday</string>
-    <string name="_7_4_day">7-4\nday</string>
-    <string name="_5_2_day">5-2\nday</string>
-    <string name="_2_1_day">2-1\nday</string>
+    <string name="_15_7_day">15–7\nday</string>
+    <string name="_7_4_day">7–4\nday</string>
+    <string name="_5_2_day">5–2\nday</string>
+    <string name="_2_1_day">2–1\nday</string>
     <string name="actions">Actions</string>
     <string name="clear">Clear</string>
     <string name="close">Close</string>
@@ -118,10 +118,11 @@
     <string name="dollar">$%1$d</string>
     <string name="pick_image">Pick Image</string>
     <string name="change">Change</string>
-    <string name="edit">edit</string>
+    <string name="edit">Edit</string>
     <string name="left">LEFT</string>
     <string name="right">RIGHT</string>
-    <string name="name">NAME</string>
+    <string name="name">Name</string>
+    <string name="name_with_colon">Name : </string>
     <string name="surname">SURNAME</string>
     <string name="go">GO</string>
     <string name="enter_website_name">Enter Website Name</string>
@@ -172,4 +173,66 @@
     <string name="files">Files</string>
     <string name="send">send</string>
     <string name="empty_data">Data is empty. Click to submit data!!</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="dummy_number">10</string>
+    <string name="enter_seconds">Enter seconds</string>
+    <string name="timer">Timer</string>
+    <string name="release_date">Release Date</string>
+    <string name="no_data">No more data !!</string>
+    <string name="delete">Delete</string>
+    <string name="done">Done</string>
+    <string name="user">User</string>
+    <string name="movies">Movies</string>
+    <string name="employee">Employee</string>
+    <string name="created_at">Created At :</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="navigation">Navigation</string>
+    <string name="web_services">Web Services</string>
+    <string name="simform">Simform, Ahmedabad</string>
+    <string name="default_text">DEFAULT TEXT</string>
+    <string name="choose_app">Choose App</string>
+    <string name="choose_browser">Choose Browser</string>
+    <string name="some_subject">SOME SUBJECT</string>
+    <string name="local_date">$1%s / $2%s / $3%s</string>
+    <string name="date_with_month">$1%s $2%s, $3%s</string>
+    <string name="time">$1%s : $2%s</string>
+    <string name="promocode">CLECVXEJB374</string>
+    <string name="camera_permission_denied">Please give permission to access camera.</string>
+    <string name="storage_permission_denied">Please give permission to access storage.</string>
+
+    <!-- TagB Strings -->
+    <string name="app_logo">App Logo</string>
+    <string name="email_id">Email ID</string>
+    <string name="face_id">Face ID</string>
+    <string name="login_with_email">Login with Email</string>
+    <string name="continue_with_apple">Continue with Apple</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="subscribe_for_newsletter">Subscribe for Newsletter</string>
+    <string name="create_account">Create Account</string>
+    <string name="term_and_condition">By clicking the \"Create Account\" button above, you agree to RunParking\'s Terms of Use and Privacy Policy</string>
+    <string name="login_title">Customer Login</string>
+    <string name="sign_up_title">Customer Sign-up</string>
+
+    <!-- Login -->
+    <string name="emptyEmail">Please enter email</string>
+    <string name="invalidEmail">Please enter valid email</string>
+    <string name="emptyPassword">Please enter password</string>
+    <string name="emptyFirstName">Please enter first name</string>
+    <string name="emptyLastName">Please enter last name</string>
+    <string name="emptyMobile">Please enter mobile number</string>
+    <string name="top_image_on_board">Top Image On Board</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="practice">Practice</string>
+    <string name="logout">Logout</string>
+    <string name="message">message</string>
+    <string name="nullResponse">Null Response</string>
+    <string name="search_by_facility_rental_id_etc">Search by facility, rental ID, etc.</string>
+    <string name="no_employee_found">No Employee Found</string>
+    <string name="select_date">Select Date</string>
+
 </resources>

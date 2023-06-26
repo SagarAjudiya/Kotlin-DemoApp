@@ -29,21 +29,20 @@
         <ImageView
             android:id="@+id/loginLogo"
             android:layout_marginTop="@dimen/dp_hundred"
-            android:layout_width="@dimen/dp_hundred"
-            android:layout_height="@dimen/dp_hundred"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="fitXY"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@id/leftGuide"
             app:layout_constraintEnd_toEndOf="@id/rightGuide"
-            app:srcCompat="@drawable/city_image" />
+            android:src="@drawable/img_go_tour_logo" />
 
         <TextView
             android:id="@+id/txtLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_fifty"
+            android:layout_marginTop="@dimen/_30dp"
             android:text="@string/log_in"
-            android:textStyle="bold"
             android:textSize="@dimen/_30sp"
             app:layout_constraintTop_toBottomOf="@id/loginLogo"
             app:layout_constraintStart_toStartOf="@id/leftGuide"
@@ -72,6 +71,7 @@
                 android:id="@+id/txtEmailField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
                 android:padding="@dimen/_15dp"
                 android:hint="@string/demoEmail" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -100,6 +100,7 @@
                 android:id="@+id/txtPasswordField"
                 android:layout_width="match_parent"
                 android:padding="@dimen/_15dp"
+                android:inputType="textPassword"
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +120,6 @@
             android:id="@+id/btnLogin"
             android:layout_width="@dimen/dp_zero"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:textSize="@dimen/_15sp"
             android:backgroundTint="@color/orange"
             android:text="@string/log_in"
@@ -145,7 +145,6 @@
             app:icon="@drawable/icon_google"
             app:iconTint="@color/black"
             android:textAllCaps="false"
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:backgroundTint="@color/white"
             app:iconGravity="textStart"

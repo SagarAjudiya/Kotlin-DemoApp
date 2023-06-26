@@ -13,13 +13,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class NotificationFragment : Fragment() {
 
     private lateinit var binding: FragmentNotificationBinding
+    private val navBar by lazy { activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationBar) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentNotificationBinding.inflate(layoutInflater)
-        val navBar = container?.rootView?.findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
         navBar?.removeBadge(R.id.notificationNavigation)
         return binding.root
     }

@@ -1,6 +1,9 @@
 package com.example.kotlin_demoapp.activity.intent
 
+import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -10,8 +13,13 @@ import android.view.View.OnClickListener
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.databinding.ActivityImplicitIntentBinding
+import com.example.kotlin_demoapp.tagb.helper.getCameraPermission
+import com.google.android.material.snackbar.Snackbar
 import java.io.File
 
 class ImplicitIntent : AppCompatActivity(), OnClickListener {
@@ -39,7 +47,8 @@ class ImplicitIntent : AppCompatActivity(), OnClickListener {
         setContentView(binding.root)
 
         if (intent.action == Intent.ACTION_SEND) {
-            Toast.makeText(this, intent.extras?.getString(Intent.EXTRA_TEXT),Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, intent.extras?.getString(Intent.EXTRA_TEXT), Toast.LENGTH_SHORT)
+                .show()
         }
 
         imageUri = createImageUri()
@@ -59,27 +68,35 @@ class ImplicitIntent : AppCompatActivity(), OnClickListener {
             binding.btnWebsite.id -> {
                 val url = "https://www." + binding.editWebsite.text.toString()
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                val chooser = Intent.createChooser(intent, "Choose Browser")
+                val chooser = Intent.createChooser(intent, getString(R.string.choose_browser))
                 startActivity(chooser)
             }
 
             binding.btnCall.id -> {
                 val url = "tel:" + binding.editCall.text.toString()
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse(url))
-                val chooser = Intent.createChooser(intent, "Choose App")
+                val chooser = Intent.createChooser(intent, getString(R.string.choose_app))
                 startActivity(chooser)
             }
 
             binding.btnCameraImage.id -> {
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
-                imageCapture.launch(intent)
+                if (getCameraPermission(this)) {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
+                    imageCapture.launch(intent)
+                } else {
+                    Snackbar.make(binding.root, getString(R.string.camera_permission_denied), Snackbar.LENGTH_SHORT).show()
+                }
             }
 
             binding.btnCameraVideo.id -> {
-                val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri)
-                videoCapture.launch(intent)
+                if (getCameraPermission(this)) {
+                    val intent = Intent(MediaStore.ACTION_VIDEO_CAPTURE)
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, videoUri)
+                    videoCapture.launch(intent)
+                } else {
+                    Snackbar.make(binding.root, getString(R.string.camera_permission_denied), Snackbar.LENGTH_SHORT).show()
+                }
             }
 
             binding.videoCapture.id -> {
@@ -87,7 +104,9 @@ class ImplicitIntent : AppCompatActivity(), OnClickListener {
             }
 
             binding.btnLocation.id -> {
-                val location = "geo:0,0?q=" + binding.etLocationName.text.toString().ifEmpty { "Simform, Ahmedabad" }
+                val location = "geo:0,0?q=" + binding.etLocationName.text.toString().ifEmpty {
+                    getString(R.string.simform)
+                }
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(location))
                 startActivity(intent)
             }
@@ -95,10 +114,11 @@ class ImplicitIntent : AppCompatActivity(), OnClickListener {
             binding.btnText.id -> {
                 val intent = Intent(Intent.ACTION_SEND).apply {
                     type = "text/plain"
-                    putExtra(Intent.EXTRA_SUBJECT, "SOME SUBJECT")
-                    putExtra(Intent.EXTRA_TEXT, binding.etText.text.toString().ifEmpty { "DEFAULT TEXT" })
+                    putExtra(Intent.EXTRA_SUBJECT, getString(R.string.some_subject))
+                    putExtra(Intent.EXTRA_TEXT,
+                        binding.etText.text.toString().ifEmpty { R.string.default_text })
                 }
-                startActivity(Intent.createChooser(intent, "Choose App"))
+                startActivity(Intent.createChooser(intent, getString(R.string.choose_app)))
             }
         }
     }

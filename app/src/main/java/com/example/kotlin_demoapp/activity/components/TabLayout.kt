@@ -16,23 +16,19 @@ class TabLayout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityTabLayoutBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         pageAdapter = TabLayoutAdapter(this)
         binding.fragmentPager.adapter = pageAdapter
 
         binding.mainTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                val safeTab = tab ?: return
-                binding.fragmentPager.currentItem = safeTab.position
+                binding.fragmentPager.currentItem = tab?.position ?: return
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
         binding.fragmentPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

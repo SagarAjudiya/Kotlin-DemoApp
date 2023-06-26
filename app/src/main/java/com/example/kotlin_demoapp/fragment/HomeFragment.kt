@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private val navBar by lazy { activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationBar) }
     private var itemCount: Int = 0
 
     override fun onCreateView(
@@ -20,8 +21,6 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
-
-        val navBar = container?.rootView?.findViewById<BottomNavigationView>(R.id.bottomNavigationBar)
         binding.homeDownloadButton.setOnClickListener {
             itemCount++
             navBar?.getOrCreateBadge(R.id.notificationNavigation)?.number = itemCount

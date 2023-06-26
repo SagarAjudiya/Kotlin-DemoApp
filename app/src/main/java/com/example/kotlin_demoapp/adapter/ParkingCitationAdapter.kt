@@ -11,8 +11,11 @@ import com.example.kotlin_demoapp.databinding.PaidParkingCitationItemBinding
 import com.example.kotlin_demoapp.databinding.UnpaidParkingCitationItemBinding
 import com.example.kotlin_demoapp.model.ParkingModel
 
-class ParkingCitationAdapter(private val selectParkingTicket: (Int, Boolean) -> Unit, private val changeStatus: (Int) -> Unit) :
-    ListAdapter<ParkingModel,RecyclerView.ViewHolder>(ParkingItemDiffCallback()) {
+class ParkingCitationAdapter(
+    private val selectParkingTicket: (Int, Boolean) -> Unit,
+    private val changeStatus: (Int) -> Unit
+) :
+    ListAdapter<ParkingModel, RecyclerView.ViewHolder>(ParkingItemDiffCallback()) {
 
     enum class ParkingStatus {
         PAID,
@@ -24,33 +27,41 @@ class ParkingCitationAdapter(private val selectParkingTicket: (Int, Boolean) -> 
         false -> ParkingStatus.UNPAID.ordinal
     }
 
-    inner class PaidViewHolder(private val binding: PaidParkingCitationItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class PaidViewHolder(private val binding: PaidParkingCitationItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(parkingModel: ParkingModel, position: Int) {
-            binding.parkingData = parkingModel
+        init {
             binding.btnDetails.setOnClickListener {
-                changeStatus(position)
+                changeStatus(adapterPosition)
             }
             binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
-                selectParkingTicket(position, isChecked)
+                selectParkingTicket(adapterPosition, isChecked)
             }
         }
-    }
 
-    inner class UnpaidViewHolder(private val binding: UnpaidParkingCitationItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(parkingModel: ParkingModel, position: Int) {
+        fun bind(parkingModel: ParkingModel) {
             binding.parkingData = parkingModel
-            binding.btnPay.setOnClickListener {
-                changeStatus(position)
-            }
-            binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
-                selectParkingTicket(position, isChecked)
-            }
         }
     }
 
-    class ParkingItemDiffCallback: DiffUtil.ItemCallback<ParkingModel>() {
+    inner class UnpaidViewHolder(private val binding: UnpaidParkingCitationItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.btnPay.setOnClickListener {
+                changeStatus(adapterPosition)
+            }
+            binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
+                selectParkingTicket(adapterPosition, isChecked)
+            }
+        }
+
+        fun bind(parkingModel: ParkingModel) {
+            binding.parkingData = parkingModel
+        }
+    }
+
+    class ParkingItemDiffCallback : DiffUtil.ItemCallback<ParkingModel>() {
         override fun areItemsTheSame(oldItem: ParkingModel, newItem: ParkingModel): Boolean {
             return oldItem.citationID == newItem.citationID
         }
@@ -69,6 +80,7 @@ class ParkingCitationAdapter(private val selectParkingTicket: (Int, Boolean) -> 
                     false
                 )
             )
+
             ParkingStatus.UNPAID -> UnpaidViewHolder(
                 UnpaidParkingCitationItemBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -80,9 +92,9 @@ class ParkingCitationAdapter(private val selectParkingTicket: (Int, Boolean) -> 
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder){
-            is PaidViewHolder -> holder.bind(getItem(position), position)
-            is UnpaidViewHolder -> holder.bind(getItem(position), position)
+        when (holder) {
+            is PaidViewHolder -> holder.bind(getItem(position))
+            is UnpaidViewHolder -> holder.bind(getItem(position))
         }
     }
 }

@@ -7,27 +7,37 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_demoapp.R
+import com.example.kotlin_demoapp.databinding.ViewPagerItemBinding
 import com.example.kotlin_demoapp.model.CityDetails
 
-class ViewPagerRecyclerAdapter(val cityList: MutableList<CityDetails>): RecyclerView.Adapter<ViewPagerRecyclerAdapter.ViewPagerViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_pager_item,parent,false)
-        return ViewPagerViewHolder(view)
-    }
+class ViewPagerRecyclerAdapter(private val cityList: MutableList<CityDetails>) :
+    RecyclerView.Adapter<ViewPagerRecyclerAdapter.ViewPagerViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewPagerViewHolder =
+        ViewPagerViewHolder(
+            ViewPagerItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
-        holder.cityImage.setImageResource(cityList[position].image)
-        holder.cityName.text = cityList[position].name
-        holder.cityDescription.text = cityList[position].description
+        holder.bind(cityList[position])
     }
 
     override fun getItemCount(): Int {
         return cityList.count()
     }
 
-    class ViewPagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cityImage = itemView.findViewById<ImageView>(R.id.cityImage)
-        val cityName = itemView.findViewById<TextView>(R.id.cityName)
-        val cityDescription = itemView.findViewById<TextView>(R.id.cityDescription)
+    class ViewPagerViewHolder(val binding: ViewPagerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(city: CityDetails) {
+            binding.apply {
+                cityName.text = city.name
+                cityDescription.text = city.description
+                cityImage.setImageResource(city.image)
+            }
+        }
     }
 }

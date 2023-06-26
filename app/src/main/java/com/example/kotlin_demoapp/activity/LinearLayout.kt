@@ -12,8 +12,7 @@ class LinearLayout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = LinearLayoutBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.topLeft.setOnClickListener {
             Toast.makeText(this, "Top Left Tapped", Toast.LENGTH_SHORT).show()

@@ -29,7 +29,6 @@ class FragmentBottomNavigation : AppCompatActivity() {
             }
             true
         }
-//        binding.bottomNavigationBar.getOrCreateBadge(R.id.homeNavigation)
     }
 
     private fun replaceFragment(fragment: Fragment){

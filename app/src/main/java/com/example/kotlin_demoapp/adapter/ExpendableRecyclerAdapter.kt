@@ -3,42 +3,51 @@ package com.example.kotlin_demoapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlin_demoapp.R
+import com.example.kotlin_demoapp.databinding.RecyclerItemBinding
 import com.example.kotlin_demoapp.model.CityDescription
 
-class ExpendableRecyclerAdapter(val cityList: ArrayList<CityDescription>): RecyclerView.Adapter<ExpendableRecyclerAdapter.ExpendableRecyclerViewHolder>() {
+class ExpendableRecyclerAdapter(private val cityList: ArrayList<CityDescription>) :
+    RecyclerView.Adapter<ExpendableRecyclerAdapter.ExpendableRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ExpendableRecyclerViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item,parent,false)
-        val description = itemView.findViewById<TextView>(R.id.txtRecyclerDescription)
-        val itemCard = itemView.findViewById<CardView>(R.id.recyclerItemCard)
-        itemCard.setOnClickListener {
-            when(description.visibility){
-                View.VISIBLE -> description.visibility = View.GONE
-                View.GONE -> description.visibility = View.VISIBLE
-                else -> description.visibility = View.VISIBLE
-            }
-        }
-        return ExpendableRecyclerViewHolder(itemView)
+
+        return ExpendableRecyclerViewHolder(
+            RecyclerItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ExpendableRecyclerViewHolder, position: Int) {
-        holder.title.text = cityList[position].name
-        holder.description.text = cityList[position].desription
+        holder.bind(cityList[position])
     }
 
     override fun getItemCount(): Int {
         return cityList.count()
     }
 
-    class ExpendableRecyclerViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val title = itemView.findViewById<TextView>(R.id.txtRecycleTitle)
-        val description = itemView.findViewById<TextView>(R.id.txtRecyclerDescription)
+    class ExpendableRecyclerViewHolder(val binding: RecyclerItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.recyclerItemCard.setOnClickListener {
+                when (binding.txtRecyclerDescription.visibility) {
+                    View.VISIBLE -> binding.txtRecyclerDescription.visibility = View.GONE
+                    View.GONE -> binding.txtRecyclerDescription.visibility = View.VISIBLE
+                    else -> binding.txtRecyclerDescription.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        fun bind(city: CityDescription) {
+            binding.txtRecycleTitle.text = city.name
+            binding.txtRecyclerDescription.text = city.description
+        }
     }
 }

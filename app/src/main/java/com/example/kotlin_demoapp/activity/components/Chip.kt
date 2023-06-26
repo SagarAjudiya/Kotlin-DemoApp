@@ -15,8 +15,7 @@ class Chip : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityChipBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.customChip.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

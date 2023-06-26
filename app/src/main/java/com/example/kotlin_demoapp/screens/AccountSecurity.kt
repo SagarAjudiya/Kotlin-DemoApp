@@ -5,6 +5,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.example.kotlin_demoapp.R
@@ -19,15 +20,10 @@ class AccountSecurity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityAccountSecurityBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.mainScroll.isVerticalScrollBarEnabled = false
-
-        binding.imgBack.setOnClickListener {
-            finish()
-        }
-
+        binding.imgBack.setOnClickListener { finish() }
         binding.btnEditEmail.setOnClickListener {
             val divider = binding.emailDivider.layoutParams as ConstraintLayout.LayoutParams
             divider.topMargin = resources.getDimensionPixelSize(R.dimen.dp_ten)
@@ -41,10 +37,10 @@ class AccountSecurity : AppCompatActivity() {
             binding.btnSetupAuth.apply {
                 setStrokeColorResource(R.color.skyBlue)
                 setStrokeWidthResource(R.dimen.dp_one)
-                setBackgroundColor(resources.getColor(R.color.white))
-                setTextColor(resources.getColor(R.color.skyBlue))
+                setBackgroundColor(ContextCompat.getColor(this@AccountSecurity, R.color.white))
+                setTextColor(ContextCompat.getColor(this@AccountSecurity, R.color.skyBlue))
                 setIconTintResource(R.color.skyBlue)
-                text = "CLECVXEJB374"
+                text = getString(R.string.promocode)
                 icon = ResourcesCompat.getDrawable(resources, R.drawable.icon_copy, null)
             }
         }
@@ -59,7 +55,10 @@ class AccountSecurity : AppCompatActivity() {
                     error = "This field is required"
                     requestFocus()
                 }
-                (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(binding.txtNewPasswordField, InputMethodManager.SHOW_IMPLICIT)
+                (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(
+                    binding.txtNewPasswordField,
+                    InputMethodManager.SHOW_IMPLICIT
+                )
             }
             if (confirmPassword.isEmpty()) {
                 binding.confirmPasswordInputLayout.apply {

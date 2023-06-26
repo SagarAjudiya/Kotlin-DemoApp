@@ -2,15 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="32"
         tools:ignore="ScopedStorage" />
 
-
     <application
+        android:name=".tagb.utils.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,13 +26,42 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinDemoApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".tagb.module.authentication.view.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.KotlinDemoApp.White">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tagb.module.authentication.view.OnBoardActivity"
+            android:exported="false"
+            android:theme="@style/Theme.KotlinDemoApp.White"/>
+        <activity
+            android:name=".tagb.module.authentication.view.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".tagb.module.authentication.view.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.KotlinDemoApp"/>
+        <activity
+            android:name=".screens.on_cloud.activity.NavigationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".architecture.ViewModelActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.components.WebViewActivity"
             android:exported="false" />
         <activity
-            android:name=".screens.on_cloud.activity.OnCloudActivity"
-            android:exported="false" />
+            android:name=".tagb.module.dashboard.view.WebServiceActivity"
+            android:exported="true"/>
         <activity
             android:name=".activity.intent.ResultActivity"
             android:exported="false" />
@@ -51,7 +88,7 @@
             android:name=".activity.components.DataPassingInFragment"
             android:exported="false" />
         <activity
-            android:name=".activity.components.ImagePicker"
+            android:name=".activity.components.ImagePickerActivity"
             android:exported="false" />
         <activity
             android:name=".screens.ParkingCitation"
@@ -85,22 +122,27 @@
             android:exported="false" />
         <activity
             android:name=".screens.go_tour.GoTourDiscover"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.KotlinDemoApp.Orange" />
         <activity
             android:name=".screens.go_tour.GoTourUpcoming"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.KotlinDemoApp.Orange" />
         <activity
             android:name=".screens.go_tour.GoTourSignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.KotlinDemoApp.Orange" />
         <activity
             android:name=".screens.go_tour.GoTourLogin"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.KotlinDemoApp.Orange" />
         <activity
             android:name=".screens.MeetingScheduler"
             android:exported="true" />
         <activity
             android:name=".screens.AccountSecurity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.KotlinDemoApp.Blue" />
         <activity
             android:name=".activity.components.Calender"
             android:exported="false" />
@@ -147,14 +189,8 @@
             android:name=".activity.LinearLayout"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".activity.MainActivity"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

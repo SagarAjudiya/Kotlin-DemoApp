@@ -1,3 +1,3 @@
 package com.example.kotlin_demoapp.model
 
-data class CityDescription(var name: String, var desription: String)
+data class CityDescription(val name: String, val description: String)

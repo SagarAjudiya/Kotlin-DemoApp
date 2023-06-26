@@ -13,8 +13,6 @@ class AppBarLayout : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityAppBarLayoutBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
+        setContentView(binding.root)
     }
 }

@@ -10,7 +10,6 @@ import androidx.core.graphics.drawable.DrawableCompat
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.databinding.ActivityGoTourUpcomingBinding
 
-
 class GoTourUpcoming : AppCompatActivity() {
 
     private lateinit var binding: ActivityGoTourUpcomingBinding
@@ -20,27 +19,27 @@ class GoTourUpcoming : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityGoTourUpcomingBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        locationTypes = arrayListOf<ImageButton>(binding.btnSun, binding.btnBike, binding.btnBoat, binding.btnBus, binding.btnPlane)
+        setContentView(binding.root)
+        locationTypes = arrayListOf(
+            binding.btnSun,
+            binding.btnBike,
+            binding.btnBoat,
+            binding.btnBus,
+            binding.btnPlane
+        )
 
         binding.scrollHistory.isVerticalScrollBarEnabled = false
-
-        binding.imgBack.setOnClickListener {
-            finish()
-        }
+        binding.imgBack.setOnClickListener { finish() }
     }
 
     fun selectImage(view: View) {
-        var  imgButton = view as? ImageButton
+        var imgButton = view as? ImageButton
         imgButton = imgButton ?: return
-        locationTypes.forEach {
-            deSelectLocation(it)
-        }
+        locationTypes.forEach { deSelectLocation(it) }
         selectLocation(imgButton)
     }
 
-    private fun selectLocation(view: ImageButton){
+    private fun selectLocation(view: ImageButton) {
         var buttonDrawable: Drawable = view.background
         buttonDrawable = DrawableCompat.wrap(buttonDrawable)
         DrawableCompat.setTint(buttonDrawable, getColor(R.color.orange))
@@ -48,7 +47,7 @@ class GoTourUpcoming : AppCompatActivity() {
         view.imageTintList = ColorStateList.valueOf(getColor(R.color.white))
     }
 
-    private fun deSelectLocation(view: ImageButton){
+    private fun deSelectLocation(view: ImageButton) {
         var buttonDrawable: Drawable = view.background
         buttonDrawable = DrawableCompat.wrap(buttonDrawable)
         DrawableCompat.setTint(buttonDrawable, getColor(R.color.light_grey))

@@ -19,8 +19,7 @@ class TextView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding = ActivityTextviewBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
         // set underline
         binding.underlineText.text = HtmlCompat.fromHtml("<u>"+binding.underlineText.text.toString()+"</u>", HtmlCompat.FROM_HTML_MODE_LEGACY)
         // set different colored text
