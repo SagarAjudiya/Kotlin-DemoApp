@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import java.text.SimpleDateFormat
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
@@ -35,6 +36,15 @@ fun dateToUTC(date: Date): String {
     return SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).apply {
         timeZone = TimeZone.getTimeZone("UTC")
     }.format(date)
+}
+
+/**
+ * get current timing
+ */
+fun getCurrentTime(): String {
+    return SimpleDateFormat("yyyy-MM-dd'_'HH:mm:ss", Locale.getDefault()).apply {
+        timeZone = TimeZone.getTimeZone("GMT")
+    }.format(Calendar.getInstance().time)
 }
 
 /**

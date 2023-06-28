@@ -4,8 +4,11 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
@@ -19,19 +22,24 @@ import androidx.core.content.FileProvider
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.databinding.ActivityImplicitIntentBinding
 import com.example.kotlin_demoapp.tagb.helper.getCameraPermission
+import com.example.kotlin_demoapp.tagb.helper.getCurrentTime
 import com.google.android.material.snackbar.Snackbar
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.regex.Pattern
 
 class ImplicitIntent : AppCompatActivity(), OnClickListener {
 
     private lateinit var binding: ActivityImplicitIntentBinding
-    private lateinit var imageUri: Uri
+    private lateinit var currentImagePath: String
     private lateinit var videoUri: Uri
     private var imageCapture =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            if (it.resultCode != RESULT_OK) return@registerForActivityResult
-            binding.imgCapture.setImageURI(null)
-            binding.imgCapture.setImageURI(imageUri)
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isPictureTaken ->
+            if (isPictureTaken) {
+                binding.imgCapture.setImageBitmap(BitmapFactory.decodeFile(currentImagePath))
+            } else {
+                Toast.makeText(this, "Picture is not taken !!", Toast.LENGTH_SHORT).show()
+            }
         }
     private var videoCapture =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -51,7 +59,6 @@ class ImplicitIntent : AppCompatActivity(), OnClickListener {
                 .show()
         }
 
-        imageUri = createImageUri()
         videoUri = createVideoUri()
 
         binding.btnWebsite.setOnClickListener(this)
@@ -81,9 +88,7 @@ class ImplicitIntent : AppCompatActivity(), OnClickListener {
 
             binding.btnCameraImage.id -> {
                 if (getCameraPermission(this)) {
-                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
-                    imageCapture.launch(intent)
+                    imageCapture.launch(createImageUri())
                 } else {
                     Snackbar.make(binding.root, getString(R.string.camera_permission_denied), Snackbar.LENGTH_SHORT).show()
                 }
@@ -124,11 +129,13 @@ class ImplicitIntent : AppCompatActivity(), OnClickListener {
     }
 
     private fun createImageUri(): Uri {
-        val image = File(applicationContext.filesDir, "camera_photo.png")
+        val folder = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val file = File.createTempFile("JPG_${getCurrentTime()}", ".jpg", folder)
+        currentImagePath = file.absolutePath
         return FileProvider.getUriForFile(
-            applicationContext,
-            applicationContext.packageName + ".fileProvider",
-            image
+            this,
+            "${applicationContext.packageName}.fileProvider",
+            file
         )
     }
 
