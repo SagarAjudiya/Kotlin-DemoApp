@@ -3,6 +3,7 @@ package com.example.kotlin_demoapp.tagb.module.dashboard.viewModel
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.android.volley.RequestQueue
@@ -13,23 +14,20 @@ import com.example.kotlin_demoapp.tagb.base_classes.Event
 import com.example.kotlin_demoapp.tagb.helper.Constants
 import com.example.kotlin_demoapp.tagb.helper.HttpRequestType
 import com.example.kotlin_demoapp.tagb.helper.UploadRequestBody
-import com.example.kotlin_demoapp.tagb.helper.UserDefault
 import com.example.kotlin_demoapp.tagb.helper.dateToUTC
 import com.example.kotlin_demoapp.tagb.helper.getFileName
 import com.example.kotlin_demoapp.tagb.module.dashboard.model.response.EmployeeInfo
-import com.example.kotlin_demoapp.tagb.module.dashboard.model.response.ImageResponse
-import com.example.kotlin_demoapp.tagb.repository.Repository
+import com.example.kotlin_demoapp.tagb.module.dashboard.repository.EmployeeRepository
 import com.example.kotlin_demoapp.tagb.utils.App
 import com.google.gson.Gson
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.File
 import java.io.FileDescriptor
 import java.io.FileInputStream
@@ -37,18 +35,32 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.net.URL
 import java.util.Calendar
+import javax.inject.Inject
 
-class EmployeeViewModel() : BaseViewModel() {
+@HiltViewModel
+class EmployeeViewModel @Inject constructor(
+    private val repository: EmployeeRepository
+) : BaseViewModel() {
 
-    val fetchEmployeeListSuccess: MutableLiveData<Event<List<EmployeeInfo>>> = MutableLiveData()
+    private var _fetchEmployeeListSuccess = MutableLiveData<Event<List<EmployeeInfo>>>()
+    val fetchEmployeeListSuccess: LiveData<Event<List<EmployeeInfo>>>
+        get() = _fetchEmployeeListSuccess
     var fetchEmployeeListFailure: MutableLiveData<Event<String>> = MutableLiveData()
-    val updateEmployeeSuccess: MutableLiveData<Event<Pair<Int, EmployeeInfo>>> = MutableLiveData()
+    private var _updateEmployeeSuccess = MutableLiveData<Event<Pair<Int, EmployeeInfo>>>()
+    val updateEmployeeSuccess: LiveData<Event<Pair<Int, EmployeeInfo>>>
+        get() = _updateEmployeeSuccess
     var updateEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
-    val viewEmployeeSuccess: MutableLiveData<Event<EmployeeInfo>> = MutableLiveData()
+    private var _viewEmployeeSuccess = MutableLiveData<Event<EmployeeInfo>>()
+    val viewEmployeeSuccess: LiveData<Event<EmployeeInfo>>
+        get() = _viewEmployeeSuccess
     var viewEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
-    var addEmployeeSuccess: MutableLiveData<Event<EmployeeInfo>> = MutableLiveData()
+    private var _addEmployeeSuccess = MutableLiveData<Event<EmployeeInfo>>()
+    val addEmployeeSuccess: LiveData<Event<EmployeeInfo>>
+        get() = _addEmployeeSuccess
     var addEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
-    var deleteEmployeeSuccess: MutableLiveData<Event<Int>> = MutableLiveData()
+    private var _deleteEmployeeSuccess = MutableLiveData<Event<Int>>()
+    val deleteEmployeeSuccess: LiveData<Event<Int>>
+        get() = _deleteEmployeeSuccess
     var deleteEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
     var uploadImageFailure: MutableLiveData<Event<String>> = MutableLiveData()
 
@@ -56,40 +68,16 @@ class EmployeeViewModel() : BaseViewModel() {
      * Fetch Employee list with Retrofit
      */
     fun getEmployeeList(search: String = "") {
-        if (search.isEmpty()) {
-            Repository.getEmployee().enqueue(object : Callback<List<EmployeeInfo>> {
-                override fun onResponse(
-                    call: Call<List<EmployeeInfo>>?,
-                    response: Response<List<EmployeeInfo>>?
-                ) {
-                    if (response != null && response.isSuccessful) {
-                        fetchEmployeeListSuccess.value = Event(response.body().toMutableList())
-                    } else {
-                        fetchEmployeeListFailure.value = Event(response.toString())
-                    }
+        viewModelScope.launch {
+            if (search.isEmpty()) {
+                repository.getEmployee().collect {
+                    _fetchEmployeeListSuccess.postValue(Event(it))
                 }
-
-                override fun onFailure(call: Call<List<EmployeeInfo>>?, t: Throwable?) {
-                    t?.localizedMessage?.let { fetchEmployeeListFailure.value = Event(it) }
+            } else {
+                repository.getEmployeeWithSearch(search).collect {
+                    _fetchEmployeeListSuccess.postValue(Event(it))
                 }
-            })
-        } else {
-            Repository.getEmployeeWithSearch(search).enqueue(object : Callback<List<EmployeeInfo>> {
-                override fun onResponse(
-                    call: Call<List<EmployeeInfo>>?,
-                    response: Response<List<EmployeeInfo>>?
-                ) {
-                    if (response != null && response.isSuccessful) {
-                        fetchEmployeeListSuccess.value = Event(response.body().toMutableList())
-                    } else {
-                        fetchEmployeeListFailure.value = Event(response.toString())
-                    }
-                }
-
-                override fun onFailure(call: Call<List<EmployeeInfo>>?, t: Throwable?) {
-                    t?.localizedMessage?.let { fetchEmployeeListFailure.value = Event(it) }
-                }
-            })
+            }
         }
     }
 
@@ -149,22 +137,12 @@ class EmployeeViewModel() : BaseViewModel() {
      * Add Employee details with Retrofit
      */
     fun addEmployee(body: HashMap<String, Any>) {
-        Repository.addEmployee(body).enqueue(object : Callback<EmployeeInfo> {
-            override fun onResponse(
-                call: Call<EmployeeInfo>?,
-                response: Response<EmployeeInfo>?
-            ) {
-                if (response != null && response.isSuccessful) {
-                    addEmployeeSuccess.value = Event(response.body())
-                } else {
-                    addEmployeeFailure.value = Event(response.toString())
-                }
-            }
 
-            override fun onFailure(call: Call<EmployeeInfo>?, t: Throwable?) {
-                t?.localizedMessage?.let { addEmployeeFailure.value = Event(it) }
+        viewModelScope.launch {
+            repository.addEmployee(body).collect {
+                _addEmployeeSuccess.postValue(Event(it))
             }
-        })
+        }
     }
 
     /**
@@ -178,7 +156,7 @@ class EmployeeViewModel() : BaseViewModel() {
             null,
             body,
             { employee ->
-                addEmployeeSuccess.value = Event(employee)
+                _addEmployeeSuccess.value = Event(employee)
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
             addEmployeeFailure.value = Event(responseMessage)
@@ -189,19 +167,11 @@ class EmployeeViewModel() : BaseViewModel() {
      * Update Employee details with Retrofit
      */
     fun updateEmployee(body: HashMap<String, Any>, position: Int, id: String) {
-        Repository.updateEmployee(body, id).enqueue(object : Callback<EmployeeInfo> {
-            override fun onResponse(call: Call<EmployeeInfo>?, response: Response<EmployeeInfo>?) {
-                if (response != null && response.isSuccessful) {
-                    updateEmployeeSuccess.value = Event(Pair(position, response.body()))
-                } else {
-                    updateEmployeeFailure.value = Event(response.toString())
-                }
+        viewModelScope.launch {
+            repository.updateEmployee(body, id).collect {
+                _updateEmployeeSuccess.postValue(Event(Pair(position, it)))
             }
-
-            override fun onFailure(call: Call<EmployeeInfo>?, t: Throwable?) {
-                t?.localizedMessage?.let { updateEmployeeFailure.value = Event(it) }
-            }
-        })
+        }
     }
 
     /**
@@ -215,7 +185,7 @@ class EmployeeViewModel() : BaseViewModel() {
             null,
             body,
             { employee ->
-                updateEmployeeSuccess.value = Event(Pair(position, employee))
+                _updateEmployeeSuccess.value = Event(Pair(position, employee))
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
             updateEmployeeFailure.value = Event(responseMessage)
@@ -226,19 +196,11 @@ class EmployeeViewModel() : BaseViewModel() {
      * Delete Employee details with Retrofit
      */
     fun deleteEmployee(id: String, position: Int) {
-        Repository.deleteEmployee(id).enqueue(object : Callback<EmployeeInfo> {
-            override fun onResponse(call: Call<EmployeeInfo>?, response: Response<EmployeeInfo>?) {
-                if (response != null && response.isSuccessful) {
-                    deleteEmployeeSuccess.value = Event(position)
-                } else {
-                    deleteEmployeeFailure.value = Event(response.toString())
-                }
+        viewModelScope.launch {
+            repository.deleteEmployee(id).collect {
+                _deleteEmployeeSuccess.postValue(Event(position))
             }
-
-            override fun onFailure(call: Call<EmployeeInfo>?, t: Throwable?) {
-                t?.localizedMessage?.let { deleteEmployeeFailure.value = Event(it) }
-            }
-        })
+        }
     }
 
     /**
@@ -252,7 +214,7 @@ class EmployeeViewModel() : BaseViewModel() {
             null,
             null,
             { employee ->
-                deleteEmployeeSuccess.value = Event(position)
+                _deleteEmployeeSuccess.value = Event(position)
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
             deleteEmployeeFailure.value = Event(responseMessage)
@@ -270,7 +232,7 @@ class EmployeeViewModel() : BaseViewModel() {
             null,
             null,
             { employee ->
-                viewEmployeeSuccess.value = Event(employee)
+                _viewEmployeeSuccess.value = Event(employee)
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
             viewEmployeeFailure.value = Event(responseMessage)
@@ -300,7 +262,7 @@ class EmployeeViewModel() : BaseViewModel() {
                     //update UI
                     viewModelScope.launch {
                         withContext(Dispatchers.Main) {
-                            viewEmployeeSuccess.value = Event(model)
+                            _viewEmployeeSuccess.value = Event(model)
                         }
                     }
                 } else {
@@ -319,7 +281,7 @@ class EmployeeViewModel() : BaseViewModel() {
             { response ->
                 viewModelScope.launch {
                     withContext(Dispatchers.Main) {
-                        viewEmployeeSuccess.value =
+                        _viewEmployeeSuccess.value =
                             Event(Gson().fromJson(response.toString(), EmployeeInfo::class.java))
                     }
                 }
@@ -334,39 +296,19 @@ class EmployeeViewModel() : BaseViewModel() {
     /**
      * Upload Employee details with Image with Retrofit
      */
-    private fun uploadImageAndAdd(part: MultipartBody.Part, name: String): String {
-        var resultURL = "null"
-        Repository.uploadImage(UserDefault.IMAGE_ACCESS_TOKEN, part)
-            .enqueue(object : Callback<ImageResponse> {
-                override fun onResponse(
-                    call: Call<ImageResponse>?,
-                    response: Response<ImageResponse>?
-                ) {
-                    if (response != null && response.isSuccessful) {
-                        Log.d(
-                            "API",
-                            "onResponse IMAGE SUCCESS : " + response.body().imageFiles[0].fileUrl
-                        )
-                        resultURL = response.body().imageFiles[0].fileUrl
-                        // if uploaded successfully call add employee
-                        addEmployee(
-                            hashMapOf(
-                                "id" to "null",
-                                "name" to name,
-                                "createdAt" to dateToUTC(Calendar.getInstance().time),
-                                "avatar" to resultURL
-                            )
-                        )
-                    } else {
-                        response?.let { uploadImageFailure.value = Event(it.message()) }
-                    }
-                }
-
-                override fun onFailure(call: Call<ImageResponse>?, t: Throwable?) {
-                    t?.let { uploadImageFailure.value = Event(it.localizedMessage) }
-                }
-            })
-        return resultURL
+    private fun uploadImageAndAdd(part: MultipartBody.Part, name: String) {
+        viewModelScope.launch {
+            repository.uploadImage(part).collect {
+                addEmployee(
+                    hashMapOf(
+                        "id" to "null",
+                        "name" to name,
+                        "createdAt" to dateToUTC(Calendar.getInstance().time),
+                        "avatar" to it.imageFiles[0].fileUrl
+                    )
+                )
+            }
+        }
     }
 
     private fun uploadImageAndUpdate(
@@ -374,40 +316,24 @@ class EmployeeViewModel() : BaseViewModel() {
         name: String,
         position: Int,
         id: String
-    ): String {
-        var resultURL = "null"
-        Repository.uploadImage(UserDefault.IMAGE_ACCESS_TOKEN, part)
-            .enqueue(object : Callback<ImageResponse> {
-                override fun onResponse(
-                    call: Call<ImageResponse>?,
-                    response: Response<ImageResponse>?
-                ) {
-                    if (response != null && response.isSuccessful) {
-                        Log.d(
-                            "API",
-                            "onResponse IMAGE SUCCESS : " + response.body().imageFiles[0].fileUrl
-                        )
-                        resultURL = response.body().imageFiles[0].fileUrl
-                        // if uploaded successfully call add employee
-                        updateEmployee(
-                            hashMapOf(
-                                "id" to "null",
-                                "name" to name,
-                                "createdAt" to dateToUTC(Calendar.getInstance().time),
-                                "avatar" to resultURL
-                            ),
-                            position,
-                            id
-                        )
-                    } else {
-                        response?.let { uploadImageFailure.value = Event(it.message()) }
-                    }
+    ) {
+        viewModelScope.launch {
+            repository.uploadImage(part)
+                .catch {
+                    uploadImageFailure.postValue(Event(it.localizedMessage))
                 }
-
-                override fun onFailure(call: Call<ImageResponse>?, t: Throwable?) {
-                    t?.let { uploadImageFailure.value = Event(it.localizedMessage) }
-                }
-            })
-        return resultURL
+                .collect {
+                updateEmployee(
+                    hashMapOf(
+                        "id" to "null",
+                        "name" to name,
+                        "createdAt" to dateToUTC(Calendar.getInstance().time),
+                        "avatar" to it.imageFiles[0].fileUrl
+                    ),
+                    position,
+                    id
+                )
+            }
+        }
     }
 }

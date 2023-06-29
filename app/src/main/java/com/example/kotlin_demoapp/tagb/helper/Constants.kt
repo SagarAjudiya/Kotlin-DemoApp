@@ -18,6 +18,8 @@ class Constants {
 
         //Authenticate User
         const val AUTH_BASE_URL = "https://staging-auth-api.runparking.com/api/v5/"
+
+        const val MESSAGE = "message"
     }
 }
 
@@ -58,5 +60,15 @@ class HeaderValue {
 class IntentKeys {
     companion object {
         const val FROM_NOTIFICATION = "from_notification"
+    }
+}
+
+class RetrofitNames {
+    companion object {
+        const val USER = "UserRetrofit"
+        const val EMPLOYEE = "EmployeeRetrofit"
+        const val MOVIE = "MovieRetrofit"
+        const val IMAGE = "ImageRetrofit"
+        const val AUTH = "AuthenticationRetrofit"
     }
 }

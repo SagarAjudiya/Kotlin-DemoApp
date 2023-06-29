@@ -1,6 +1,7 @@
 package com.example.kotlin_demoapp.tagb.module.dashboard.view
 
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,9 @@ import com.example.kotlin_demoapp.tagb.base_classes.BaseFragment
 import com.example.kotlin_demoapp.tagb.helper.UserDefault
 import com.example.kotlin_demoapp.tagb.module.dashboard.model.response.MovieInfo
 import com.example.kotlin_demoapp.tagb.module.dashboard.viewModel.MovieViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMovieBinding, MovieViewModel>() {
 
     private lateinit var adapter: MovieRecyclerAdapter

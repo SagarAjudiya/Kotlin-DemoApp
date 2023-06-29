@@ -1,13 +1,16 @@
 package com.example.kotlin_demoapp.tagb.module.dashboard.view
 
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.databinding.FragmentUserBinding
 import com.example.kotlin_demoapp.tagb.adapter.UserRecyclerAdapter
 import com.example.kotlin_demoapp.tagb.base_classes.BaseFragment
 import com.example.kotlin_demoapp.tagb.module.dashboard.viewModel.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserFragment : BaseFragment<FragmentUserBinding, UserViewModel>() {
 
     private lateinit var adapter: UserRecyclerAdapter

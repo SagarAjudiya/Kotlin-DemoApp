@@ -1,10 +1,7 @@
-package com.example.kotlin_demoapp.tagb.api
+package com.example.kotlin_demoapp.tagb.api_services
 
-import com.example.kotlin_demoapp.tagb.helper.HeaderValue
-import com.example.kotlin_demoapp.tagb.helper.RequestHeader
-import okhttp3.Interceptor
+import com.example.kotlin_demoapp.tagb.interceptors.RequestInterceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -29,16 +26,7 @@ class RetrofitInstance(private val baseURL: String) {
             .build()
     }
 
-    val api: SimpleApi by lazy {
-        retrofit.create(SimpleApi::class.java)
-    }
-
-    class RequestInterceptor : Interceptor {
-        override fun intercept(chain: Interceptor.Chain): Response {
-            val request = chain.request().newBuilder()
-            request.addHeader(RequestHeader.APP_VERSION, HeaderValue.APP_VERSION)
-                .addHeader(RequestHeader.PLATEFORM, HeaderValue.PLATEFORM)
-            return chain.proceed(request.build())
-        }
+    val api: ImageService by lazy {
+        retrofit.create(ImageService::class.java)
     }
 }

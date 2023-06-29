@@ -1,5 +1,6 @@
 package com.example.kotlin_demoapp.tagb.module.authentication.view
 
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.databinding.ActivityOnBoardBinding
@@ -7,7 +8,7 @@ import com.example.kotlin_demoapp.tagb.base_classes.BaseActivity
 import com.example.kotlin_demoapp.tagb.helper.launchActivity
 import com.example.kotlin_demoapp.tagb.helper.setStatusBarLightAppearance
 import com.example.kotlin_demoapp.tagb.module.authentication.viewModel.OnBoardViewModel
-
+import dagger.hilt.android.AndroidEntryPoint
 
 class OnBoardActivity : BaseActivity<ActivityOnBoardBinding, OnBoardViewModel>() {
 

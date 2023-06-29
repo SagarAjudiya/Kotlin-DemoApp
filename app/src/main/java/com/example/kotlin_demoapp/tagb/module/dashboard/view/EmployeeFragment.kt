@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.net.Uri
 import android.view.View
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.databinding.FragmentEmployeeBinding
@@ -16,6 +17,7 @@ import com.example.kotlin_demoapp.tagb.helper.setWindowTouchable
 import com.example.kotlin_demoapp.tagb.module.dashboard.model.response.EmployeeInfo
 import com.example.kotlin_demoapp.tagb.module.dashboard.viewModel.EmployeeViewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -23,6 +25,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
+@AndroidEntryPoint
 class EmployeeFragment : BaseFragment<FragmentEmployeeBinding, EmployeeViewModel>() {
 
     private lateinit var adapter: EmployeeRecyclerAdapter

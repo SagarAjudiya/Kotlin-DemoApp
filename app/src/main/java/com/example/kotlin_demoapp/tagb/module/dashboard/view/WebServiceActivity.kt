@@ -1,6 +1,7 @@
 package com.example.kotlin_demoapp.tagb.module.dashboard.view
 
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -19,7 +20,9 @@ import com.example.kotlin_demoapp.tagb.helper.setStatusBarLightAppearance
 import com.example.kotlin_demoapp.tagb.module.authentication.view.OnBoardActivity
 import com.example.kotlin_demoapp.tagb.module.dashboard.viewModel.WebServicesViewModel
 import com.example.kotlin_demoapp.tagb.utils.UserPreference
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WebServiceActivity : BaseActivity<ActivityWebServicesBinding, WebServicesViewModel>() {
 
     private val navController by lazy {

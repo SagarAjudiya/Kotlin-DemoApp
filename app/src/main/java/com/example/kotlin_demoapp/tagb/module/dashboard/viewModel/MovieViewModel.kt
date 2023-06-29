@@ -1,16 +1,27 @@
 package com.example.kotlin_demoapp.tagb.module.dashboard.viewModel
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.kotlin_demoapp.tagb.base_classes.BaseViewModel
 import com.example.kotlin_demoapp.tagb.module.dashboard.model.BasePageResponse
 import com.example.kotlin_demoapp.tagb.module.dashboard.model.response.MovieInfo
+import com.example.kotlin_demoapp.tagb.module.dashboard.repository.MovieRepository
 import com.example.kotlin_demoapp.tagb.repository.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class MovieViewModel() : BaseViewModel() {
+@HiltViewModel
+class MovieViewModel @Inject constructor(
+    private val repository: MovieRepository
+) : BaseViewModel() {
 
     private val _fetchListSuccess = MutableLiveData<List<MovieInfo>>()
     val fetchListSuccess: LiveData<List<MovieInfo>>
@@ -19,26 +30,13 @@ class MovieViewModel() : BaseViewModel() {
     val fetchListFailure: LiveData<String>
         get() = _fetchListFailure
 
+    @SuppressLint("NullSafeMutableLiveData")
     fun getMovieList(accessToken: String, page: Int) {
-        Repository.getMovieData(accessToken, page)
-            .enqueue(object : Callback<BasePageResponse<List<MovieInfo>>> {
-                override fun onResponse(
-                    call: Call<BasePageResponse<List<MovieInfo>>>?,
-                    response: Response<BasePageResponse<List<MovieInfo>>>?
-                ) {
-                    if (response != null && response.isSuccessful) {
-                        _fetchListSuccess.value = response.body().result.toMutableList()
-                    } else {
-                        _fetchListFailure.value = response.toString()
-                    }
-                }
-
-                override fun onFailure(
-                    call: Call<BasePageResponse<List<MovieInfo>>>?,
-                    t: Throwable?
-                ) {
-                    _fetchListFailure.value = t?.localizedMessage
-                }
-            })
+        viewModelScope.launch {
+            repository.getMovieData(accessToken, page)
+                .collect {
+                _fetchListSuccess.postValue(it.result)
+            }
+        }
     }
 }

@@ -1,34 +1,29 @@
 package com.example.kotlin_demoapp.tagb.module.dashboard.viewModel
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.kotlin_demoapp.tagb.base_classes.BaseViewModel
-import com.example.kotlin_demoapp.tagb.module.dashboard.model.BaseUserResponse
 import com.example.kotlin_demoapp.tagb.module.dashboard.model.response.PersonAPI
-import com.example.kotlin_demoapp.tagb.repository.Repository
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.kotlin_demoapp.tagb.module.dashboard.repository.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UserViewModel() : BaseViewModel() {
+@HiltViewModel
+class UserViewModel @Inject constructor(
+    private val repository: UserRepository
+) : BaseViewModel() {
 
-    val responseData: MutableLiveData<List<PersonAPI>> = MutableLiveData()
+    private val _responseData = MutableLiveData<List<PersonAPI>>()
+    val responseData: LiveData<List<PersonAPI>>
+        get() = _responseData
 
     fun getUser() {
-        Repository.getUser().enqueue(object : Callback<BaseUserResponse> {
-            override fun onResponse(
-                call: Call<BaseUserResponse>?,
-                response: Response<BaseUserResponse>?
-            ) {
-                if (response != null && response.isSuccessful) {
-                    responseData.value = response.body().data
-                    Log.d("API", "API Success")
-                }
+        viewModelScope.launch {
+            repository.getUser().collect {
+                _responseData.postValue(it.data)
             }
-
-            override fun onFailure(call: Call<BaseUserResponse>?, t: Throwable?) {
-                Log.d("API", "API Failure: " + t.toString())
-            }
-        })
+        }
     }
 }

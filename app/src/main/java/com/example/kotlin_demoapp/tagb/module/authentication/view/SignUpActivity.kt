@@ -6,6 +6,7 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.ViewModelProvider
@@ -18,7 +19,9 @@ import com.example.kotlin_demoapp.tagb.helper.setDrawableColor
 import com.example.kotlin_demoapp.tagb.helper.setStatusBarLightAppearance
 import com.example.kotlin_demoapp.tagb.module.authentication.viewModel.SignUpViewModel
 import com.example.kotlin_demoapp.tagb.module.dashboard.view.WebServiceActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpActivity : BaseActivity<ActivitySignUpBinding, SignUpViewModel>() {
 
     override fun setViewModel(): SignUpViewModel? =

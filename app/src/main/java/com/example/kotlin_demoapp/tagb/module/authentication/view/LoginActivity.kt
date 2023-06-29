@@ -1,5 +1,6 @@
 package com.example.kotlin_demoapp.tagb.module.authentication.view
 
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.ViewModelProvider
@@ -12,7 +13,9 @@ import com.example.kotlin_demoapp.tagb.helper.setDrawableColor
 import com.example.kotlin_demoapp.tagb.helper.setStatusBarLightAppearance
 import com.example.kotlin_demoapp.tagb.module.authentication.viewModel.LoginViewModel
 import com.example.kotlin_demoapp.tagb.module.dashboard.view.WebServiceActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun setViewModel(): LoginViewModel? =
