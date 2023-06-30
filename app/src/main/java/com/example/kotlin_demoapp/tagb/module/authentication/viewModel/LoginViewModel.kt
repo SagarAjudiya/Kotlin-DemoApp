@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.kotlin_demoapp.R
 import com.example.kotlin_demoapp.tagb.base_classes.BaseViewModel
+import com.example.kotlin_demoapp.tagb.base_classes.Failure
 import com.example.kotlin_demoapp.tagb.base_classes.Result
+import com.example.kotlin_demoapp.tagb.base_classes.Success
 import com.example.kotlin_demoapp.tagb.helper.isValidEmail
 import com.example.kotlin_demoapp.tagb.module.authentication.model.request.LoginRequestModel
 import com.example.kotlin_demoapp.tagb.module.authentication.model.response.LoginResponseModel
@@ -42,7 +44,7 @@ class LoginViewModel @Inject constructor(
                 }
                 .collect {
                     when (it) {
-                        is Result.Success<*> -> {
+                        is Success<*> -> {
                             val data = it.model as LoginResponseModel
                             _loginSuccess.postValue(data)
                             UserPreference.isUserLogin = true
@@ -51,7 +53,7 @@ class LoginViewModel @Inject constructor(
                             UserPreference.username = data.user.email
                             UserPreference.name = "${data.user.firstName} ${data.user.lastName}"
                         }
-                        is Result.Failure -> _loginFailure.postValue(it.message)
+                        is Failure -> _loginFailure.postValue(it.message)
                     }
                 }
         }

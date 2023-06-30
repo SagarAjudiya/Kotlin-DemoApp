@@ -14,7 +14,7 @@ class Constants {
         const val EMPLOYEE_BASE_URL = "https://6488512c0e2469c038fd75e0.mockapi.io/api/"
 
         //Image Upload API
-        const val IMAGE_BASE_URL = "https://api.upload.io/v2/accounts/FW25bQt/uploads/"
+        const val IMAGE_BASE_URL = "https://api.upload.io/v2/accounts/FW25bTo/uploads/"
 
         //Authenticate User
         const val AUTH_BASE_URL = "https://staging-auth-api.runparking.com/api/v5/"
@@ -27,7 +27,7 @@ class UserDefault {
     companion object {
         const val MOVIE_ACCESS_TOKEN =
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMWVhZWRmNTM0MTk0YzJkOTZlMDEyZTIyYjJlOGQ3NyIsInN1YiI6IjY0ODgwYTM0NmY4ZDk1MDBlNTAwOGFjYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6s4osXoVK785xIHNMPDHMLX7j0ZMpOFPvyPezPU9Nrk"
-        const val IMAGE_ACCESS_TOKEN = "Bearer public_FW25bQtDefwnNRqCHCT7v1ESEQTV"
+        const val IMAGE_ACCESS_TOKEN = "Bearer public_FW25bTo2fDVXXkJ54GjSpx66hNKU"
     }
 }
 

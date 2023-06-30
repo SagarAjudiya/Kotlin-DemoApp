@@ -45,24 +45,36 @@ class EmployeeViewModel @Inject constructor(
     private var _fetchEmployeeListSuccess = MutableLiveData<Event<List<EmployeeInfo>>>()
     val fetchEmployeeListSuccess: LiveData<Event<List<EmployeeInfo>>>
         get() = _fetchEmployeeListSuccess
-    var fetchEmployeeListFailure: MutableLiveData<Event<String>> = MutableLiveData()
+    private var _fetchEmployeeListFailure = MutableLiveData<Event<String>>()
+    val fetchEmployeeListFailure: LiveData<Event<String>>
+        get() = _fetchEmployeeListFailure
     private var _updateEmployeeSuccess = MutableLiveData<Event<Pair<Int, EmployeeInfo>>>()
     val updateEmployeeSuccess: LiveData<Event<Pair<Int, EmployeeInfo>>>
         get() = _updateEmployeeSuccess
-    var updateEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
+    private var _updateEmployeeFailure = MutableLiveData<Event<String>>()
+    val updateEmployeeFailure: LiveData<Event<String>>
+        get() = _updateEmployeeFailure
     private var _viewEmployeeSuccess = MutableLiveData<Event<EmployeeInfo>>()
     val viewEmployeeSuccess: LiveData<Event<EmployeeInfo>>
         get() = _viewEmployeeSuccess
-    var viewEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
+    private var _viewEmployeeFailure = MutableLiveData<Event<String>>()
+    val viewEmployeeFailure: LiveData<Event<String>>
+        get() = _viewEmployeeFailure
     private var _addEmployeeSuccess = MutableLiveData<Event<EmployeeInfo>>()
     val addEmployeeSuccess: LiveData<Event<EmployeeInfo>>
         get() = _addEmployeeSuccess
-    var addEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
+    private var _addEmployeeFailure = MutableLiveData<Event<String>>()
+    val addEmployeeFailure: LiveData<Event<String>>
+        get() = _addEmployeeFailure
     private var _deleteEmployeeSuccess = MutableLiveData<Event<Int>>()
     val deleteEmployeeSuccess: LiveData<Event<Int>>
         get() = _deleteEmployeeSuccess
-    var deleteEmployeeFailure: MutableLiveData<Event<String>> = MutableLiveData()
-    var uploadImageFailure: MutableLiveData<Event<String>> = MutableLiveData()
+    private var _deleteEmployeeFailure = MutableLiveData<Event<String>>()
+    val deleteEmployeeFailure: LiveData<Event<String>>
+        get() = _deleteEmployeeFailure
+    private var _uploadImageFailure = MutableLiveData<Event<String>>()
+    val uploadImageFailure: LiveData<Event<String>>
+        get() = _uploadImageFailure
 
     /**
      * Fetch Employee list with Retrofit
@@ -70,11 +82,19 @@ class EmployeeViewModel @Inject constructor(
     fun getEmployeeList(search: String = "") {
         viewModelScope.launch {
             if (search.isEmpty()) {
-                repository.getEmployee().collect {
+                repository.getEmployee()
+                    .catch {
+                        _fetchEmployeeListFailure.postValue(Event(it.localizedMessage ?: ""))
+                    }
+                    .collect {
                     _fetchEmployeeListSuccess.postValue(Event(it))
                 }
             } else {
-                repository.getEmployeeWithSearch(search).collect {
+                repository.getEmployeeWithSearch(search)
+                    .catch {
+                        _fetchEmployeeListFailure.postValue(Event(it.localizedMessage ?: ""))
+                    }
+                    .collect {
                     _fetchEmployeeListSuccess.postValue(Event(it))
                 }
             }
@@ -139,7 +159,11 @@ class EmployeeViewModel @Inject constructor(
     fun addEmployee(body: HashMap<String, Any>) {
 
         viewModelScope.launch {
-            repository.addEmployee(body).collect {
+            repository.addEmployee(body)
+                .catch {
+                    _addEmployeeFailure.postValue(Event(it.localizedMessage ?: ""))
+                }
+                .collect {
                 _addEmployeeSuccess.postValue(Event(it))
             }
         }
@@ -159,7 +183,7 @@ class EmployeeViewModel @Inject constructor(
                 _addEmployeeSuccess.value = Event(employee)
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
-            addEmployeeFailure.value = Event(responseMessage)
+            _addEmployeeFailure.value = Event(responseMessage)
         }
     }
 
@@ -168,7 +192,11 @@ class EmployeeViewModel @Inject constructor(
      */
     fun updateEmployee(body: HashMap<String, Any>, position: Int, id: String) {
         viewModelScope.launch {
-            repository.updateEmployee(body, id).collect {
+            repository.updateEmployee(body, id)
+                .catch {
+                    _uploadImageFailure.postValue(Event(it.localizedMessage ?: ""))
+                }
+                .collect {
                 _updateEmployeeSuccess.postValue(Event(Pair(position, it)))
             }
         }
@@ -188,7 +216,7 @@ class EmployeeViewModel @Inject constructor(
                 _updateEmployeeSuccess.value = Event(Pair(position, employee))
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
-            updateEmployeeFailure.value = Event(responseMessage)
+            _updateEmployeeFailure.value = Event(responseMessage)
         }
     }
 
@@ -197,7 +225,11 @@ class EmployeeViewModel @Inject constructor(
      */
     fun deleteEmployee(id: String, position: Int) {
         viewModelScope.launch {
-            repository.deleteEmployee(id).collect {
+            repository.deleteEmployee(id)
+                .catch {
+                    _deleteEmployeeFailure.postValue(Event(it.localizedMessage ?: ""))
+                }
+                .collect {
                 _deleteEmployeeSuccess.postValue(Event(position))
             }
         }
@@ -217,7 +249,7 @@ class EmployeeViewModel @Inject constructor(
                 _deleteEmployeeSuccess.value = Event(position)
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
-            deleteEmployeeFailure.value = Event(responseMessage)
+            _deleteEmployeeFailure.value = Event(responseMessage)
         }
     }
 
@@ -235,7 +267,7 @@ class EmployeeViewModel @Inject constructor(
                 _viewEmployeeSuccess.value = Event(employee)
             }) { responseCode, responseMessage ->
             Log.d("API", "$responseCode : $responseMessage")
-            viewEmployeeFailure.value = Event(responseMessage)
+            _viewEmployeeFailure.value = Event(responseMessage)
         }
     }
 
@@ -251,7 +283,7 @@ class EmployeeViewModel @Inject constructor(
         OkHttpClient().newCall(request).enqueue(object : okhttp3.Callback {
             override fun onFailure(call: okhttp3.Call, e: IOException) {
                 call.cancel()
-                e.localizedMessage?.let { viewEmployeeFailure.value = Event(it) }
+                e.localizedMessage?.let { _viewEmployeeFailure.value = Event(it) }
             }
 
             override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
@@ -266,7 +298,7 @@ class EmployeeViewModel @Inject constructor(
                         }
                     }
                 } else {
-                    viewEmployeeFailure.value = Event(response.message)
+                    _viewEmployeeFailure.value = Event(response.message)
                 }
             }
         })
@@ -287,18 +319,22 @@ class EmployeeViewModel @Inject constructor(
                 }
             }
         ) { error ->
-            error.message?.let { viewEmployeeFailure.value = Event(it) }
+            error.message?.let { _viewEmployeeFailure.value = Event(it) }
         }
 
         queue.add(request)
     }
 
     /**
-     * Upload Employee details with Image with Retrofit
+     * Add Employee details with Image with Retrofit
      */
     private fun uploadImageAndAdd(part: MultipartBody.Part, name: String) {
         viewModelScope.launch {
-            repository.uploadImage(part).collect {
+            repository.uploadImage(part)
+                .catch {
+                    _uploadImageFailure.postValue(Event(it.localizedMessage ?: ""))
+                }
+                .collect {
                 addEmployee(
                     hashMapOf(
                         "id" to "null",
@@ -311,6 +347,9 @@ class EmployeeViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Update Employee details with Image with Retrofit
+     */
     private fun uploadImageAndUpdate(
         part: MultipartBody.Part,
         name: String,
@@ -320,7 +359,7 @@ class EmployeeViewModel @Inject constructor(
         viewModelScope.launch {
             repository.uploadImage(part)
                 .catch {
-                    uploadImageFailure.postValue(Event(it.localizedMessage))
+                    _uploadImageFailure.postValue(Event(it.localizedMessage ?: ""))
                 }
                 .collect {
                 updateEmployee(
